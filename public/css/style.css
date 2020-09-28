@@ -1,0 +1,199 @@
+* {
+	margin:0;
+	padding:0;
+    box-sizing: border-box;	
+    font-family: 'Montserrat', sans-serif;
+}
+.principal{
+    background-color: #f2f2f2;
+    width: 100%;
+    height: 720px;
+    padding: 8%;
+}
+.produtoPagina{
+    padding: 8%;
+
+}
+#tituloPrincipal{
+    font-weight: 900;
+    margin-top: 40px;
+    margin-bottom:28px;
+}
+#principal .row .colEsq{
+    padding: 2%;
+    padding-top: 5%
+}
+#principal .row .colEsq #descPrincipal{
+    width: 68%
+}
+.botao{
+    background-color: brown;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    color:white;
+}
+#botao1{
+    width: 120px;
+    margin-top: 40px;
+}
+#botao2{
+    width: 170px;
+    margin-top: 40px;
+    margin-left: 43%;
+}
+#sectionProdutos{
+    
+    width: 100%;
+    height: 720px;
+}
+
+.menu{
+    width: 100%;
+    height: 110px;
+    position: fixed;
+    text-align: right;
+    z-index: 99999;
+}
+.menuFixo{
+    height: 70px;
+    padding-right:8%;
+    padding-left: 8%;
+}
+.menu .menuFixo .iconesPessoais{
+    position: relative;
+    top: 15px;
+
+}
+.menu .opcoes{
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+    height: 40px;
+    
+} 
+a, a:hover{
+    text-decoration: none;
+    color:black;
+}
+  a:hover{
+    opacity: 0.6;
+    cursor: pointer;
+  }
+  .menu .opcoes ul {
+      text-align: center;
+  }
+  .menu .opcoes ul li{
+    list-style: none;
+    font-size: 18px;
+    margin-right: 20px;
+    margin-top: 5px;
+    font-weight: 400;
+    display: inline-block;
+     
+  }
+
+
+
+  
+  .footer-copyright{
+      padding: 10px;
+  }
+  #sectionDepoimentos{
+    height: 500px;
+    width: 100%;
+    background-color: #fafafa;
+    padding-top: 150px;
+    
+  }
+  #depoimento{
+      width: 60%;
+      margin-left: 20%;
+      font-style: italic;
+  }
+  #sectionBiografia{
+    height: 450px;
+    width: 100%;
+    padding-right:8%;
+    padding-left: 8%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    background-color: #f2f2f2;
+  }
+  #biografia{
+      margin:10%;
+      margin-top:14%;
+      font-size: 20px;
+      font-weight: 600;
+      position: absolute;
+  }
+ #opcoesFooter ul{
+     list-style: none;
+     text-align: right;
+ }
+ #opcoesFooter ul li{
+    display: inline-block;
+    margin-right: 10px;
+}
+footer {
+    padding-top:4%;
+}
+
+
+/* INICIO PÁGINA PRINCIPAL PRODUTOS */
+#bannerProdutos{
+    background-color: #5c5c5c;
+    width: 100%;
+    height: 720px;
+}
+#textoBanner{
+    text-align: center;
+}
+#gridProdutos{
+    margin: auto;
+    max-width: 1500px;
+}
+.card-produto{
+    width: 22rem; 
+    display: inline-block;
+    margin:20px
+}
+/* FIM PÁGINA PRINCIPAL PRODUTOS */
+
+/* INÍCIO PÁGINA DE LOGIN E CADASTRO*/
+
+.fundoBase{
+    width: 100%;
+    height: 720px;
+    background-color: #f2f2f2;
+    padding-top: 200px;
+}
+#containerLogin{
+    width: 350px;
+   
+
+}
+#containerLogin #tituloAcesso, #containerCadastro #tituloAcesso{
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+#containerCadastro{
+    width: 600px;
+}
+
+/* FIM PÁGINA LOGIN E CADASTRO */
+
+
+/* finalizar compra */
+#esqCheckout{
+    width: 50%;
+    height: 720px;
+    padding:100px;
+    background-color: white;
+    float:left;
+}
+
+/* fim finalizar compra */

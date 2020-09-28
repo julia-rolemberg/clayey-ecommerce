@@ -1,0 +1,172 @@
+<div class="produtoPagina">
+    <div name="pagina" class="container-md pt-3 border container-fluid ">
+        <div class="row">
+            <div id="img-container" class="container-md col-md-6">
+                <div>
+                    <img id="" style="max-height: 100%;" class="w-100 h-100 mx-auto" src="/imagens/1/main.jpg"/>
+                </div>
+                <div id="img-grid" class="mt-2 row">
+                    <img style="max-height: 100%;" class="col-md-3 mb-1" src="/imagens/1/main.jpg"/>
+                    <img style="max-height: 100%;" class="col-md-3 mb-1" src="/imagens/1/main.jpg"/>
+                    <img style="max-height: 100%;" class="col-md-3 mb-1" src="/imagens/1/main.jpg"/>
+                    <img style="max-height: 100%;" class="col-md-3 mb-1" src="/imagens/1/main.jpg"/>
+                </div>
+            </div>
+            <div name="text-container" class="container-md col-md-6">
+                <div>
+                    <div id="title" class="text-left h1 text-secondary">Nome do Produto</div>
+                    <div id="price" class="text-left h2 text-secondary">R$ valor</div>
+                    <div id="stars" class="text-left"></div>    
+                </div>
+                <form class="form-inline">
+                    <div name="bag-container" class="container-sm p-0 my-5 row">
+                        <div class="input-group col">
+                            <button type="button" id="minus" class="btn btn-outline-light text-dark input-group-append" onclick="process(-1)">-</button>
+                            <input id="quant-text" class="form-control" type="number" value="1"/>
+                            <button type="button" id="plus" class="btn btn-outline-light text-dark input-group-append" onclick="process(1)">+</button>
+
+                        </div>
+                        <div class="col">
+                            <button id="add-cart" class="add-to-cart btn btn-success btn-block">Adicionar ao carrinho</button>
+                        </div>
+                    </div>
+                </form>
+                <div name="description-container" class="p-3 m-3">
+                    <div>
+                        <div class="d-flex">
+                            <button type="button" id="d-btn1" class="btn btn-block text-justify border-bottom" onclick="hide('desc-text')">Descrição</button>
+                            <button type="button" id="d-btn2" class="btn text-right border-bottom ml-auto" onclick="hide('desc-text')">+</button>
+                        </div>
+                        <div id="desc-text" class="p-3 sr-only">
+                            <p id="d-text" class="text-justify">Error</p> 
+                        </div>
+                    </div>
+                    <div>
+                        <div class="d-flex">
+                            <button type="button" id="u-btn1" class="btn btn-block text-justify border-bottom" onclick="hide('util-text')">Como utilizar</button>
+                            <button type="button" id="u-btn2" class="btn text-right border-bottom ml-auto" onclick="hide('util-text')">+</button>
+                        </div>
+                        <div id="util-text" class="p-3 sr-only">
+                            <p id="u-text" class="text-justify">Error</p> 
+                        </div>
+                    </div>
+                    <div>
+                        <div class="d-flex">
+                            <button type="button" id="c-btn1" class="btn btn-block text-justify border-bottom" onclick="hide('comp-text')">Composição</button>
+                            <button type="button" id="c-btn2" class="btn text-right border-bottom ml-auto" onclick="hide('comp-text')">+</button>
+                        </div>
+                        <div id="comp-text" class="p-3 sr-only">
+                            <p id="c-text" class="text-justify">Error</p> 
+                        </div>
+                    </div>
+    
+                </div>
+    
+            </div>    
+        </div>
+        
+    </div>
+</div>
+
+
+<%- contentFor("scripts") %>
+<script name="produto">
+    const title = document.getElementById("title")
+    const price = document.getElementById("price")
+    const starsContainer = document.getElementById("stars")
+    const descriptionText = document.getElementById("d-text")
+    const utilityText = document.getElementById("u-text")
+    const compositionText = document.getElementById("c-text")
+    const addCartBtn = document.getElementById("add-cart")
+    const quantity = document.getElementById("quant-text")
+    var attId = document.createAttribute("data-id")
+
+    function mostrarProduto(id) {
+        title.innerText = id.nome
+        price.innerText = (id.preco).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+        descriptionText.innerText = id.descricao
+        utilityText.innerText = id.utilidade
+        compositionText.innerText = id.composicao
+
+        //Inserir novo atributo no botão - conexão com o carrinho
+        attId.value = id.id
+        addCartBtn.setAttributeNode(attId);
+
+        var starNum = id.estrelas
+        for(i = 1; i <= 5; i++) {
+            const star = document.createElement("span")
+            star.classList.add("fa")
+            star.classList.add("fa-star")
+            star.classList.add("h4")
+
+            if(starNum % 10 !== 0)
+
+            if(i <= starNum) {
+                star.classList.add("text-warning")
+            }
+            starsContainer.appendChild(star)
+        }
+
+    }
+
+    function process(quant){
+        var value = parseInt(document.getElementById("quant-text").value);
+        value+=quant;
+        if(value < 1 || !(parseInt(value)) ){
+            document.getElementById("quant-text").value = 1;
+        }else{
+            document.getElementById("quant-text").value = value;
+        }
+    }
+
+    function hide(id){
+        let iten = document.getElementById(id)
+        let active = iten.classList.contains("sr-only")
+        
+        if(active) {
+            iten.classList.remove("sr-only")
+        } else {
+            iten.classList.add("sr-only")
+        }
+    }
+
+    var cart = []
+    //integração com o carrinho
+    function addCarrinho(id) {
+        var name = produtos[id].nome
+        var price = produtos[id].preco
+        var count = quantity.value
+        var image = produtos[id].imagem.url
+        //shoppingCart.addItemToCart(id, name, price, count, image);
+        //displayCart();
+        }
+
+    const produtos = [
+        {
+            "id": 1,
+            "nome": "Argila Vermelha",
+            "preco": 40.5,
+            "estrelas": 4,
+            "descricao": "um sabonete de argila vermelha",
+            "utilidade": "passe no corpo",
+            "composicao": "50% argila vermelha, 30% soda caustica e 20% carinho de mãe",
+            "imagem": "/imagens/1/main.jpg"
+        }
+    ]
+
+    let productId = produtos[0]
+    mostrarProduto(productId);
+</script>
+
+<%- contentFor("styles") %>
+<style>
+    /* remover arrows do input number */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+</style>
