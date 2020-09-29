@@ -55,7 +55,8 @@
     height: 110px;
     position: fixed;
     text-align: right;
-    z-index: 99999;
+    z-index: 8;
+    background-color: white;
 }
 .menuFixo{
     height: 70px;

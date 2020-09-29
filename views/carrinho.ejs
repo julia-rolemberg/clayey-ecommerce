@@ -180,7 +180,7 @@
         for(var item in cart) {
             totalCart += cart[item].preco * cart[item].qtd;
         }
-        return Number(totalCart.toFixed(2));
+        return Number(totalCart.toFixed(2).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
     }
 
     // List cart
@@ -273,7 +273,7 @@
 
     }
     $('.mostrar-carrinho').html(output);
-    $('.total').html(shoppingCart.totalCart());
+    //$('#total').text(shoppingCart.totalCart());
     $('.total-count').html(shoppingCart.totalCount());
     }
 
@@ -287,15 +287,15 @@
 
 
     // -1
-    $('.show-cart').on("click", ".minus-item", function(event) {
-    var name = $(this).data('name')
-    shoppingCart.removeItemFromCart(name);
+    $('.mostrar-carrinho').on("click", ".minus-item", function(event) {
+    var id = $(this).data('id')
+    shoppingCart.removeItemFromCart(id);
     displayCart();
     })
     // +1
-    $('.show-cart').on("click", ".plus-item", function(event) {
-    var name = $(this).data('name')
-    shoppingCart.addItemToCart(name);
+    $('.mostrar-carrinho').on("click", ".plus-item", function(event) {
+    var id = $(this).data('id')
+    shoppingCart.addItemToCart(id);
     displayCart();
     })
 
@@ -321,12 +321,12 @@
     }
         
     //sistema para ocultar qtd de elementos no icone carrinho
-    /*if(shoppingCart != []) {
+    if(cart !== []) {
         $('#itensNoCarrinho').removeClass('sr-only');
         $('#itensNoCarrinho').text(shoppingCart.lenght)
     } else {
         $('#itensNoCarrinho').addClass('sr-only');
-    } */
+    }
 
     /*const produtos = [
     {

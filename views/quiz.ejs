@@ -1,164 +1,163 @@
-
-        <div class="container-md pt-3 my-3 border">
-            <div id="question-container" class="sr-only">
-                <img style="max-height: 50%;" class="w-50 h-50 rounded mx-auto d-block" src="https://www.treehugger.com/thmb/c8aBIifOUgUni7B-ISps4XgTr9A=/1000x667/filters:fill(auto,1)/__opt__aboutcom__coeus__resources__content_migration__treehugger__images__2019__01__soap-00f89df60a604f7699592fa67a0fb4a7.jpg"/>
-                <div id="question" class="text-center h2">Question</div>
-                <div id="answer-buttons" class="btn-grid">
-                    <button class="btn btn-light btn-lg btn-block">Resposta 1</button>
-                    <button class="btn btn-light btn-lg btn-block">Resposta 2</button>
-                    <button class="btn btn-light btn-lg btn-block">Resposta 3</button>
-                    <button class="btn btn-light btn-lg btn-block">Resposta 4</button>
-                </div>
-            </div>
-            <div class="form-group mt-2">
-                <button id="start-btn" class="btn btn-secondary">Começar</button>
-                <button id="next-btn" class="btn primary-btn sr-only">Próximo</button>
-                <button id="result-btn" class="btn btn-secondary sr-only">Resultado</button>
-
-            </div>
-            
+<div class="container-md pt-3 my-3 border">
+    <div id="question-container" class="sr-only">
+        <img style="max-height: 50%;" class="w-50 h-50 rounded mx-auto d-block" src="https://www.treehugger.com/thmb/c8aBIifOUgUni7B-ISps4XgTr9A=/1000x667/filters:fill(auto,1)/__opt__aboutcom__coeus__resources__content_migration__treehugger__images__2019__01__soap-00f89df60a604f7699592fa67a0fb4a7.jpg"/>
+        <div id="question" class="text-center h2">Question</div>
+        <div id="answer-buttons" class="btn-grid">
+            <button class="btn btn-light btn-lg btn-block">Resposta 1</button>
+            <button class="btn btn-light btn-lg btn-block">Resposta 2</button>
+            <button class="btn btn-light btn-lg btn-block">Resposta 3</button>
+            <button class="btn btn-light btn-lg btn-block">Resposta 4</button>
         </div>
-        
-    <script>
-            const startButton = document.getElementById("start-btn")
-            const nextButton = document.getElementById("next-btn")
-            const resultButton = document.getElementById("result-btn")
-            const questionContainerElement = document.getElementById('question-container')
-            const questionElement = document.getElementById("question")
-            const answerButtonsElement = document.getElementById("answer-buttons")
+    </div>
+    <div class="form-group mt-2">
+        <button id="start-btn" class="btn btn-secondary">Começar</button>
+        <button id="next-btn" class="btn primary-btn sr-only">Próximo</button>
+        <button id="result-btn" class="btn btn-secondary sr-only">Resultado</button>
 
-            let shuffledQuestions, currentQuestionIndex
-            let result = []
+    </div>
+    
+</div>
 
-            startButton.addEventListener('click', comecarJogo)
-            nextButton.addEventListener('click', () => {
-                currentQuestionIndex++
-                proximaPergunta()
-            })
-            resultButton.addEventListener('click', mostrarResultado)
+<script>
+    const startButton = document.getElementById("start-btn")
+    const nextButton = document.getElementById("next-btn")
+    const resultButton = document.getElementById("result-btn")
+    const questionContainerElement = document.getElementById('question-container')
+    const questionElement = document.getElementById("question")
+    const answerButtonsElement = document.getElementById("answer-buttons")
 
+    let shuffledQuestions, currentQuestionIndex
+    let result = []
 
-            function comecarJogo() {
-                console.log("Começou!")
-                startButton.classList.add("sr-only")
-                shuffledQuestions = questions.sort(() => Math.random() - .5)
-                currentQuestionIndex = 0
-                questionContainerElement.classList.remove("sr-only")
-                proximaPergunta()
-            }
-
-            function proximaPergunta() {
-                resetarInstancia()
-                mostrarPergunta(shuffledQuestions[currentQuestionIndex])
-            }
-
-            function mostrarPergunta(question) {
-                questionElement.innerText = question.question
-                question.answers.forEach(answer => {
-                    const button = document.createElement("button")
-                    button.innerText = answer.text
-                    button.classList.add("btn")
-                    button.classList.add("btn-light")
-                    button.classList.add("btn-lg")
-                    button.classList.add("btn-block")
-                    //if (answer.correct) {
-                    //  button.dataset.correct = answer.correct
-                    //}
-                    button.addEventListener('click', escolherResposta)
-                    answerButtonsElement.appendChild(button)
-                })
-            }
-
-            function resetarInstancia() {
-                nextButton.classList.add("sr-only")
-                while(answerButtonsElement.firstChild) {
-                    answerButtonsElement.removeChild(answerButtonsElement.firstChild)
-                }
-            }
-
-            function escolherResposta(e) {
-                if(shuffledQuestions.length > currentQuestionIndex + 1) {
-                    nextButton.classList.remove("sr-only")
-                } else {
-                    resultButton.classList.remove("sr-only")
-
-                }
-                //nextButton.classList.remove("sr-only")
-            }
-
-            var arvore = []
-            function decisao(question, score) {
-                arvore.concat(score)
-                let next = question.answers.next
-
-                if(next == 0) {
-                    mostrarResultado(arvore)
-                } else {
-                    proximaPergunta(next)
-                }
-            }
-
-            function mostrarResultado(id_resultado) {
-
-            }
+    startButton.addEventListener('click', comecarJogo)
+    nextButton.addEventListener('click', () => {
+        currentQuestionIndex++
+        proximaPergunta()
+    })
+    resultButton.addEventListener('click', mostrarResultado)
 
 
-            const questions = [
+    function comecarJogo() {
+        console.log("Começou!")
+        startButton.classList.add("sr-only")
+        shuffledQuestions = questions.sort(() => Math.random() - .5)
+        currentQuestionIndex = 0
+        questionContainerElement.classList.remove("sr-only")
+        proximaPergunta()
+    }
+
+    function proximaPergunta() {
+        resetarInstancia()
+        mostrarPergunta(shuffledQuestions[currentQuestionIndex])
+    }
+
+    function mostrarPergunta(question) {
+        questionElement.innerText = question.question
+        question.answers.forEach(answer => {
+            const button = document.createElement("button")
+            button.innerText = answer.text
+            button.classList.add("btn")
+            button.classList.add("btn-light")
+            button.classList.add("btn-lg")
+            button.classList.add("btn-block")
+            //if (answer.correct) {
+            //  button.dataset.correct = answer.correct
+            //}
+            button.addEventListener('click', escolherResposta)
+            answerButtonsElement.appendChild(button)
+        })
+    }
+
+    function resetarInstancia() {
+        nextButton.classList.add("sr-only")
+        while(answerButtonsElement.firstChild) {
+            answerButtonsElement.removeChild(answerButtonsElement.firstChild)
+        }
+    }
+
+    function escolherResposta(e) {
+        if(shuffledQuestions.length > currentQuestionIndex + 1) {
+            nextButton.classList.remove("sr-only")
+        } else {
+            resultButton.classList.remove("sr-only")
+
+        }
+        //nextButton.classList.remove("sr-only")
+    }
+
+    var arvore = []
+    function decisao(question, score) {
+        arvore.concat(score)
+        let next = question.answers.next
+
+        if(next == 0) {
+            mostrarResultado(arvore)
+        } else {
+            proximaPergunta(next)
+        }
+    }
+
+    function mostrarResultado(id_resultado) {
+
+    }
+
+
+    const questions = [
+        {
+            id: 1,
+            question: "Uma pergunta",
+            answers: [
                 {
-                    id: 1,
-                    question: "Uma pergunta",
-                    answers: [
-                        {
-                            "text": "a - 1 ponto",
-                            "score": 1,
-                            "next": 2
-                        },
-                        {
-                            "text": "b - 3 pontos",
-                            "score": 3,
-                            "next": 2
-                        },
-                        {
-                            "text": "c - 5 pontos",
-                            "score": 5,
-                            "next": 3
-                        }
-                    ]
+                    "text": "a - 1 ponto",
+                    "score": 1,
+                    "next": 2
                 },
                 {
-                    question: "Outra pergunta",
-                    answers: [
-                        {
-                            "text": "a - 1 ponto",
-                            "score": 1
-                        },
-                        {
-                            "text": "b - 3 pontos",
-                            "score": 3
-                        },
-                        {
-                            "text": "c - 5 pontos",
-                            "score": 5
-                        }
-                    ]
+                    "text": "b - 3 pontos",
+                    "score": 3,
+                    "next": 2
                 },
                 {
-                    question: "Outrissima pergunta",
-                    answers: [
-                        {
-                            "text": "a - 1 ponto",
-                            "score": 1
-                        },
-                        {
-                            "text": "b - 3 pontos",
-                            "score": 3
-                        },
-                        {
-                            "text": "c - 5 pontos",
-                            "score": 5
-                        }
-                    ]
+                    "text": "c - 5 pontos",
+                    "score": 5,
+                    "next": 3
                 }
             ]
+        },
+        {
+            question: "Outra pergunta",
+            answers: [
+                {
+                    "text": "a - 1 ponto",
+                    "score": 1
+                },
+                {
+                    "text": "b - 3 pontos",
+                    "score": 3
+                },
+                {
+                    "text": "c - 5 pontos",
+                    "score": 5
+                }
+            ]
+        },
+        {
+            question: "Outrissima pergunta",
+            answers: [
+                {
+                    "text": "a - 1 ponto",
+                    "score": 1
+                },
+                {
+                    "text": "b - 3 pontos",
+                    "score": 3
+                },
+                {
+                    "text": "c - 5 pontos",
+                    "score": 5
+                }
+            ]
+        }
+    ]
 
-        </script>
+</script>
