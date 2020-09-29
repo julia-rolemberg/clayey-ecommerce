@@ -198,3 +198,47 @@ footer {
 }
 
 /* fim finalizar compra */
+
+/* INÍCIO CARRINHO */
+.carrinho{
+    height: 100vh;
+    position: fixed;
+    top:0;
+    right:0;
+    z-index:10;
+    background-color: white;
+    transition: all 0.5s
+}
+.mostrarCarrinho{
+    transform: translateX(0);
+}
+.overlay {
+    display: none;
+    position: fixed;
+    /* full screen */
+    width: 100vh;
+    height: 100vh;
+    /* transparent black */
+    background: rgba(0, 0, 0, 0.7);
+    /* middle layer, i.e. appears below the sidebar */
+    z-index: 9;
+    opacity: 0;
+    /* animate the transition */
+    transition: all 0.5s ease-in-out;
+}
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+#fecharCarrinho.active {
+    margin-left: -250px;
+}
+#itensNoCarrinho{
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    padding: 0 5px;
+    border-radius: 30%;
+    color: white;
+}
+/* FIM CARRINHO */

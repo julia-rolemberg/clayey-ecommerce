@@ -1,10 +1,9 @@
 <div class="produtoPagina">
     <div name="pagina" class="container-md pt-3 border container-fluid ">
         <div class="row">
+
             <div id="img-container" class="container-md col-md-6">
-                <div>
-                    <img id="" style="max-height: 100%;" class="w-100 h-100 mx-auto" src="/imagens/1/main.jpg"/>
-                </div>
+                <div><img id="" class="w-100 h-100 mx-auto" src="/imagens/1/main.jpg"/></div>
                 <div id="img-grid" class="mt-2 row">
                     <img style="max-height: 100%;" class="col-md-3 mb-1" src="/imagens/1/main.jpg"/>
                     <img style="max-height: 100%;" class="col-md-3 mb-1" src="/imagens/1/main.jpg"/>
@@ -12,51 +11,75 @@
                     <img style="max-height: 100%;" class="col-md-3 mb-1" src="/imagens/1/main.jpg"/>
                 </div>
             </div>
+
+
             <div name="text-container" class="container-md col-md-6">
                 <div>
                     <div id="title" class="text-left h1 text-secondary">Nome do Produto</div>
                     <div id="price" class="text-left h2 text-secondary">R$ valor</div>
                     <div id="stars" class="text-left"></div>    
                 </div>
+
                 <form class="form-inline">
                     <div name="bag-container" class="container-sm p-0 my-5 row">
                         <div class="input-group col">
+
                             <button type="button" id="minus" class="btn btn-outline-light text-dark input-group-append" onclick="process(-1)">-</button>
                             <input id="quant-text" class="form-control" type="number" value="1"/>
                             <button type="button" id="plus" class="btn btn-outline-light text-dark input-group-append" onclick="process(1)">+</button>
+                        </div>
 
-                        </div>
                         <div class="col">
-                            <button id="add-cart" class="add-to-cart btn btn-success btn-block">Adicionar ao carrinho</button>
+                            <button id="add-cart" class="add-to-cart btn btn-success btn-block">
+                                Adicionar ao carrinho
+                            </button>
                         </div>
+
                     </div>
                 </form>
+
+                
                 <div name="description-container" class="p-3 m-3">
                     <div>
                         <div class="d-flex">
-                            <button type="button" id="d-btn1" class="btn btn-block text-justify border-bottom" onclick="hide('desc-text')">Descrição</button>
-                            <button type="button" id="d-btn2" class="btn text-right border-bottom ml-auto" onclick="hide('desc-text')">+</button>
+                            <button type="button" id="d-btn1" class="btn btn-block text-justify border-bottom" onclick="hide('desc-text')">
+                                Descrição</button>
+
+                            <button type="button" id="d-btn2" class="btn text-right border-bottom ml-auto" onclick="hide('desc-text')">
+                                +</button>
                         </div>
+
                         <div id="desc-text" class="p-3 sr-only">
-                            <p id="d-text" class="text-justify">Error</p> 
+                            <p id="d-text" class="text-justify">
+                                Texto-descrição</p> 
                         </div>
                     </div>
+
                     <div>
                         <div class="d-flex">
-                            <button type="button" id="u-btn1" class="btn btn-block text-justify border-bottom" onclick="hide('util-text')">Como utilizar</button>
-                            <button type="button" id="u-btn2" class="btn text-right border-bottom ml-auto" onclick="hide('util-text')">+</button>
+                            <button type="button" id="u-btn1" class="btn btn-block text-justify border-bottom" onclick="hide('util-text')">
+                                Como utilizar</button>
+                            <button type="button" id="u-btn2" class="btn text-right border-bottom ml-auto" onclick="hide('util-text')">
+                                +</button>
                         </div>
+
                         <div id="util-text" class="p-3 sr-only">
-                            <p id="u-text" class="text-justify">Error</p> 
+                            <p id="u-text" class="text-justify">
+                                Texto-utilizar</p>
                         </div>
                     </div>
+
                     <div>
                         <div class="d-flex">
-                            <button type="button" id="c-btn1" class="btn btn-block text-justify border-bottom" onclick="hide('comp-text')">Composição</button>
-                            <button type="button" id="c-btn2" class="btn text-right border-bottom ml-auto" onclick="hide('comp-text')">+</button>
+                            <button type="button" id="c-btn1" class="btn btn-block text-justify border-bottom" onclick="hide('comp-text')">
+                                Composição</button>
+                            <button type="button" id="c-btn2" class="btn text-right border-bottom ml-auto" onclick="hide('comp-text')">
+                                +</button>
                         </div>
+
                         <div id="comp-text" class="p-3 sr-only">
-                            <p id="c-text" class="text-justify">Error</p> 
+                            <p id="c-text" class="text-justify">
+                                Texto-composição</p> 
                         </div>
                     </div>
     
@@ -157,16 +180,3 @@
     let productId = produtos[0]
     mostrarProduto(productId);
 </script>
-
-<%- contentFor("styles") %>
-<style>
-    /* remover arrows do input number */
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-    input[type="number"] {
-        -moz-appearance: textfield;
-    }
-</style>

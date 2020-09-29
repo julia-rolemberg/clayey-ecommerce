@@ -2,20 +2,32 @@
 
         <div id="containerLogin" class="mx-auto p-4 shadow bg-light">
             <h4 id="tituloAcesso">Acessar minha conta</h4>
-            <div class="input-group flex-nowrap">
-                <!-- <div class="input-group-prepend">
-                  <span class="input-group-text" id="addon-wrapping">perfil</span>
-                </div> -->
-                <input type="text" class="form-control" placeholder="usuário" aria-label="usuario" aria-describedby="addon-wrapping">           
-            </div>
-            <div class="input-group flex-nowrap mt-3">
-                <input type="password" class="form-control" placeholder="senha" aria-label="senha" aria-describedby="addon-wrapping">           
-            </div>
-            <div class=" d-flex justify-content-between ">
-                <button type="button" class="btn btn-success px-5 mt-4" >entrar</button>
-                <button type="button" class="btn btn-outline-secondary  px-4 mt-4">cadastre-se</button>       
-            </div>
-            <span class="font-weight-light font-italic" style="font-size: 12px;"><a >esqueci minha senha?</a></span>
-            
+
+
+            <form class="form-group">
+                <div class="input-group flex-nowrap">
+                    <!-- <div class="input-group-prepend">
+                        <span class="input-group-text" id="addon-wrapping">perfil</span>
+                    </div> -->
+                    <input type="text" class="form-control" placeholder="usuário"
+                        aria-label="usuario" aria-describedby="addon-wrapping" required="required">           
+                </div>
+
+                <div class="input-group flex-nowrap mt-3">
+                    <input type="password" class="form-control" placeholder="senha"
+                    aria-label="senha" aria-describedby="addon-wrapping" required="required">           
+                </div>
+                
+                <div class=" d-flex justify-content-between ">
+                    <input type="submit" class="btn btn-success px-5 mt-4" 
+                        value="entrar"/>
+
+                    <button type="button" class="btn btn-outline-secondary px-4 mt-4"
+                        onclick="window.location.href='/cadastro'">cadastre-se</button>       
+                </div>
+                
+                <span class="font-weight-light font-italic" style="font-size: 12px;" onclick="window.location.href='/recuperarsenha'"><a >esqueci minha senha?</a></span>
+                
+            </form>
          </div>
     </div>

@@ -41,25 +41,6 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#fecharCarrinho, .overlay').on('click', function () {
-            // hide sidebar
-            $('#containerCarrinho').addClass('sr-only');
-            // hide overlay
-            $('.overlay').removeClass('active');
-        });
-
-        $('#iconeCarrinho').on('click', function () {
-            // open sidebar
-            $('#containerCarrinho').removeClass('sr-only');
-            // fade in the overlay
-            $('.overlay').addClass('active');
-        });
-    });
-    
-</script>
-
 <script name="carrinho">
     const btnCarrinho = document.getElementById('iconeCarrinho')
     const fecharCarrinho = document.getElementById('fecharCarrinho')

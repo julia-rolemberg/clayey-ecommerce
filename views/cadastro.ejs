@@ -1,67 +1,33 @@
+<div class="fundoBase">
 
+	<div id="containerCadastro" class="mx-auto p-4 shadow bg-light">
+		<h4 id="tituloAcesso">Fazer cadastro</h4>
 
-    <div class="fundoBase">
-
-        <div id="containerCadastro" class="mx-auto p-4 shadow bg-light">
-            <h4 id="tituloAcesso">Fazer cadastro</h4>
-            <div class="input-group flex-nowrap">
-                <!-- <div class="input-group-prepend">
-                  <span class="input-group-text" id="addon-wrapping">perfil</span>
-                </div> -->
-                <input type="text" class="form-control" placeholder="primeiro nome" aria-label="nome" aria-describedby="addon-wrapping">           
-                          
-            </div>
-            <div class="input-group flex-nowrap mt-3">
-                <input type="text" class="form-control" placeholder="sobrenome" aria-label="sobrenome" aria-describedby="addon-wrapping">      
-            </div>
-            <div class="input-group flex-nowrap mt-3">
-                <input type="email" class="form-control" placeholder="e-mail" aria-label="email" aria-describedby="addon-wrapping">      
-            </div>
-            <div class="input-group flex-nowrap mt-3">
-                <input type="password" class="form-control" placeholder="senha" aria-label="senha" aria-describedby="addon-wrapping">      
-                <input type="password" class="form-control" placeholder="confirmar senha" aria-label="confirma_senha" aria-describedby="addon-wrapping">      
-            </div>
-           
-            <div class=" d-flex justify-content-between ">
-                <button type="button" class="btn btn-success px-4 mt-4">confirmar</button>       
-            </div>
-            <span class="font-weight-light font-italic" style="font-size: 14px;"><a >ou faça login</a></span>
-         </div>
-
-
-
-
-
-    </div>
-
-
-	<footer class="navbar-fixed-bottom font-weight-light " style="background-color:#fafafa; ">
-		<div class="container">
-			<div class="row justify-content-between">
-				<div class=" col-5">
-
-					<p>
-						<i class="fa fa-envelope" style="font-size:16px; opacity: 0.3;"></i> contato@email.com.br<br>
-						<i class="fa fa-phone" style="font-size:18px; opacity: 0.3;"></i> 11 99999-9999
-					</p>
-				</div>
-
-				<div class="col-7 " style="text-align: right;">
-					<div id="opcoesFooter">
-						<ul>
-							<li><a href="#">Home</a></li>
-							<li><a href="#">Produtos</a></li>
-							<li><a href="#">Sabonete Perfeito</a></li>
-							<li><a href="#">Contato</a></li>
-						</ul>
-					</div>
-				</div>
+		<form class="form-group">
+			<div class="input-group flex-nowrap">
+				<!-- <div class="input-group-prepend">
+					<span class="input-group-text" id="addon-wrapping">perfil</span>
+				</div> -->
+				<input type="text" class="form-control" placeholder="primeiro nome" aria-label="nome" aria-describedby="addon-wrapping" required="required">           
+							
 			</div>
-		</div>
+			<div class="input-group flex-nowrap mt-3">
+				<input type="text" class="form-control" placeholder="sobrenome" aria-label="sobrenome" aria-describedby="addon-wrapping" required="required">      
+			</div>
+			<div class="input-group flex-nowrap mt-3">
+				<input type="email" class="form-control" placeholder="e-mail" aria-label="email" aria-describedby="addon-wrapping" required="required">      
+			</div>
+			<div class="input-group flex-nowrap mt-3">
+				<input type="password" class="form-control" placeholder="senha" aria-label="senha" aria-describedby="addon-wrapping" required="required">      
+				<input type="password" class="form-control" placeholder="confirmar senha" aria-label="confirma_senha" aria-describedby="addon-wrapping" required="required">      
+			</div>
+			
+			<div class=" d-flex justify-content-between ">
+				<input type="submit" class="btn btn-success px-4 mt-4" value="confirmar"/>     
+			</div>
+			
+			<span class="font-weight-light font-italic" style="font-size: 14px;" onclick="window.location.href='/login'"><a >ou faça login</a></span>
+		</form>
+	</div>
 
-		<hr style="width: 92%; margin-left: 4%;">
-		<div class="footer-copyright ">
-			<p class="font-weight-light text-center ">Copyright © CLA•YEY</p>
-			<!--tem que registrar isso de verdade depois-->
-		</div>
-	</footer>
+</div>
