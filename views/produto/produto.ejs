@@ -3,12 +3,12 @@
         <div class="row">
 
             <div id="img-container" class="container-md col-md-6">
-                <div><img id="" class="w-100 h-100 mx-auto" src="/imagens/1/main.jpg"/></div>
+                <div><img id="" class="w-100 h-100 mx-auto" src="/imagens/<%=id%>/main.jpg"/></div>
                 <div id="img-grid" class="mt-2 row">
-                    <img style="max-height: 100%;" class="col-md-3 mb-1" src="/imagens/1/main.jpg"/>
-                    <img style="max-height: 100%;" class="col-md-3 mb-1" src="/imagens/1/main.jpg"/>
-                    <img style="max-height: 100%;" class="col-md-3 mb-1" src="/imagens/1/main.jpg"/>
-                    <img style="max-height: 100%;" class="col-md-3 mb-1" src="/imagens/1/main.jpg"/>
+                    <% for(let item = 2; item <= 5; item++) { %>
+                        <img style="max-height: 100%;" class="col-md-3 mr-auto mb-1" src="/imagens/<%=id%>/<%=item%>.jpg"/>
+                    <% } %>
+
                 </div>
             </div>
 
@@ -92,7 +92,6 @@
 </div>
 
 
-<%- contentFor("scripts") %>
 <script name="produto">
     const title = document.getElementById("title")
     const price = document.getElementById("price")
@@ -173,7 +172,13 @@
             "descricao": "um sabonete de argila vermelha",
             "utilidade": "passe no corpo",
             "composicao": "50% argila vermelha, 30% soda caustica e 20% carinho de mãe",
-            "imagem": "/imagens/1/main.jpg"
+            "imagens": {
+                1: "/imagens/1/main.jpg",
+                2: "/imagens/1/main.jpg",
+                3: "/imagens/1/main.jpg",
+                4: "/imagens/1/main.jpg",
+                5: "/imagens/1/main.jpg"
+            }
         }
     ]
 

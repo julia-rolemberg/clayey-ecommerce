@@ -294,7 +294,8 @@
         var value = parseInt(document.getElementById("quantidade-item").value);
         value+=quant;
         if(value < 1){
-            shoppingCart.removeItemFromCart() ;
+            //shoppingCart.removeItemFromCart() ;
+            value = 1;
         } else {
             document.getElementById("quantidade-item").value = value;
 
@@ -309,24 +310,4 @@
         $('#itensNoCarrinho').addClass('sr-only');
     }
 
-    /*const produtos = [
-    {
-        "id": "1",
-        "nome": "Argila vermelha",
-        "preco": 40.0,
-        "imagem": {"url": "./public/imagens/produto1.jpeg"}
-    },
-    {
-        "id": "2",
-        "nome": "Argila branca",
-        "preco": 35.0,
-        "imagem": {"url": "./public/imagens/produto2.jpeg"}
-    },
-    {
-        "id": "3",
-        "nome": "Argila preta",
-        "preco": 45.5,
-        "imagem": {"url": "./public/imagens/produto3.jpeg"}
-    }
-] */
 </script>
