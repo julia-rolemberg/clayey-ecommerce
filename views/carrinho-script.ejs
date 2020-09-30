@@ -267,10 +267,10 @@
         
     //sistema para ocultar qtd de elementos no icone carrinho
     if (shoppingCart.countCart() > 0) {
-        $('#itensNoCarrinho').removeClass('sr-only');
+        $('#itensNoCarrinho').removeClass('invisible');
         $('#itensNoCarrinho').text(shoppingCart.countCart());
     } else {
-        $('#itensNoCarrinho').addClass('sr-only');
+        $('#itensNoCarrinho').addClass('invisible');
     }
 
 </script>
