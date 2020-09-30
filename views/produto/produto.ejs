@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="col">
-                            <button id="add-cart" class="add-to-cart btn btn-success btn-block">
+                            <button type="button" class="add-to-cart btn btn-success btn-block">
                                 Adicionar ao carrinho
                             </button>
                         </div>
@@ -93,42 +93,36 @@
 
 
 <script name="produto">
-    const title = document.getElementById("title")
-    const price = document.getElementById("price")
-    const starsContainer = document.getElementById("stars")
-    const descriptionText = document.getElementById("d-text")
-    const utilityText = document.getElementById("u-text")
-    const compositionText = document.getElementById("c-text")
-    const addCartBtn = document.getElementById("add-cart")
-    const quantity = document.getElementById("quant-text")
-    var attId = document.createAttribute("data-id")
+    const title = document.getElementById("title");
+    const price = document.getElementById("price");
+    const starsContainer = document.getElementById("stars");
+    const descriptionText = document.getElementById("d-text");
+    const utilityText = document.getElementById("u-text");
+    const compositionText = document.getElementById("c-text");
+    const quantity = document.getElementById("quant-text");
+    const produto = {
+        "id": 1,
+        "nome": "Argila Vermelha",
+        "preco": 40.5,
+        "estrelas": 4,
+        "descricao": "um sabonete de argila vermelha",
+        "utilidade": "passe no corpo",
+        "composicao": "50% argila vermelha, 30% soda caustica e 20% carinho de mãe",
+        "imagens": [
+            "/imagens/1/main.jpg",
+            "/imagens/1/main.jpg",
+            "/imagens/1/main.jpg",
+            "/imagens/1/main.jpg",
+            "/imagens/1/main.jpg"
+        ]
+    };
 
-    function mostrarProduto(id) {
-        title.innerText = id.nome
-        price.innerText = (id.preco).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-        descriptionText.innerText = id.descricao
-        utilityText.innerText = id.utilidade
-        compositionText.innerText = id.composicao
-
-        //Inserir novo atributo no botão - conexão com o carrinho
-        attId.value = id.id
-        addCartBtn.setAttributeNode(attId);
-
-        var starNum = id.estrelas
-        for(i = 1; i <= 5; i++) {
-            const star = document.createElement("span")
-            star.classList.add("fa")
-            star.classList.add("fa-star")
-            star.classList.add("h4")
-
-            if(starNum % 10 !== 0)
-
-            if(i <= starNum) {
-                star.classList.add("text-warning")
-            }
-            starsContainer.appendChild(star)
-        }
-
+    function mostrarProduto() {
+        title.textContent = produto.nome;
+        price.textContent = (produto.preco).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        descriptionText.textContent = produto.descricao;
+        utilityText.textContent = produto.utilidade;
+        compositionText.textContent = produto.composicao;
     }
 
     function process(quant){
@@ -152,36 +146,10 @@
         }
     }
 
-    var cart = []
-    //integração com o carrinho
-    function addCarrinho(id) {
-        var name = produtos[id].nome
-        var price = produtos[id].preco
-        var count = quantity.value
-        var image = produtos[id].imagem.url
-        //shoppingCart.addItemToCart(id, name, price, count, image);
-        //displayCart();
-        }
+    $('.add-to-cart').click(function(event) {
+        shoppingCart.addItemToCart(produto.id, produto.nome, produto.preco, parseInt(quantity.value), produto.imagens[0]);
+        exibirCarrinho();
+    });
 
-    const produtos = [
-        {
-            "id": 1,
-            "nome": "Argila Vermelha",
-            "preco": 40.5,
-            "estrelas": 4,
-            "descricao": "um sabonete de argila vermelha",
-            "utilidade": "passe no corpo",
-            "composicao": "50% argila vermelha, 30% soda caustica e 20% carinho de mãe",
-            "imagens": {
-                1: "/imagens/1/main.jpg",
-                2: "/imagens/1/main.jpg",
-                3: "/imagens/1/main.jpg",
-                4: "/imagens/1/main.jpg",
-                5: "/imagens/1/main.jpg"
-            }
-        }
-    ]
-
-    let productId = produtos[0]
-    mostrarProduto(productId);
+    mostrarProduto();
 </script>

@@ -1,0 +1,276 @@
+<script type="text/javascript">
+    const btnCarrinho = document.getElementById('iconeCarrinho')
+    const fecharCarrinho = document.getElementById('fecharCarrinho')
+    const limparItens = document.getElementById('btnLimpar')
+    const finalizarPedido = document.getElementById('btnPedido')
+    const itensCarrinho = document.getElementById('item')
+    const totalCarrinho = document.getElementById('total')
+    const itens = document.getElementById('Item')
+
+    // ************************************************
+    // Shopping Cart API
+    // ************************************************
+
+    var shoppingCart = (function() {
+        // =============================
+        // Private methods and propeties
+        // =============================
+        let cart = [];
+        
+        // Constructor
+        function Item(id, nome, preco, qtd, imagem) {
+            this.id = id;
+            this.nome = nome;
+            this.preco = preco;
+            this.qtd = qtd;
+            this.imagem = imagem;
+        }
+        
+        // Save cart
+        function saveCart() {
+            sessionStorage.setItem('shoppingCart', JSON.stringify(cart));
+        }
+        
+            // Load cart
+        function loadCart() {
+            cart = JSON.parse(sessionStorage.getItem('shoppingCart'));
+        }
+
+        if (sessionStorage.getItem("shoppingCart") != null) {
+            loadCart();
+        }
+
+        // =============================
+        // Public methods and propeties
+        // =============================
+        var obj = {};
+
+        // Add to cart
+        obj.addItemToCart = function (id, nome, preco, qtd, imagem) {
+            for (let i = 0; i < cart.length; i++) {
+                if (cart[i].id === id) {
+                    cart[i].qtd += qtd;
+                    saveCart();
+                    return;
+                }
+            }
+
+            var item = new Item(id, nome, preco, qtd, imagem);
+            cart.push(item);
+            saveCart();
+        }
+
+        // Set count from item
+        obj.setCountForItem = function (id, qtd) {
+            for (let i = 0; i < cart.length; i++) {
+                if (cart[i].id === id) {
+                    cart[i].qtd = qtd;
+                    break;
+                }
+            }
+        };
+
+        // Remove item from cart
+        obj.removeItemFromCart = function (id) {
+            for (let i = 0; i < cart.length; i++) {
+                if (cart[i].id === id) {
+                    cart[i].qtd--;
+                    if (cart[i].qtd === 0) {
+                        cart.splice(i, 1);
+                    }
+                    break;
+                }
+            }
+            saveCart();
+        }
+
+        // Remove all items from cart
+        obj.removeItemFromCartAll = function (id) {
+            for (let i = 0; i < cart.length; i++) {
+                if (cart[i].id === id) {
+                    cart.splice(i, 1);
+                    break;
+                }
+            }
+            saveCart();
+        }
+
+        // Clear cart
+        obj.clearCart = function() {
+            cart = [];
+            saveCart();
+        }
+
+        // Count cart 
+        obj.totalCount = function() {
+            let totalCount = 0;
+            for (let i = 0; i < cart.length; i++) {
+                totalCount += cart[i].qtd;
+            }
+            return totalCount;
+        }
+
+        // Total cart
+        obj.totalCart = function() {
+            let totalCart = 0;
+            for (let i = 0; i < cart.length; i++) {
+                totalCart += cart[i].preco * cart[i].qtd;
+            }
+            //return totalCart.toFixed(2).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            return "R$" + totalCart.toFixed(2).replce('.', ',');
+        }
+
+        // List cart
+        obj.listCart = function() {
+            let cartCopy = [];
+            for (let i = 0; i < cart.length; i++) {
+                let item = cart[i];
+                let itemCopy = {};
+                for (p in item) {
+                    itemCopy[p] = item[p];
+                }
+                cartCopy.push(itemCopy);
+            }
+            return cartCopy;
+        }
+
+        obj.countCart = function () {
+            return cart.length;
+        };
+
+        // cart : Array
+        // Item : Object/Class
+        // addItemToCart : Function
+        // removeItemFromCart : Function
+        // removeItemFromCartAll : Function
+        // clearCart : Function
+        // countCart : Function
+        // totalCart : Function
+        // listCart : Function
+        // saveCart : Function
+        // loadCart : Function
+        return obj;
+    })();
+
+    // *****************************************
+    // Triggers / Events
+    // ***************************************** 
+    // Clear items
+    $('.clear-cart').click(function() {
+        shoppingCart.clearCart();
+        displayCart();
+    });
+
+    function displayCart() {
+        var cartArray = shoppingCart.listCart();
+        var output = "";
+        output +=
+            "<div id='item' class='row border border-light my-2'>"
+                + "<img class='col-sm-3' src='/imagens/1/main.jpg' alt='Imagem Argila Vermelha'/>" 
+                + "<div class='col-sm-6'>"
+                    + "<div class='h5'> Argila Vermelha </div>"
+                    + "<div class='h6'> R$40,00 </div>"
+                + "</div>"
+                + "<div class='col-sm-2'>"
+                    + "<button id='addQuantidade' class='btn' onclick='processCart(1)'><i class='fa fa-chevron-up'></i></button>"
+                    + "<input id='quantidade-item' type='number' class='item-count form-control' value='1'/>"
+                    + "<button id='diminuiQuantidade' class='btn' onclick='processCart(-1)'><i class='fa fa-chevron-down'></i></button>"
+                + "</div>"
+                + "<button type='button' id='closeItem' class='delete-item close align-middle col-1'>"
+                    + "<span class='h5'>&times;</span>"
+                + "</button>"
+
+        for(var i in cartArray) {
+            output +=
+            "<div id='item' class='row border border-light my-2'>"
+                + "<img class='col-sm-3' src='" + cartArray[i].imagem + "' alt='Imagem " + cartArray[i].nome + "'/>" 
+                + "<div class='col-sm-6'>"
+                    + "<div class='h5'>" + cartArray[i].nome + "</div>"
+                    + "<div class='h6'>" + cartArray[i].preco + "</div>"
+                + "</div>"
+                + "<div class='col-sm-2'>"
+                    + "<button id='addQuantidade' class='btn' onclick='processCart(1)'><i class='fa fa-chevron-up'></i></button>"
+                    + "<input id='quantidade-item' type='number' class='item-count form-control' value='"+ cartArray[i].count +"'/>"
+                    + "<button id='diminuiQuantidade' class='btn' onclick='processCart(-1)'><i class='fa fa-chevron-down'></i></button>"
+                + "</div>"
+                + "<button type='button' id='closeItem' class='delete-item close align-middle col-1'>"
+                    + "<span class='h5'>&times;</span>"
+                + "</button>"
+
+        }
+        $('#containerItens').html(output);
+        //$('#total').text(shoppingCart.totalCart());
+        $('.total-count').html(shoppingCart.totalCount());
+    }
+
+    function ocultarCarrinho() {
+        // hide sidebar
+        $('#containerCarrinho').hide();
+        // hide overlay
+        $('.overlay').removeClass('active');
+        // Volta com a barra de rolagem do body
+        document.body.style.overflow = "";
+    }
+
+    function exibirCarrinho() {
+        displayCart();
+
+        // open sidebar
+        $('#containerCarrinho').show();
+        // fade in the overlay
+        $('.overlay').addClass('active');
+        // Oculta a barra de rolagem do body
+        document.body.style.overflow = "hidden";
+    }
+
+    // Delete item button
+
+    $('#containerItens').on("click", ".delete-item", function(event) {
+        var id = $(this).data('id')
+        shoppingCart.removeItemFromCartAll(id);
+        displayCart();
+    })
+
+    // -1
+    $('#containerItens').on("click", ".minus-item", function(event) {
+        var id = $(this).data('id')
+        shoppingCart.removeItemFromCart(id);
+        displayCart();
+    })
+
+    // +1
+    $('#containerItens').on("click", ".plus-item", function(event) {
+        var id = $(this).data('id')
+        shoppingCart.addItemToCart(id);
+        displayCart();
+    })
+
+    // Item count input
+    $('.show-cart').on("change", ".item-count", function(event) {
+        var id = $(this).data('id');
+        var qtd = Number($(this).val());
+        shoppingCart.setCountForItem(id, qtd);
+        displayCart();
+    });
+
+    function processCart(quant){
+        var value = parseInt(document.getElementById("quantidade-item").value);
+        value+=quant;
+        if(value < 1){
+            //shoppingCart.removeItemFromCart() ;
+            value = 1;
+        } else {
+            document.getElementById("quantidade-item").value = value;
+
+        }
+    }
+        
+    //sistema para ocultar qtd de elementos no icone carrinho
+    if (shoppingCart.countCart() > 0) {
+        $('#itensNoCarrinho').removeClass('sr-only');
+        $('#itensNoCarrinho').text(shoppingCart.countCart());
+    } else {
+        $('#itensNoCarrinho').addClass('sr-only');
+    }
+
+</script>

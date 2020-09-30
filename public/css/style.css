@@ -221,11 +221,14 @@ footer {
     right:0;
     z-index:10;
     background-color: white;
-    transition: all 0.5s
+    max-width: 500px;
 }
-.mostrarCarrinho{
-    transform: translateX(0);
+
+#containerItens {
+    height: calc(100vh - 250px);
+    overflow: auto;
 }
+
 .overlay {
     display: none;
     position: fixed;
