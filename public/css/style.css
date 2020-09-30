@@ -14,6 +14,10 @@
     padding: 8%;
 
 }
+.pagina{
+    padding: 8%;
+    height: 520px;
+}
 #tituloPrincipal{
     font-weight: 900;
     margin-top: 40px;
@@ -55,8 +59,12 @@
     height: 110px;
     position: fixed;
     text-align: right;
+<<<<<<< Updated upstream
     z-index: 8;
     background-color: white;
+=======
+    z-index: 999;
+>>>>>>> Stashed changes
 }
 .menuFixo{
     height: 70px;
@@ -73,6 +81,14 @@
     height: 40px;
     
 } 
+a .botaoA{
+    text-decoration: none;
+
+}
+.botaoA:hover{
+    opacity: 1;
+    color:white;
+}
 a, a:hover{
     text-decoration: none;
     color:black;
@@ -199,6 +215,7 @@ footer {
 
 /* fim finalizar compra */
 
+<<<<<<< Updated upstream
 /* INÍCIO CARRINHO */
 .carrinho{
     height: 100vh;
@@ -242,3 +259,8 @@ footer {
     color: white;
 }
 /* FIM CARRINHO */
+=======
+#containerCarrinho{
+    z-index: 9999;
+}
+>>>>>>> Stashed changes
