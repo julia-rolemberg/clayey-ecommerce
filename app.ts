@@ -44,15 +44,12 @@ app.get("/", (req: express.Request, res: express.Response) => {
 	res.render("index");
 });
 
-//app.use("/produtos", require("./routes/api/produto"));
-app.get("/produtos", (req: express.Request, res: express.Response) => {
-	res.render("produtos");
-});
+app.use("/produtos", require("./routes/api/produto"));
 
-app.get("/produtos/:id", (req: express.Request, res: express.Response) => {
+/*app.get("/produtos/:id", (req: express.Request, res: express.Response) => {
 	let id = parseInt(req.params["id"]);
 	res.render("produto/produto");
-});
+});*/
 
 app.get("/quiz", (req: express.Request, res: express.Response) => {
 	res.render("quiz");
