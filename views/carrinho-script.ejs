@@ -117,7 +117,7 @@
                 totalCart += cart[i].preco * cart[i].qtd;
             }
             //return totalCart.toFixed(2).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-            return "R$" + totalCart.toFixed(2).replce('.', ',');
+            return "R$" + totalCart.toFixed(2).replace('.', ',');
         }
 
         // List cart
@@ -164,42 +164,27 @@
     function displayCart() {
         var cartArray = shoppingCart.listCart();
         var output = "";
-        output +=
-            "<div id='item' class='row border border-light my-2'>"
-                + "<img class='col-sm-3' src='/imagens/1/main.jpg' alt='Imagem Argila Vermelha'/>" 
-                + "<div class='col-sm-6'>"
-                    + "<div class='h5'> Argila Vermelha </div>"
-                    + "<div class='h6'> R$40,00 </div>"
-                + "</div>"
-                + "<div class='col-sm-2'>"
-                    + "<button id='addQuantidade' class='btn' onclick='processCart(1)'><i class='fa fa-chevron-up'></i></button>"
-                    + "<input id='quantidade-item' type='number' class='item-count form-control' value='1'/>"
-                    + "<button id='diminuiQuantidade' class='btn' onclick='processCart(-1)'><i class='fa fa-chevron-down'></i></button>"
-                + "</div>"
-                + "<button type='button' id='closeItem' class='delete-item close align-middle col-1'>"
-                    + "<span class='h5'>&times;</span>"
-                + "</button>"
 
         for(var i in cartArray) {
             output +=
-            "<div id='item' class='row border border-light my-2'>"
+            "<div id='item"+ i + "' class='row border border-light my-2'>"
                 + "<img class='col-sm-3' src='" + cartArray[i].imagem + "' alt='Imagem " + cartArray[i].nome + "'/>" 
                 + "<div class='col-sm-6'>"
                     + "<div class='h5'>" + cartArray[i].nome + "</div>"
-                    + "<div class='h6'>" + cartArray[i].preco + "</div>"
+                    + "<div class='h6'> R$" + (cartArray[i].preco).toFixed(2).replace('.', ',') + "</div>"
                 + "</div>"
                 + "<div class='col-sm-2'>"
-                    + "<button id='addQuantidade' class='btn' onclick='processCart(1)'><i class='fa fa-chevron-up'></i></button>"
-                    + "<input id='quantidade-item' type='number' class='item-count form-control' value='"+ cartArray[i].count +"'/>"
-                    + "<button id='diminuiQuantidade' class='btn' onclick='processCart(-1)'><i class='fa fa-chevron-down'></i></button>"
+                    + "<button id='addQuantidade' type='button' class='btn' onclick='processCart(1)'><i class='fa fa-chevron-up'></i></button>"
+                    + "<input id='quantidade-item' type='number' class='item-count form-control' value='"+ cartArray[i].qtd +"'/>"
+                    + "<button id='diminuiQuantidade' type='button' class='btn' onclick='processCart(-1)'><i class='fa fa-chevron-down'></i></button>"
                 + "</div>"
-                + "<button type='button' id='closeItem' class='delete-item close align-middle col-1'>"
+                + "<button type='button' id='deleteItem' data-id='"+ cartArray[i].id +"' class='close align-middle col-1'>"
                     + "<span class='h5'>&times;</span>"
                 + "</button>"
 
         }
         $('#containerItens').html(output);
-        //$('#total').text(shoppingCart.totalCart());
+        $('#total').text(shoppingCart.totalCart());
         $('.total-count').html(shoppingCart.totalCount());
     }
 
@@ -225,7 +210,7 @@
 
     // Delete item button
 
-    $('#containerItens').on("click", ".delete-item", function(event) {
+    $('#containerItens').on("click", "#deleteItem", function(event) {
         var id = $(this).data('id')
         shoppingCart.removeItemFromCartAll(id);
         displayCart();

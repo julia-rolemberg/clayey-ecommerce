@@ -49,7 +49,7 @@
                                 +</button>
                         </div>
 
-                        <div id="desc-text" class="p-3 invisible">
+                        <div id="desc-text" class="p-3 d-none">
                             <p id="d-text" class="text-justify">
                                 Texto-descrição</p> 
                         </div>
@@ -63,7 +63,7 @@
                                 +</button>
                         </div>
 
-                        <div id="util-text" class="p-3 invisible">
+                        <div id="util-text" class="p-3 d-none">
                             <p id="u-text" class="text-justify">
                                 Texto-utilizar</p>
                         </div>
@@ -77,7 +77,7 @@
                                 +</button>
                         </div>
 
-                        <div id="comp-text" class="p-3 invisible">
+                        <div id="comp-text" class="p-3 d-none">
                             <p id="c-text" class="text-justify">
                                 Texto-composição</p> 
                         </div>
@@ -104,7 +104,6 @@
         "id": 1,
         "nome": "Argila Vermelha",
         "preco": 40.5,
-        "estrelas": 4,
         "descricao": "um sabonete de argila vermelha",
         "utilidade": "passe no corpo",
         "composicao": "50% argila vermelha, 30% soda caustica e 20% carinho de mãe",
@@ -137,12 +136,12 @@
 
     function hide(id){
         let iten = document.getElementById(id)
-        let active = iten.classList.contains("invisible")
+        let active = iten.classList.contains("d-none")
         
         if(active) {
-            iten.classList.remove("invisible")
+            iten.classList.remove("d-none")
         } else {
-            iten.classList.add("invisible")
+            iten.classList.add("d-none")
         }
     }
 
