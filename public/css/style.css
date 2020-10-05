@@ -1,3 +1,7 @@
+body, html{
+    height: 100%;
+    max-height: 100%;
+}
 * {
 	margin:0;
 	padding:0;
@@ -7,7 +11,7 @@
 .principal{
     background-color: #f2f2f2;
     width: 100%;
-    height: 720px;
+    min-height: 100%;
     padding: 8%;
 }
 .produtoPagina{
@@ -49,35 +53,51 @@
     margin-left: 43%;
 }
 #sectionProdutos{
-    
     width: 100%;
     height: 720px;
 }
-
 .menu{
     width: 100%;
-    height: 110px;
+    height: 70px;
     position: fixed;
-    text-align: right;
-
     z-index: 8;
     background-color: white;
-}
-.menuFixo{
-    height: 70px;
+    /* border-bottom: solid 0.5px rgba(0, 0, 0, 0.2); */
     padding-right:8%;
     padding-left: 8%;
-}
-.menu .menuFixo .iconesPessoais{
-    position: relative;
-    top: 15px;
 
 }
-.menu .opcoes{
-    border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
-    height: 40px;
+
+.menu  .iconesPessoais{
+    width: 150px;
+    float: right;
+    position: relative;
+    top: 5px;
+
+}
+.logo{
+    width: 70px;
+    text-align: center;
+    padding: 10px;
+    float: left;
     
-} 
+ }
+ .menu .opcoes{
+     text-align: center;
+     margin: 0 auto;
+ }
+ .menu .opcoes ul {
+    text-align: center;
+}
+.menu .opcoes ul li{
+  list-style: none;
+  font-size: 18px;
+  margin-right: 20px;
+  margin-top: 25px;
+  font-weight: 400;
+  display: inline-block;
+   
+}
 a .botaoA{
     text-decoration: none;
 
@@ -94,22 +114,18 @@ a, a:hover{
     opacity: 0.6;
     cursor: pointer;
   }
-  .menu .opcoes ul {
-      text-align: center;
-  }
-  .menu .opcoes ul li{
-    list-style: none;
-    font-size: 18px;
-    margin-right: 20px;
-    margin-top: 5px;
-    font-weight: 400;
-    display: inline-block;
-     
-  }
 
 
+ 
+/* .gridImage{
+ 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    background-image: url('/imagens/1/mainQuadrada.jpg');
 
-  
+
+} */
   .footer-copyright{
       padding: 10px;
   }
