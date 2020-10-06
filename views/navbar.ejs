@@ -1,70 +1,23 @@
-<nav class="menu container-fluid">
-   
-    <!-- <div class="iconesPessoais" style="text-align: right">
-        <button id="iconeUsuario" class="btn">
-            <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg" onclick="window.location.href = '/login'">
-                <path fill-rule="evenodd"
-                    d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-            </svg>
-        </button>
-        <button id="iconeCarrinho" class="btn">
-            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                    d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-            </svg>
+<nav class="menu clearfix">
+
+    <h1 class="mt-2 ml-4">CLA•YEY</h1>
+
+    <ul class="mt-0 mr-0">
+        <li><a href="/">Home</a></li>
+        <li><a href="/produtos">Produtos</a></li>
+        <li><a href="/quiz">Sabonete Perfeito</a></li>
+        <li><a href="/contato">Contato</a></li>
+    </ul>
+
+    <div class="iconesPessoais">
+        <a href="/login" id="iconeUsuario" class="btn">
+            <span class="fa fa-user"></span>
+        </a>
+        <button type="button" id="iconeCarrinho" class="btn">
+            <span class="fa fa-shopping-cart"></span>
             <span id="itensNoCarrinho" class="bg-primary invisible">0</span>
         </button>
     </div>
-    <div class="logo" >
-        <h1 style="font-family: 'Noto Serif JP'; font-weight: 500;">CLA•YEY</h1>
-    </div>
-    <div class="opcoes">
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/produtos">Produtos</a></li>
-            <li><a href="/quiz">Sabonete Perfeito</a></li>
-            <li><a href="/contato">Contato</a></li>
-        </ul>
-    </div> -->
-
-
-    <div class="row">
-        <div class="logo col-sm-2" >
-            <h1 style="font-family: 'Noto Serif JP'; font-weight: 500;">CLA•YEY</h1>
-        </div>
-        
-        <div class="opcoes col-sm-8">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/produtos">Produtos</a></li>
-                <li><a href="/quiz">Sabonete Perfeito</a></li>
-                <li><a href="/contato">Contato</a></li>
-            </ul>
-        </div>
-    
-        <div class="iconesPessoais col-sm-2" style="text-align: right">
-            <button id="iconeUsuario" class="btn">
-                <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg" onclick="window.location.href = '/login'">
-                    <path fill-rule="evenodd"
-                        d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                </svg>
-            </button>
-            <button id="iconeCarrinho" class="btn">
-                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-                </svg>
-                <span id="itensNoCarrinho" class="bg-primary invisible">0</span>
-            </button>
-        </div>
-        
-    </div>
-
-
 
 </nav>
 
@@ -74,5 +27,5 @@
 
         $('#iconeCarrinho').on('click', exibirCarrinho);
     });
-    
+
 </script>
