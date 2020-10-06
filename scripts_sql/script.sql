@@ -9,11 +9,11 @@ USE `clayey` ;
 CREATE TABLE IF NOT EXISTS `clayey`.`Cliente` (
   id_cliente INT NOT NULL AUTO_INCREMENT,
   nome_cliente VARCHAR(45) NOT NULL,
-  email VARCHAR(45) NOT NULL,
+  email VARCHAR(100) NOT NULL,
   senha VARCHAR(45) NOT NULL,
-  cep_cliente INT NOT NULL,
-  num_casa VARCHAR(45) NOT NULL,
-  cidade_cliente varchar(45) NOT NULL, 
+  cep_cliente INT ,
+  num_casa VARCHAR(45) ,
+  cidade_cliente varchar(45) , 
   PRIMARY KEY (id_cliente));
 
 
@@ -93,7 +93,7 @@ insert into Item (id_produto, id_pedido, qtde, valor_item) values
     (3,2, 1, 50.00),
     (2,1, 1, 46.00);
 
-select * from Item;
+select * from pedido;
 
  /* 
  

@@ -1,14 +1,12 @@
 import Sql = require("../infra/sql");
 
 export = class Produto {
-    public id: number;
-    public nome: string;
-    public preco: number;
-    public estrelas: number;
-    public descricao: string;
-    public utilidade: string;
+    public id_produto: number;
+    public nome_produto: string;
+    public desc_produto: number;
+    public modo_usar: string;
     public composicao: string;
-    public imagem: string; //rota de onde está a(s) imagem(s)
+ //   public imagem: string; //rota de onde está a(s) imagem(s)
 
 
     /*private static validar(pessoa: Pessoa): string {
