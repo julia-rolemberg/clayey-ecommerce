@@ -238,6 +238,7 @@ footer {
 /* INÍCIO CARRINHO */
 .carrinho{
     height: 100vh;
+    display: none;
     position: fixed;
     top:0;
     right:0;
@@ -254,15 +255,11 @@ footer {
 .overlay {
     display: none;
     position: fixed;
-    /* full screen */
     width: 100vh;
     height: 100vh;
-    /* transparent black */
     background: rgba(0, 0, 0, 0.7);
-    /* middle layer, i.e. appears below the sidebar */
     z-index: 9;
     opacity: 0;
-    /* animate the transition */
     transition: all 0.5s ease-in-out;
 }
 .overlay.active {
@@ -281,3 +278,5 @@ footer {
     color: white;
 }
 /* FIM CARRINHO */
+
+/* INÍCIO QUIZ  */
