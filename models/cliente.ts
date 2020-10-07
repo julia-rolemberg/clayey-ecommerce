@@ -30,6 +30,8 @@ export = class Cliente{
         if(cliente.email.length >100){
             return "Email muito longo";
         }
+
+        return null;
     }
 
     public static async listar(): Promise<Cliente[]>{
@@ -59,7 +61,7 @@ export = class Cliente{
         let cliente: Cliente = null;
 
         await Sql.conectar(async(sql)=>{
-            let lista = await sql.query("select id_cliente, nome_cliente, email, senha from cliente where nome_cliente = ?",[nome_cliente]);
+            let lista = await sql.query("select id_cliente, nome_cliente, email, senha from cliente where nome_cliente = ?",[cliente.nome_cliente]);
          
             if(lista && lista.length){
                 cliente = lista[0];
@@ -106,7 +108,7 @@ export = class Cliente{
         let erro: string = null;
 
         await Sql.conectar(async(sql)=>{
-            let lista = await sql.query("delete from cliente where nome_cliente = '?'",[nome_cliente]);
+            let lista = await sql.query("delete from cliente where nome_cliente = ?",[nome_cliente]);
          
             if(!sql.linhasAfetadas){
                 erro = 'Pessoa não encontrada';

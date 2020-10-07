@@ -9,11 +9,10 @@ export = class Pedido{
 
     public static validar(pedido: Pedido): string{
 
-
         if(!pedido){
             return "Dados inválidos";
         }
-        
+        return null;
     }
 
 }

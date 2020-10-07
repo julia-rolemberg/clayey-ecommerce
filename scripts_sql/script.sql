@@ -24,9 +24,9 @@ CREATE TABLE IF NOT EXISTS `clayey`.`Cliente` (
 CREATE TABLE IF NOT EXISTS `clayey`.`Produto` (
   id_produto INT primary key AUTO_INCREMENT,
   nome_produto VARCHAR(45) NOT NULL,
-  desc_produto VARCHAR(45) NOT NULL,
-  modo_usar VARCHAR(45) NOT NULL,
-  composicao VARCHAR(45) NOT NULL,
+  desc_produto VARCHAR(100) NOT NULL,
+  modo_usar VARCHAR(100) NOT NULL,
+  composicao VARCHAR(100) NOT NULL,
   valor_produto DECIMAL(10,2) NOT NULL
   );
 
