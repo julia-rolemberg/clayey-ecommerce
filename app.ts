@@ -46,8 +46,8 @@ app.get("/", (req: express.Request, res: express.Response) => {
 
 app.use("/produtos", require("./routes/api/produto"));
 
-app.use("/pedido", require("./routes/api/pedido"));
-app.use("/cliente", require("./routes/api/cliente"));
+// app.use("/pedido", require("./routes/api/pedido"));
+// app.use("/cliente", require("./routes/api/cliente"));
 
 
 
