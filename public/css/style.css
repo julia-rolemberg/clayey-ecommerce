@@ -280,3 +280,9 @@ footer {
 /* FIM CARRINHO */
 
 /* INÍCIO QUIZ  */
+.telaCheia {
+    min-width: 80vh;
+    min-height: 80vh;
+}
+
+/* FIM QUIZ */
