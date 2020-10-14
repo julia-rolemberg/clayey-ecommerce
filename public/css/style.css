@@ -296,7 +296,11 @@ footer {
 /* FIM CARRINHO */
 
 /* INÍCIO QUIZ  */
-#home-container{
-    margin-top: 10%;
-    min-height: 100%;
+
+.telaCheia {
+    min-width: 80vh;
+    min-height: 80vh;
 }
+
+/* FIM QUIZ */
+
