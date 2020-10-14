@@ -37,7 +37,7 @@ export = class Cliente{
     public static async listar(): Promise<Cliente[]>{
         let lista: Cliente[] = null;
         await Sql.conectar(async (sql) =>{
-            lista = await sql.query("select id_cliente, nome_cliente, email, senha from cliente");
+            lista = await sql.query("select id_cliente, nome_cliente, email from cliente");
         });
         return lista;
     }
@@ -51,7 +51,7 @@ export = class Cliente{
         }
 
         await Sql.conectar(async(sql)=>{
-            let lista = await sql.query("insert into cliente( nome_cliente, email, senha) values ?, ?, ?,? ",[cliente.nome_cliente, cliente.email, cliente.senha]);
+            let lista = await sql.query("insert into cliente( nome_cliente, email, senha) values ?, ?, ? ",[cliente.nome_cliente, cliente.email, cliente.senha]);
         });
 
         return erro;
@@ -61,7 +61,22 @@ export = class Cliente{
         let cliente: Cliente = null;
 
         await Sql.conectar(async(sql)=>{
-            let lista = await sql.query("select id_cliente, nome_cliente, email, senha from cliente where nome_cliente = ?",[cliente.nome_cliente]);
+            let lista = await sql.query("select id_cliente, nome_cliente, email from cliente where nome_cliente = ?",[cliente.nome_cliente]);
+         
+            if(lista && lista.length){
+                cliente = lista[0];
+            }
+        });
+
+        return cliente;
+
+    }
+
+    public static async login(email:String): Promise<Cliente>{
+        let cliente: Cliente = null;
+
+        await Sql.conectar(async(sql)=>{
+            let lista = await sql.query("select id_cliente, nome_cliente, email, senha from cliente where email = ?",[cliente.email]);
          
             if(lista && lista.length){
                 cliente = lista[0];
@@ -91,7 +106,6 @@ export = class Cliente{
     public static async adicionarEndereco(cliente: Cliente): Promise<string>{
         let erro: string = Cliente.validar(cliente);
 
-
         if(erro){
             return erro;
         }
@@ -102,7 +116,7 @@ export = class Cliente{
 
         return erro;
     }
-
+    
 
     public static async excluir(nome_cliente:String): Promise<string>{
         let erro: string = null;
@@ -111,7 +125,7 @@ export = class Cliente{
             let lista = await sql.query("delete from cliente where nome_cliente = ?",[nome_cliente]);
          
             if(!sql.linhasAfetadas){
-                erro = 'Pessoa não encontrada';
+                erro = 'Cliente não encontrado';
             }
         });
 

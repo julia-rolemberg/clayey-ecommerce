@@ -1,6 +1,6 @@
 import express = require("express");
 import wrap = require("express-async-error-wrapper");
-//import Produto = require("../../models/produto");
+import Produto = require("../../models/produto");
 
 const router = express.Router();
 

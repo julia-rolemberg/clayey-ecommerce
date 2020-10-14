@@ -66,7 +66,7 @@ body, html{
     top: 0px;
     position: fixed;
     z-index: 8;
-    background-color: white;
+    /* background-color: white; */
 }
 
 .menu {
@@ -185,15 +185,25 @@ footer {
 #textoBanner{
     text-align: center;
 }
-#gridProdutos{
-    margin: auto;
-    max-width: 1500px;
+#produtos{
+    margin: 0 auto;
+    max-width: 1205px;
+
+
 }
 .card-produto{
     width: 22rem; 
     display: inline-block;
     margin:20px
 }
+#subMenu{
+    
+    position: -webkit-sticky;
+    position: sticky;
+
+    top: 720px;
+}
+
 /* FIM PÁGINA PRINCIPAL PRODUTOS */
 
 /* INÍCIO PÁGINA DE LOGIN E CADASTRO*/
@@ -224,14 +234,20 @@ footer {
 
 
 /* finalizar compra */
-#esqCheckout{
+#esqCheckout, #dirCheckout{
     width: 50%;
     height: 720px;
     padding:100px;
-    background-color: white;
-    float:left;
-}
+    padding-top: 150px;
 
+}
+#esqCheckout{
+    float:left;
+    background-color: white;
+}
+#dirCheckout{
+    float: right;
+}
 /* fim finalizar compra */
 
 
@@ -280,3 +296,7 @@ footer {
 /* FIM CARRINHO */
 
 /* INÍCIO QUIZ  */
+#home-container{
+    margin-top: 10%;
+    min-height: 100%;
+}
