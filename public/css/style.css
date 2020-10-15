@@ -88,6 +88,16 @@ body, html{
 }
 #iconeCarrinho, #iconeUsuario{
     font-size: 30px;
+    position: relative;
+}
+#itensNoCarrinho{
+    position: absolute;
+    font-size: 15px;
+    top: 15px;
+    right: 8px;
+    padding: 0 5px;
+    border-radius: 30%;
+    color: white;
 }
  .menu ul {
     text-align: center;
@@ -284,14 +294,6 @@ footer {
 }
 #fecharCarrinho.active {
     margin-left: -250px;
-}
-#itensNoCarrinho{
-    position: absolute;
-    top: 6px;
-    right: 8px;
-    padding: 0 5px;
-    border-radius: 30%;
-    color: white;
 }
 /* FIM CARRINHO */
 
