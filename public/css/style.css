@@ -300,8 +300,25 @@ footer {
 /* INÍCIO QUIZ  */
 
 .telaCheia {
-    min-width: 80vh;
-    min-height: 80vh;
+    min-width: 75vh;
+    min-height: 75vh;
+    max-height: 85vh;
+}
+
+#raios{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    top:0;
+    right:0;
+    position: absolute;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.t-quiz{
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 /* FIM QUIZ */
