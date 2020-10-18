@@ -44,10 +44,14 @@ app.get("/", (req: express.Request, res: express.Response) => {
 	res.render("index");
 });
 
-app.use("/produtos", require("./routes/api/produto"));
+
+app.use("/api/produto", require("./routes/api/produto"));
+app.use("/produto", require("./routes/produto"));
 
 app.use("/pedido", require("./routes/api/pedido"));
+// app.use("/pedido", require("./routes/pedido"));
 app.use("/cliente", require("./routes/api/cliente"));
+app.use("/cliente", require("./routes/cliente"));
 app.use("/item", require("./routes/api/item"));
 
 

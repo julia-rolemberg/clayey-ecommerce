@@ -9,10 +9,20 @@ body, html{
     font-family: 'Montserrat', sans-serif;
 }
 .principal{
-    background-color: #f2f2f2;
+ 
     width: 100%;
     min-height: 100%;
     padding: 8%;
+}
+.principalP{
+    background-image: url(/imagens/banners/fundoArgila.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+    width: 100%;
+    min-height: 100%;
+    padding-top: 8%;
 }
 .produtoPagina{
     padding: 8%;
@@ -194,17 +204,26 @@ footer {
 }
 #textoBanner{
     text-align: center;
+    padding: 50px;
+    margin-top: 150px;
+    width: 100%;
+    color: white;
+    background-color:rgba(255, 255, 255, 0.3)   ;
+
 }
 #produtos{
     margin: 0 auto;
     max-width: 1205px;
-
-
 }
 .card-produto{
     width: 22rem; 
     display: inline-block;
     margin:20px
+}
+.card-produto:hover{
+    box-shadow: 0 0 4em #e4e4e4;
+    transition-duration: 1s;
+    border: none;
 }
 #subMenu{
     
@@ -213,7 +232,9 @@ footer {
 
     top: 720px;
 }
-
+.produtoA:hover{
+    opacity: 1;
+}
 /* FIM PÁGINA PRINCIPAL PRODUTOS */
 
 /* INÍCIO PÁGINA DE LOGIN E CADASTRO*/

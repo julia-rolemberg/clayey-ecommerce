@@ -1,6 +1,6 @@
 
 
-drop database clayey;
+-- drop database clayey;
 CREATE SCHEMA IF NOT EXISTS `clayey` DEFAULT CHARACTER SET utf8 ;
 USE `clayey` ;
 
@@ -22,12 +22,15 @@ CREATE TABLE IF NOT EXISTS `clayey`.`Cliente` (
  DROP TABLE IF EXISTS `clayey`.`Produto` ;
 
 CREATE TABLE IF NOT EXISTS `clayey`.`Produto` (
-  id_produto INT primary key AUTO_INCREMENT,
-  nome_produto VARCHAR(45) NOT NULL,
-  desc_produto VARCHAR(100) NOT NULL,
-  modo_usar VARCHAR(100) NOT NULL,
-  composicao VARCHAR(100) NOT NULL,
-  valor_produto DECIMAL(10,2) NOT NULL
+    id_produto INT primary key AUTO_INCREMENT,
+    nome_produto VARCHAR(45) NOT NULL,
+    desc_produto VARCHAR(1000) NOT NULL,
+    utilidade VARCHAR(100) NOT NULL,
+    composicao VARCHAR(1000) NOT NULL,
+    valor_produto DECIMAL(10,2) NOT NULL,
+    peso INT NOT NULL,
+    fabricacao VARCHAR(45) NOT NULL,
+    qtdeDisponivel INT NOT NULL
   );
 
 
@@ -65,12 +68,17 @@ insert into Cliente (nome_cliente, email, senha, cep_cliente, num_casa, cidade_c
 
 select * from Cliente;
 
-insert into Produto (nome_produto, desc_produto, modo_usar,composicao,valor_produto) values
-	('argila branca', 'decricao argila branca', 'como usar argila branca', 'composição argila branca', 46.00),
-	('argila vermelha', 'decricao argila vermelha', 'como usar argila vermelha', 'composição argila vermelha', 46.00),
-	('alecrim', 'decricao alecrim', 'como usar alecrim', 'composição alecrim', 50.00),
-	('carvão ativado', 'decricao carvão ativado', 'como usar carvão ativado', 'composição carvão ativado', 50.00),
-	('amêndoas', 'decricao amêndoas', 'como usar amêndoas', 'composição amêndoas', 56.00);
+insert into Produto (id_produto, nome_produto, desc_produto, utilidade,composicao,valor_produto, qtdeDisponivel, peso, fabricacao) values
+	(1, 'Sabonete para Pele Normal', 'A composição do Óleo de Goiaba com o Óleo de Amêndoa e as
+    Manteigas de Cacau e Cupuaçu traz a hidratação perfeita. O Óleo de Dendê além de
+    colorir naturalmente o sabonete é rico em Vitamina E. O Óleo Essencial de Cedro 
+    da Virgínia traz um aroma amadeirado proporcionando a sensação de conforto e calor.',
+    'Ideal para todos os tipos de pele, traz hidratação, mas sem ressecar a pele', 'Palmiste
+    , Óleo de Dendê, Óleo de Mamona, NaOH, Água Destilada, Óleo de Amêndoa, Azeite de Oliva
+    Extra Virgem, Óleo de Goiaba, Manteigas de Cacau e Cupuaçu, Óleo Resina de Alecrim,
+    Vitamina E, Dióxido de Titânio, Óleo Essencial Cedro da Virgínia. Por cold process.', 
+    18.00, 50, 100, 'outubro de 2020')
+    ;
 
 select * from Produto;
 

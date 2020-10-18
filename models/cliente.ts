@@ -57,11 +57,11 @@ export = class Cliente{
         return erro;
     }
 
-    public static async obter(nome_cliente:String): Promise<Cliente>{
+    public static async obter(id_cliente:number): Promise<Cliente>{
         let cliente: Cliente = null;
 
         await Sql.conectar(async(sql)=>{
-            let lista = await sql.query("select id_cliente, nome_cliente, email from cliente where nome_cliente = ?",[cliente.nome_cliente]);
+            let lista = await sql.query("select id_cliente, nome_cliente, email from cliente where id_cliente = ?",[cliente.id_cliente]);
          
             if(lista && lista.length){
                 cliente = lista[0];
@@ -118,11 +118,11 @@ export = class Cliente{
     }
     
 
-    public static async excluir(nome_cliente:String): Promise<string>{
+    public static async excluir(id_cliente:number): Promise<string>{
         let erro: string = null;
 
         await Sql.conectar(async(sql)=>{
-            let lista = await sql.query("delete from cliente where nome_cliente = ?",[nome_cliente]);
+            let lista = await sql.query("delete from cliente where id_cliente = ?",[id_cliente]);
          
             if(!sql.linhasAfetadas){
                 erro = 'Cliente não encontrado';

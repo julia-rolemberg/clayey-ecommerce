@@ -4,9 +4,12 @@ export = class Produto {
     public id_produto: number;
     public nome_produto: string;
     public desc_produto: string;
-    public modo_usar: string;
+    public utilidade: string;
     public composicao: string;
     public valor_produto: number;
+    public qtdeDisponivel: number;
+    public peso: number;
+    public fabricacao: string;
  //   public imagem: string; //rota de onde está a(s) imagem(s)
 
     public static validar(produto: Produto): string{
@@ -25,8 +28,8 @@ export = class Produto {
         if(produto.desc_produto.length>100){
             return "Descrição muito longa";
         }
-        if(produto.modo_usar.length>100){
-            return "Modo de usar muito longo";
+        if(produto.utilidade.length>100){
+            return "Utilidade muito longa";
         }
         if(produto.composicao.length>100){
             return "Composição muito longa";
@@ -41,7 +44,7 @@ export = class Produto {
     public static async listar(): Promise<Produto[]>{
         let lista: Produto[] = null;
         await Sql.conectar(async (sql) =>{
-            lista = await sql.query("select id_produto, nome_produto, desc_produto, modo_usar, composicao, valor_produto from produto");
+            lista = await sql.query("select id_produto, nome_produto, desc_produto, utilidade, composicao, valor_produto, qtdeDisponivel, peso, fabricacao from produto");
         });
         return lista;
     }
@@ -54,7 +57,7 @@ export = class Produto {
         }
 
         await Sql.conectar(async(sql)=>{
-            let lista = await sql.query("insert into Produto (nome_produto, desc_produto, modo_usar,composicao,valor_produto) values ?, ?, ?, ?, ? ", [produto.nome_produto, produto.desc_produto, produto.modo_usar, produto.composicao, produto.valor_produto]);
+            let lista = await sql.query("insert into Produto ( nome_produto, desc_produto, utilidade, composicao, valor_produto, qtdeDisponivel, peso, fabricacao) values (?, ?, ?, ?, ?,?,?,?) ", [produto.nome_produto, produto.desc_produto, produto.utilidade, produto.composicao, produto.valor_produto, produto.qtdeDisponivel, produto.peso, produto.fabricacao]);
         });
 
         return erro;
@@ -64,7 +67,7 @@ export = class Produto {
         let produto: Produto = null;
 
         await Sql.conectar(async(sql)=>{
-            let lista = await sql.query("select id_produto, nome_produto, desc_produto, modo_usar, composicao, valor_produto from produto where id_produto = ?",[produto.id_produto]);
+            let lista = await sql.query("select id_produto, nome_produto, desc_produto, utilidade, composicao, valor_produto, qtdeDisponivel, peso, fabricacao from produto where id_produto = ?",[produto.id_produto]);
          
             if(lista && lista.length){
                 produto = lista[0];
@@ -84,7 +87,7 @@ export = class Produto {
         }
 
         await Sql.conectar(async(sql)=>{
-            let lista = await sql.query("update produto set nome_produto = ?, desc_produto = ?, modo_usar=?, composicao= ?, valor_produto=?  where id_produto = ?",[produto.nome_produto, produto.desc_produto, produto.modo_usar, produto.composicao, produto.valor_produto, produto.id_produto]);
+            let lista = await sql.query("update produto set nome_produto = ?, desc_produto = ?, utilidade=?, composicao= ?, valor_produto=?, qtdeDisponivel=?, peso=?, fabricacao=?  where id_produto = ?",[produto.nome_produto, produto.desc_produto, produto.utilidade, produto.composicao, produto.valor_produto, produto.qtdeDisponivel, produto.peso, produto.fabricacao, produto.id_produto]);
         });
 
         return erro;
@@ -97,7 +100,7 @@ export = class Produto {
             let lista = await sql.query("delete from produto where id_produto = ?",[id_produto]);
          
             if(!sql.linhasAfetadas){
-                erro = 'Pessoa não encontrada';
+                erro = 'Produto não encontrada';
             }
         });
 
