@@ -129,7 +129,7 @@ body, html{
     top: 0;
     right: 0;
     left: 0;
-    z-index: 1030;
+    z-index: 8;
   }
   .scrolled-down{
      transform:translateY(-100%); transition: all 0.3s ease-in-out;
@@ -339,6 +339,12 @@ footer {
 /* FIM CARRINHO */
 
 /* INÍCIO QUIZ  */
+.telaQuiz{
+ 
+    width: 100%;
+    min-height: 90%;
+    padding: 8% 0 0 0;
+}
 
 .telaCheia {
     min-width: 75vh;
