@@ -340,10 +340,10 @@ footer {
 
 /* INÍCIO QUIZ  */
 .telaQuiz{
- 
     width: 100%;
     min-height: 90%;
-    padding: 8% 0 0 0;
+    padding: 8% 8% 2% 8%;
+    overflow-x: hidden;
 }
 
 .telaCheia {
@@ -352,20 +352,93 @@ footer {
     max-height: 85vh;
 }
 
-#raios{
+.limitador{
+    max-width: 80%;
+}
+
+.limitador-raio{
+    max-width: 80%;
+}
+
+#raios {
+    margin:0;
+    text-align: center;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0;
-    top:0;
-    right:0;
     position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+    padding: 0;
+    width: 800px;
     z-index: -1;
     overflow: hidden;
+    
 }
 
 .t-quiz{
     background-color: rgba(255, 255, 255, 0.8);
+}
+
+#home-conteudo{
+    display: block;
+    line-height: 1.5;
+    position: relative;
+    margin: auto;
+}
+
+#option-container{
+    border: none 2px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 32px -18px rgba(0,0,0,0.33);
+}
+
+.div-escolha{
+    background-image: url('/imagens/gradiente_quiz.jpg');
+    background: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    border: none;
+    border-radius: 20px;
+}
+
+.btn-quiz{
+    width: 300px;
+    height: 60px;
+    text-align: center;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.7);
+    transition: .5s;
+    font-size: 24px;
+    border-radius: 5px;
+    font-family: "Montserrat",sans-serif;
+    border: 2px solid #FFA319;
+    color: #FFA319;
+}
+
+.btn-quiz:hover{
+    border: none;
+    color: white;
+    font-size: 28px;
+    transform:scale(1.1);
+    background-color: #FFA319;
+    transition: all 0.3s ease-in-out;
+}
+
+.revelacao{
+    background-image: url(/imagens/gif_burst.gif);
+    background-repeat: no-repeat;
+    background: cover;
+    background-position: center center;
+    
+}
+
+.btn-quiz2{
+    padding: 10px 6rem;
+    text-align: center;
+    background-color: #FFA319;
+    color:white;
 }
 
 /* FIM QUIZ */

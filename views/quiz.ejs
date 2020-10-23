@@ -1,12 +1,16 @@
 <div class="telaQuiz">
 <!-- Início -->
-    <div id="home-container" class="text-center telaCheia">
-        <img id="raios" class="rodar" src="/imagens/raios.svg"/>
-        <div class="t-quiz h1"> Qual é o sabonete perfeito para mim? </div>
-        <div class="pb-5 pt-3">
-            <img class="flutuar-girando-suave" src="/imagens/sabaoMisterio.png"/>
+    <div id="home-container" class="text-center mx-auto">
+        <div class="limitador-raio">
+            <img id="raios" class="rodar" src="/imagens/raios.svg"/>
         </div>
-        <div><button id="start-btn" class="btn btn-secondary px-5">Começar</button></div>
+        <div id="home-conteudo">
+            <div class="t-quiz h1"> Qual é o sabonete perfeito para mim? </div>
+            <div class="p-5 mt-5">
+                <img class="flutuar-girando-suave" src="/imagens/sabaoMisterio.png"/>
+            </div>
+            <div><button id="start-btn" type="button" class="btn-quiz px-5">Começar</button></div>
+        </div>
     </div>
 
     <!-- Questões / Lista layout-->
@@ -24,44 +28,53 @@
     <!-- Questões -->
     <div id="question-container" class="d-none">
         <div id="question" class="text-center h2">Question</div>
-            <div id="answer-buttons" style="padding: 10rem 0px;">
-                <button class="btn btn-light btn-lg">Resposta 1</button>
-                <button class="btn btn-light btn-lg">Resposta 2</button>
-                <button class="btn btn-light btn-lg">Resposta 3</button>
-                <button class="btn btn-light btn-lg">Resposta 4</button>
-            </div>
+        <div id="answer-buttons" style="height:70vh">
+            <button class="btn btn-light btn-lg">Resposta 1</button>
         </div>
-    </div>
-    <div>
-        <button id="next-btn" class="btn primary-btn d-none">Próximo</button>
-        <button id="final-btn" class=" p-3 btn btn-danger d-none">Finalizar</button>
+        <div class="text-center">
+            <button id="next-btn" type="button" class="btn btn-quiz2 d-none">Próximo</button>
+            <button id="final-btn" type="button" class="btn btn-quiz2 d-none">Finalizar</button>
+        </div>
     </div>
 
     <!-- Lista -->
-    <div id="option-container" class="p-2 border d-none">
-        <div class="h2 p-2">Escolhas</div>
+    <div id="option-container" class="p-2 d-none">
+        <div class="h2 p-2 mb-1 text-center">Escolhas</div>
             <div id="option-buttons" class="text-white text-center">
                 <div class="p-2 bg-danger">Escolha1</div>
             </div>
-        <div id="option-bar">
+        <div id="option-bar" class="mt-3 mb-1">
             
         </div>
         <div class="d-flex justify-content-center">
-            <button id="result-btn" class="btn btn-secondary d-none">Resultado</button>
+            <button id="result-btn" type="button" class="btn btn-secondary d-none">Resultado</button>
         </div>
     </div>
         
 <!-- Resultado -->
-
+    <div id="result-container" class="revelacao text-center d-none">
+        <div class="t-quiz h1">RESULTADO</div>
+        <div>
+            <img width=25% alt="nome sabonete" src="/imagens/produtos/s1.jpg"/>
+            <div class="h2">NOME DO SABONETE</div>
+        </div>
+        <div class="p-3">
+            <button id="restart-btn" type="button" class="btn btn-light btn-lg">RECOMEÇAR</button>
+            <button type="button" class="btn btn-success btn-lg">VER NA LOJA</button>
+        </div>
+    </div>
 </div>
+
 <script type="text/javascript">
     const startButton = document.getElementById("start-btn")
     const nextButton = document.getElementById("next-btn")
     const finalizeButton = document.getElementById("final-btn")
     const resultButton = document.getElementById("result-btn")
+    const restartButton = document.getElementById("restart-btn")
     const homeContainerElement = document.getElementById('home-container')
     const questionContainerElement = document.getElementById('question-container')
     const listContainerElement = document.getElementById("option-container")
+    const resultContainerElement = document.getElementById('result-container')
     const questionElement = document.getElementById("question")
     const answerButtonsElement = document.getElementById("answer-buttons")
 
@@ -88,6 +101,7 @@
         mostrarLista()
     })
     resultButton.addEventListener('click', mostrarResultado)
+    restartButton.addEventListener('click', () => {location.reload()})
 
 
     function comecarJogo() {
@@ -124,9 +138,6 @@
 
             let estilo = "top:"+ y.toFixed(2) +"cm;left:"+ x.toFixed(2) +"cm;";
             button.setAttribute("style", estilo); 
-            //if (answer.correct) {
-            //  button.dataset.correct = answer.correct
-            //}
             button.addEventListener('click', clicouBotao)
             answerButtonsElement.appendChild(button)
             alternar++;
@@ -161,14 +172,11 @@
         }
 
         listContainerElement.classList.remove("d-none")
-        /*if (!listContainerElement.classList.contains('brotar-lista')) {
-            listContainerElement.classList.add('brotar-lista');
-        }*/
 
         var lista = ""
 
         for(var i in escolhas) {
-            lista += "<div class='p-2 bg-danger my-2'>"+ escolhas[i] +"</div>"
+            lista += "<div class='p-2 div-escolha my-2'>"+ escolhas[i] +"</div>"
         }
         $('#option-buttons').html(lista);
 
@@ -176,7 +184,7 @@
         let perc = (currentQuestionIndex / questions.length).toFixed(2)
         perc *= 100
         barra += "<div class='progress'>" +
-				"<div class='progress-bar progress-bar-striped progress-bar-success progress-bar-animated active' role='progressbar'"+
+				"<div class='progress-bar progress-bar-striped bg-dark progress-bar-animated active' role='progressbar'"+
                 "aria-valuenow='2' aria-valuemin='0' aria-valuemax='100' style='min-width: 2em; width: " +
 				perc +
 				"%;'></div>" +
@@ -196,8 +204,9 @@
         setTimeout(() => {barraCarregamento.remove(); resultButton.classList.remove('d-none');},5000)
     }
 
-    function mostrarResultado(id_resultado) {
-
+    function mostrarResultado() {
+        layoutList.remove()
+        resultContainerElement.classList.remove('d-none')
     }
 
 
