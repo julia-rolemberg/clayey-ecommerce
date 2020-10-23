@@ -1,102 +1,112 @@
-<div class="banner" style="background-color: #f2f2f2;">
-    <div id="esqCheckout">
-        <h4>Endereço de Entrega</h4>
-        <div class="row mt-4">
-            <div class="col-sm-6">
-                <div class="input-group flex-nowrap">
-                    <input type="text" class="form-control" placeholder="nome" aria-label="nome"
-                        aria-describedby="addon-wrapping">
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="input-group flex-nowrap">
-                    <input type="text" class="form-control" placeholder="sobrenome" aria-label="sobrenome"
-                        aria-describedby="addon-wrapping">
-                </div>
-            </div>
+<div class="banner" class="container-fluid" style="background-color: #f2f2f2;">
+    <div class="row">
+        <div class="col-lg-6">
+            <div id="esqCheckout">
+                <h4>Endereço de Entrega</h4>
+                <div class="row mt-4">
+                    <div class="col-sm-6">
+                        <div class="input-group flex-nowrap">
+                            <input type="text" class="form-control" placeholder="nome" aria-label="nome"
+                                aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="input-group flex-nowrap">
+                            <input type="text" class="form-control" placeholder="sobrenome" aria-label="sobrenome"
+                                aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
 
-        </div>
-        <div class="row mt-3">
-            <div class="col-sm-6">
-                <div class="input-group flex-nowrap">
-                    <input type="text" class="form-control" placeholder="CPF" aria-label="CPF"
-                        aria-describedby="addon-wrapping">
                 </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="input-group flex-nowrap">
-                    <input type="text" class="form-control" placeholder="telefone" aria-label="telefone"
-                        aria-describedby="addon-wrapping">
-                </div>
-            </div>
+                <div class="row mt-3">
+                    <div class="col-sm-6">
+                        <div class="input-group flex-nowrap">
+                            <input type="text" class="form-control" placeholder="CPF" aria-label="CPF"
+                                aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="input-group flex-nowrap">
+                            <input type="text" class="form-control" placeholder="telefone" aria-label="telefone"
+                                aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
 
-        </div>
-        <div class="row mt-3">
-            <div class="col-sm-4">
-                <div class="input-group flex-nowrap">
-                    <input type="text" class="form-control" placeholder="CEP" aria-label="CEP"
-                        aria-describedby="addon-wrapping">
                 </div>
-            </div>
+                <div class="row mt-3">
+                    <div class="col-sm-4">
+                        <div class="input-group flex-nowrap">
+                            <input type="text" class="form-control" placeholder="CEP" aria-label="CEP"
+                                aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
 
 
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-sm-9">
+                        <div class="input-group flex-nowrap">
+                            <input type="text" class="form-control" placeholder="Rua" aria-label="rua"
+                                aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="input-group flex-nowrap">
+                            <input type="text" class="form-control" placeholder="n°" aria-label="numeroCasa"
+                                aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-sm-7">
+                        <div class="input-group flex-nowrap">
+                            <input type="text" class="form-control" placeholder="bairro" aria-label="bairro"
+                                aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="input-group flex-nowrap">
+                            <input type="text" class="form-control" placeholder="complemento" aria-label="complemento"
+                                aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-sm-8">
+                        <div class="input-group flex-nowrap">
+                            <input type="text" class="form-control" placeholder="cidade" aria-label="cidade"
+                                aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group flex-nowrap">
+                            <select id="inputState" class="form-control">
+                                <option selected>Estado</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class=" d-flex justify-content-end ">
+                    <button type="button" class="btn btn-light px-5 mt-4">cancelar</button>
+                    <button type="button" class="btn btn-success px-5 mt-4">finalizar</button>
+                </div>
+            </div>
         </div>
 
-        <div class="row mt-3">
-            <div class="col-sm-9">
-                <div class="input-group flex-nowrap">
-                    <input type="text" class="form-control" placeholder="Rua" aria-label="rua"
-                        aria-describedby="addon-wrapping">
-                </div>
+        <div class="col-lg-6">
+            <div id="dirCheckout">
+                <h4>Resumo do pedido</h4>
+                <div id="listaPedido"></div>
+                <div class="h3 text-center pt-3">Total: <span id="totalp"></span></div>
             </div>
-            <div class="col-sm-3">
-                <div class="input-group flex-nowrap">
-                    <input type="text" class="form-control" placeholder="n°" aria-label="numeroCasa"
-                        aria-describedby="addon-wrapping">
-                </div>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-sm-7">
-                <div class="input-group flex-nowrap">
-                    <input type="text" class="form-control" placeholder="bairro" aria-label="bairro"
-                        aria-describedby="addon-wrapping">
-                </div>
-            </div>
-            <div class="col-sm-5">
-                <div class="input-group flex-nowrap">
-                    <input type="text" class="form-control" placeholder="complemento" aria-label="complemento"
-                        aria-describedby="addon-wrapping">
-                </div>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-sm-8">
-                <div class="input-group flex-nowrap">
-                    <input type="text" class="form-control" placeholder="cidade" aria-label="cidade"
-                        aria-describedby="addon-wrapping">
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="input-group flex-nowrap">
-                    <select id="inputState" class="form-control">
-                        <option selected>Estado</option>
-                        <option>...</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class=" d-flex justify-content-end ">
-            <button type="button" class="btn btn-success px-5 mt-4">finalizar</button>
         </div>
 
     </div>
-    <div id="dirCheckout">
-        <h4>resumo do pedido</h4>
-        <h4>resumo do pedido</h4>
-        <h4>resumo do pedido</h4>
-        <h4>resumo do pedido</h4>
-        <h4>resumo do pedido</h4>
-    </div>
-
 </div>
+
+<%- contentFor("scripts") %>
+<script type="text/javascript">
+    listarPedido();
+</script>

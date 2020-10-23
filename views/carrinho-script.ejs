@@ -190,6 +190,29 @@
         $('.total-count').html(shoppingCart.totalCount());
     }
 
+    function listarPedido() {
+        var cartArray = shoppingCart.listCart();
+        var output = "";
+
+        for(var i in cartArray) {
+            p = cartArray[i]
+            output +=
+            `<div id='item ${i}' class='row my-2'>
+                <div class='col-sm-2 my-auto'>
+                    <div id='quantidade-item' class='h3'>${p.qtd} x</div>
+                </div>
+                <div class='col-sm-6 my-auto'>
+                    <div class='h5'>${p.nome}</div>
+                    <div class='h6'>R$ ${(p.preco).toFixed(2).replace('.', ',')}</div>
+                </div>
+                <img width=100% height=100% class='col-sm-3 my-auto' src='${p.imagem}' alt='Imagem ${p.nome}'/> 
+            </div>`
+        }
+        $('#listaPedido').html(output);
+        $('#totalp').text(shoppingCart.totalCart());
+        $('.total-count').html(shoppingCart.totalCount());
+    }
+
     function ocultarCarrinho() {
         // hide sidebar
         $('#containerCarrinho').hide();

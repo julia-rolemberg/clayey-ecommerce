@@ -66,7 +66,7 @@ app.get("/cadastro", (req: express.Request, res: express.Response) => {
 	res.render("cadastro");
 });
 app.get("/finalizar", (req: express.Request, res: express.Response) => {
-	res.render("finalizar-compra");
+	res.render("finalizar-compra", {layout:"layout-finalizar"});
 });
 
 

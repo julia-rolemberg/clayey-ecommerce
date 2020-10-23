@@ -286,18 +286,15 @@ footer {
 
 /* finalizar compra */
 #esqCheckout, #dirCheckout{
-    width: 50%;
     height: 720px;
     padding:100px;
     padding-top: 150px;
 
 }
 #esqCheckout{
-    float:left;
     background-color: white;
 }
 #dirCheckout{
-    float: right;
 }
 /* fim finalizar compra */
 
