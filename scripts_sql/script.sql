@@ -137,38 +137,5 @@ insert into Produto (id_produto, nome_produto, desc_produto, utilidade,composica
     diariamente no corpo e na face, ou intercalado com o Sabonete de Argila Vermelha.', 'Palma, Palmiste, Água 
     Destilada, NaOH, Óleo de Amêndoa, Óleo de Mamona, Azeite de Oliva Extra Virgem, Óleo de Goiaba, Manteiga de 
     Cacau, Óleo Resina de Alecrim, Vitamina E, Dióxido de Titânio, Óleo Essencial de Lavanda Francesa. Por cold 
-    process.', 18.00, 50, 100, 'agosto de 2020') 
-    ;
+    process.', 18.00, 50, 100, 'agosto de 2020') ;
 
-select * from Produto;
-
-
-insert into Pedido ( data_pedido, id_cliente, valor_total) values
-    ( '2020-09-30', 2, 96.00),
-    ( '2020-09-30', 3, 46.00),
-    ( '2020-09-30', 1, 46.00)
-	;
-    
-
--- DROP TABLE IF EXISTS Item;
-
-select * from pedido;
-
-insert into Item (id_produto, id_pedido, qtde, valor_item) values
-	(1,2, 1, 46.00),
-    (2,3, 2, 46.00),
-    (4,1, 2, 50.00),
-    (3,2, 1, 50.00),
-    (2,1, 1, 46.00);
-
-select * from pedido;
-
- /* 
- 
-   
-select p.id_pedido from Pedido p
-inner join Cliente c on c.id_cliente = p.id_cliente
-where p.id_cliente = 1
-group by p.id_pedido ;
-
-*/

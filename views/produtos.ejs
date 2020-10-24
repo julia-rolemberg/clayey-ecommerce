@@ -24,90 +24,18 @@
 
 			<% for (let i = 0; i < lista.length; i++) { %>
 			
-				<a class="produtoA" href="/produtos/<%=lista[i].id_produto%>"> 
+				<a class="produtoA" href="/produto/<%=lista[i].id_produto%>"> 
 					<li class="card card-produto" >
-						<img src="/imagens/produtos/s<%=id_produto%>.jpg" class="card-img-top " alt="<%=lista[i].nome_produto%>" >
+						<img src="/imagens/produtos/s<%=lista[i].id_produto%>.jpg" class="card-img-top " alt="<%=lista[i].nome_produto%>" >
 						<div class="card-body"  style="text-align: center;">
 							<p class="card-text"><%=lista[i].nome_produto%><br>
-								R$<%=lista[i].preco%>
+								R$ <%=lista[i].valor_produto%>
 							</p>   
 						</div>
 					</li>
 				</a>
 
-
-
 			<% } %>
 
-
-			<!-- <a class="produtoA" href="/produtos/1"> 
-				<li class="card card-produto" >
-					<img src="/imagens/produtos/s1.jpg" class="card-img-top " alt="sabonete 1" >
-					<div class="card-body"  style="text-align: center;">
-						<p class="card-text">Sabonete argila branca <br>
-							R$40,00
-						</p>   
-					</div>
-				</li>
-			</a>
-				<li class="card card-produto" >
-					<img src="/imagens/produtos/s2.jpg" class="card-img-top " alt="sabonete 1" >
-					<div class="card-body"  style="text-align: center;">
-						<p class="card-text">Sabonete argila branca <br>
-							R$40,00
-						</p>   
-					</div>
-				</li>
-			
-			<li class="card card-produto" >
-				<img src="/imagens/produtos/s3.jpg" class="card-img-top " alt="sabonete 1" >
-				<div class="card-body"  style="text-align: center;">
-					<p class="card-text">Sabonete argila branca <br>
-						R$40,00
-					</p>   
-				</div>
-			</li>
-			<li class="card card-produto" >
-				<img src="/imagens/produtos/s4.jpg" class="card-img-top " alt="sabonete 1" >
-				<div class="card-body"  style="text-align: center;">
-					<p class="card-text">Sabonete argila branca <br>
-						R$40,00
-					</p>   
-				</div>
-			</li>
-			<li class="card card-produto" >
-				<img src="/imagens/produtos/s5.jpg" class="card-img-top " alt="sabonete 1" >
-				<div class="card-body"  style="text-align: center;">
-					<p class="card-text">Sabonete argila branca <br>
-
-						R$40,00
-					</p>   
-				</div>
-			</li>
-			<li class="card card-produto" >
-				<img src="/imagens/produtos/s6.jpg" class="card-img-top " alt="sabonete 1" >
-				<div class="card-body"  style="text-align: center;">
-					<p class="card-text">Sabonete argila branca <br>
-						R$40,00
-					</p>   
-				</div>
-			</li>
-			<li class="card card-produto" >
-				<img src="/imagens/produtos/s7.jpg" class="card-img-top " alt="sabonete 1" >
-				<div class="card-body"  style="text-align: center;">
-					<p class="card-text">Sabonete argila branca <br>
-						R$40,00
-					</p>   
-				</div>
-			</li>
-			<li class="card card-produto" >
-				<img src="/imagens/produtos/s8.jpg" class="card-img-top " alt="sabonete 1" >
-				
-				<div class="card-body"  style="text-align: center;">
-					<p class="card-text">Sabonete argila branca <br>
-						R$40,00
-					</p>   
-				</div>
-			</li> -->
 		</ul>
 	</div>

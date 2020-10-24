@@ -1,6 +1,6 @@
 import express = require("express");
 import wrap = require("express-async-error-wrapper");
-import Cliente = require("../models/Cliente");
+import Cliente = require("../models/cliente");
 
 const router = express.Router();
 
@@ -9,7 +9,7 @@ router.get("/criar", wrap(async (req: express.Request, res: express.Response) =>
 		cliente: null
 	};
 
-//	res.render("cliente/editar", opcoes);
+	res.render("cliente/criar", opcoes);
 }));
 
 router.get("/alterar/:id", wrap(async (req: express.Request, res: express.Response) => {

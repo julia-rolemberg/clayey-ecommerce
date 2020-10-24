@@ -3,56 +3,100 @@
 	<div id="containerCadastro" class="mx-auto p-4 shadow bg-light">
 		<h4 id="tituloAcesso">Fazer cadastro</h4>
 
-		<form class="form-group">
+		<form id="form" class="form-group">
 			<div class="input-group flex-nowrap">
 				<!-- <div class="input-group-prepend">
 					<span class="input-group-text" id="addon-wrapping">perfil</span>
 				</div> -->
-				<input type="text" id="nome"class="form-control" placeholder="primeiro nome" aria-label="nome" aria-describedby="addon-wrapping" required="required">           
-							
+				<input type="text" id="nome_cliente" name="nome_cliente" class="form-control"
+					placeholder="nome completo" aria-label="nome completo" aria-describedby="addon-wrapping"
+					required="required">
 			</div>
 			<div class="input-group flex-nowrap mt-3">
-				<input type="text" id="sobrenome" class="form-control" placeholder="sobrenome" aria-label="sobrenome" aria-describedby="addon-wrapping" required="required">      
+				<input type="email" id="email" name="email" class="form-control" placeholder="e-mail" aria-label="email"
+					aria-describedby="addon-wrapping" required="required">
 			</div>
 			<div class="input-group flex-nowrap mt-3">
-				<input type="email" id="email" class="form-control" placeholder="e-mail" aria-label="email" aria-describedby="addon-wrapping" required="required">      
+				<input type="password" id="senha" name="senha" class="form-control" placeholder="senha"
+					aria-label="senha" aria-describedby="addon-wrapping" required="required">
+				<input type="password" id="csenha" class="form-control" placeholder="confirmar senha"
+					aria-label="confirma_senha" aria-describedby="addon-wrapping" required="required">
 			</div>
-			<div class="input-group flex-nowrap mt-3">
-				<input type="password" id="senha" class="form-control" placeholder="senha" aria-label="senha" aria-describedby="addon-wrapping" required="required">      
-				<input type="password" id="csenha" class="form-control" placeholder="confirmar senha" aria-label="confirma_senha" aria-describedby="addon-wrapping" required="required">      
-			</div>
-			
+
 			<div class=" d-flex justify-content-between ">
-				<input type="submit" id="cadastrar" onclick="cadastrar()" class="btn btn-success px-4 mt-4" value="confirmar"/>     
+				<input type="submit" class="btn btn-success px-4 mt-4" value="confirmar" />
 			</div>
-			
-			<span class="font-weight-light font-italic" style="font-size: 14px;" onclick="window.location.href='/login'"><a >ou faça login</a></span>
+
+			<span class="font-weight-light font-italic" style="font-size: 14px;"
+				onclick="window.location.href='/login'"><a>ou faça login</a></span>
 		</form>
 	</div>
 
 </div>
 
 <script type="text/javascript">
-	function cadastrar(){
 
-		let valorNome = document.getElementById("nome");
-		let valorSobrenome = document.getElementById("sobrenome");
-		let valorEmail = document.getElementById("email");
-		let valorSenha = document.getElementById("senha");
-		let valorCsenha = document.getElementById("csenha");
 
-		let nome =valorNome.value;
-		let sobrenome = valorSobrenome.value;
-		let email = valorEmail.value;
-		let senha = valorSenha.value;
-		let csenha = vlaorCsenha.value;
+	$("#form").validate({
+		rules: {
+			nome_cliente: {
+				required: true,
+				minlength: 3,
+				maxlength: 20
+			},
+			email: {
+				required: true,
+				minlength: 10,
+				email: true
+			},
+			senha: {
+				required: true,
+				minlength: 3,
+				maxlength: 40
+			},
+			csenha: {
+				required: true,
+				minlength: 3,
+				maxlength: 40
+			}
+		},
 
-		if(senha==csenha){
-			//passar pra model de cliente
-		}else{
-			alert("As senhas devem ser iguais");
-			return;
+		submitHandler: function () {
+			// if (JsonWebApi.active) {
+			// 	return;
+			// }
+
+			// JsonWebApi.postFormData("<%-root %>/api/cliente/criar", form, function (response) {
+			// 	if (response.success) {
+			// 		resetForm("#form");
+			// 		Notification.success("Cadastro realizado com sucesso! ");
+			// 	} else {
+					
+			// 		Notification.error(response.value, true);
+					
+			// 	}
+			// });
+
+			let opcoes = {
+                url:"https://academico.espm.br/testeapi/criar",
+               
+                method:"POST",
+                data:$("#form").serialize(),
+                success: function(dadosDeRetorno){
+                    alert("sucesso "+ dadosDeRetorno);
+                },
+                error: function(){
+                    alert("deu ruim");
+                }
+
+            };
+            $.ajax(opcoes);
+            }
+
+
+
 		}
-	}
+	});
+
 
 </script>

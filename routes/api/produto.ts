@@ -4,7 +4,7 @@ import Produto = require("../../models/produto");
 
 const router = express.Router();
 
-router.get("/listar", wrap(async (req: express.Request, res: express.Response) => {
+router.get("/", wrap(async (req: express.Request, res: express.Response) => {
 	let lista = await Produto.listar();
 
 	res.json(lista);
