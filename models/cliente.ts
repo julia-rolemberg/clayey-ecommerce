@@ -51,7 +51,7 @@ export = class Cliente{
         }
 
         await Sql.conectar(async(sql)=>{
-            let lista = await sql.query("insert into cliente( nome_cliente, email, senha) values ?, ?, ? ",[cliente.nome_cliente, cliente.email, cliente.senha]);
+            let lista = await sql.query("insert into cliente( nome_cliente, email, senha) values (?, ?, ?) ",[cliente.nome_cliente, cliente.email, cliente.senha]);
         });
 
         return erro;

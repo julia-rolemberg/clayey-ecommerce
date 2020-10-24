@@ -4,7 +4,7 @@ import Pedido = require("../../models/pedido");
 
 const router = express.Router();
 
-router.get("/criar", wrap(async(req: express.Request, res: express.Response)=>{
+router.post("/criar", wrap(async(req: express.Request, res: express.Response)=>{
     
 }));
 

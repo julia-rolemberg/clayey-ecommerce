@@ -75,13 +75,18 @@
 			// 		Notification.error(response.value, true);
 					
 			// 	}
-			// });
+			// });}
 
+
+		//	console.log($("form").serialize());
+		// tá pegando os dados mas nao consegue fazer o post
+			
 			let opcoes = {
-                url:"https://academico.espm.br/testeapi/criar",
+                url:("/api/cliente/criar"),
                
                 method:"POST",
-                data:$("#form").serialize(),
+				data: $("form").serialize(),
+				
                 success: function(dadosDeRetorno){
                     alert("sucesso "+ dadosDeRetorno);
                 },
@@ -96,7 +101,7 @@
 
 
 		}
-	});
+	);
 
 
 </script>

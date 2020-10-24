@@ -4,7 +4,7 @@ import Cliente = require("../../models/cliente");
 
 const router = express.Router();
 
-router.get("/criar", wrap(async(req: express.Request, res: express.Response)=>{
+router.post("/criar", wrap(async(req: express.Request, res: express.Response)=>{
     let erro: string = null;
 
 	let cliente = req.body as Cliente;
