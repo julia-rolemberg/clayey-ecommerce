@@ -62,24 +62,7 @@
 		},
 
 		submitHandler: function () {
-			// if (JsonWebApi.active) {
-			// 	return;
-			// }
-
-			// JsonWebApi.postFormData("<%-root %>/api/cliente/criar", form, function (response) {
-			// 	if (response.success) {
-			// 		resetForm("#form");
-			// 		Notification.success("Cadastro realizado com sucesso! ");
-			// 	} else {
-					
-			// 		Notification.error(response.value, true);
-					
-			// 	}
-			// });}
-
-
-		//	console.log($("form").serialize());
-		// tá pegando os dados mas nao consegue fazer o post
+			
 			
 			let opcoes = {
                 url:("/api/cliente/criar"),
@@ -88,10 +71,12 @@
 				data: $("form").serialize(),
 				
                 success: function(dadosDeRetorno){
-                    alert("sucesso "+ dadosDeRetorno);
+                    alert("Cadastro realizado com sucesso! "+ dadosDeRetorno);
                 },
                 error: function(){
-                    alert("deu ruim");
+					alert("Cliente já cadastrado, faça login!");
+					window.location.href = "/login";
+
                 }
 
             };

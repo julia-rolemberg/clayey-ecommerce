@@ -44,17 +44,26 @@ export = class Cliente{
 
     public static async criar(cliente: Cliente): Promise<string>{
         let erro: string = Cliente.validar(cliente);
-
+        let existente: string = null;
 
         if(erro){
             return erro;
         }
 
         await Sql.conectar(async(sql)=>{
-            let lista = await sql.query("insert into cliente( nome_cliente, email, senha) values (?, ?, ?) ",[cliente.nome_cliente, cliente.email, cliente.senha]);
+        
+            let existe = await sql.query("select nome_cliente, email, senha from cliente where email = ?",[cliente.email]);
+            if(existe && existe.length){
+                // existe registro
+                existente = 'Esse cadastro já existe, faça login!';
+            }else{
+                let lista = await sql.query("insert into cliente(nome_cliente, email, senha) values (?, ?, ?) ",[cliente.nome_cliente, cliente.email, cliente.senha]);
+
+            }
+            
         });
 
-        return erro;
+        return existente;
     }
 
     public static async obter(id_cliente:number): Promise<Cliente>{

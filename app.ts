@@ -48,11 +48,11 @@ app.get("/", (req: express.Request, res: express.Response) => {
 app.use("/api/produto", require("./routes/api/produto"));
 app.use("/produto", require("./routes/produto"));
 
-app.use("/pedido", require("./routes/api/pedido"));
+app.use("/api/pedido", require("./routes/api/pedido"));
 // app.use("/pedido", require("./routes/pedido"));
-app.use("/cliente", require("./routes/api/cliente"));
+app.use("/api/cliente", require("./routes/api/cliente"));
 app.use("/cliente", require("./routes/cliente"));
-app.use("/item", require("./routes/api/item"));
+app.use("/api/item", require("./routes/api/item"));
 
 
 app.get("/quiz", (req: express.Request, res: express.Response) => {
