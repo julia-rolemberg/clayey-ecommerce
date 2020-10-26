@@ -3,14 +3,14 @@
         <div class="row">
 
             <div id="img-container" class="container-md col-md-6">
-                <div><img id="" class="w-100 h-100 mx-auto" src="/imagens/produtos/s<%=id%>.jpg"/></div>
+                <div><img id="image" class="w-100 h-100 mx-auto" src="/imagens/produtos/s<%=produto.id_produto%>.jpg"/></div>
             </div>
 
 
             <div name="text-container" class="container-md col-md-6">
                 <div>
-                    <div id="title" class="text-left h1 text-secondary">Nome do Produto</div>
-                    <div id="price" class="text-left h2 text-secondary">R$ valor</div>
+                    <div id="title" class="text-left h1 text-secondary"><%=produto.nome_produto%></div>
+                    <div id="price" class="text-left h2 text-secondary">R$ <%=(produto.valor_produto).toFixed(2).replace('.', ',')%></div>
                     <!-- <div id="stars" class="text-left"></div>     -->
                 </div>
 
@@ -24,7 +24,7 @@
                         </div>
 
                         <div class="col">
-                            <button type="button" class="add-to-cart btn btn-success btn-block">
+                            <button type="button" class="add-to-cart btn btn-success btn-block" onclick="add(<%=(produto.id_produto)%>, '<%=(produto.nome_produto)%>', <%=(produto.valor_produto)%>)">
                                 Adicionar ao carrinho
                             </button>
                         </div>
@@ -45,7 +45,7 @@
 
                         <div id="desc-text" class="p-3 d-none">
                             <p id="d-text" class="text-justify">
-                                Texto-descrição</p> 
+                                <%=produto.desc_produto%></p> 
                         </div>
                     </div>
 
@@ -59,7 +59,7 @@
 
                         <div id="util-text" class="p-3 d-none">
                             <p id="u-text" class="text-justify">
-                                Texto-utilizar</p>
+                                <%=produto.utilidade%></p>
                         </div>
                     </div>
 
@@ -73,7 +73,7 @@
 
                         <div id="comp-text" class="p-3 d-none">
                             <p id="c-text" class="text-justify">
-                                Texto-composição</p> 
+                                <%=produto.composicao%></p> 
                         </div>
                     </div>
     
@@ -85,32 +85,13 @@
     </div>
 </div>
 
-
 <script name="produto">
+
     const title = document.getElementById("title");
     const price = document.getElementById("price");
-    const starsContainer = document.getElementById("stars");
-    const descriptionText = document.getElementById("d-text");
-    const utilityText = document.getElementById("u-text");
-    const compositionText = document.getElementById("c-text");
     const quantity = document.getElementById("quant-text");
-    const produto = {
-        "id": "<%=id%>",
-        "nome": "Argila Vermelha",
-        "preco": 40.5,
-        "descricao": "um sabonete de argila vermelha",
-        "utilidade": "passe no corpo",
-        "composicao": "50% argila vermelha, 30% soda caustica e 20% carinho de mãe",
-        "imagem": "/imagens/produtos/s<%=id%>.jpg"
-    };
+    const image = document.getElementById("image")
 
-    function mostrarProduto() {
-        title.textContent = produto.nome;
-        price.textContent = (produto.preco).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        descriptionText.textContent = produto.descricao;
-        utilityText.textContent = produto.utilidade;
-        compositionText.textContent = produto.composicao;
-    }
 
     function process(quant){
         var value = parseInt(document.getElementById("quant-text").value);
@@ -133,10 +114,14 @@
         }
     }
 
-    $('.add-to-cart').click(function(event) {
-        shoppingCart.addItemToCart(produto.id, produto.nome, produto.preco, parseInt(quantity.value), produto.imagem);
-        exibirCarrinho();
-    });
+    /*$('.add-to-cart').click(function(event) {
+    shoppingCart.addItemToCart(produto.id_produto, produto.nome_produto, produto.valor_produto, parseInt($('#quant-text').value), $('#image').src);
+    exibirCarrinho();
+    });*/
 
-    mostrarProduto();
+    function add(id_produto, nome_produto, valor_produto) {
+    shoppingCart.addItemToCart(id_produto, nome_produto, valor_produto, parseInt(quantity.value), image.src);
+    exibirCarrinho();
+    }
+
 </script>

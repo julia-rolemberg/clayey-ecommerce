@@ -12,13 +12,19 @@ router.get("/:id", wrap(async (req: express.Request, res: express.Response) => {
 	if (isNaN(id)) {
 		res.render("produto/nao-encontrado");
 	} else {
-		let opcoes = {
-			id: id
-		};
-		res.render("produto/produto", opcoes);
-	}
+		let produto = await Produto.obter(id);
 
-}));	
+		if (!produto) {
+			res.render("produto/nao-encontrado");
+		} else {
+			let opcoes = {
+				produto: produto
+			};
+			
+			res.render("produto/produto", opcoes);
+		}
+	}
+}));
 
 
 router.get("/", wrap(async (req: express.Request, res: express.Response) => {
