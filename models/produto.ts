@@ -25,13 +25,13 @@ export = class Produto {
         if(produto.nome_produto.length>45){
             return "Nome muito longo";
         }
-        if(produto.desc_produto.length>100){
+        if(produto.desc_produto.length>1000){
             return "Descrição muito longa";
         }
-        if(produto.utilidade.length>100){
+        if(produto.utilidade.length>1000){
             return "Utilidade muito longa";
         }
-        if(produto.composicao.length>100){
+        if(produto.composicao.length>1000){
             return "Composição muito longa";
         }
         if(produto.valor_produto<=0){
@@ -63,11 +63,11 @@ export = class Produto {
         return erro;
     }
 
-    public static async obter(id_produto:String): Promise<Produto>{
+    public static async obter(id_produto:Number): Promise<Produto>{
         let produto: Produto = null;
 
         await Sql.conectar(async(sql)=>{
-            let lista = await sql.query("select id_produto, nome_produto, desc_produto, utilidade, composicao, valor_produto, qtdeDisponivel, peso, fabricacao from produto where id_produto = ?",[produto.id_produto]);
+            let lista = await sql.query("select id_produto, nome_produto, desc_produto, utilidade, composicao, valor_produto, qtdeDisponivel, peso, fabricacao from produto where id_produto = ?",[id_produto]);
          
             if(lista && lista.length){
                 produto = lista[0];
@@ -100,7 +100,7 @@ export = class Produto {
             let lista = await sql.query("delete from produto where id_produto = ?",[id_produto]);
          
             if(!sql.linhasAfetadas){
-                erro = 'Produto não encontrada';
+                erro = 'Produto não encontrado';
             }
         });
 

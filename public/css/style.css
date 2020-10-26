@@ -237,7 +237,8 @@ footer {
 .card-produto{
     width: 22rem; 
     display: inline-block;
-    margin:20px
+    margin:20px;
+    /*border: none;*/
 }
 .card-produto:hover{
     box-shadow: 0 0 4em #e4e4e4;
@@ -431,7 +432,8 @@ footer {
 }
 
 .btn-quiz2{
-    padding: 10px 6rem;
+    padding: 10px 6em;
+    margin-bottom: 1em;
     text-align: center;
     background-color: #FFA319;
     color:white;
@@ -439,3 +441,16 @@ footer {
 
 /* FIM QUIZ */
 
+/* INÍCIO LOGIN */
+#navlogin{
+    height: 720px;
+    border-right: solid darkgrey;
+}
+
+.navbtn{
+    background: white;
+    cursor: pointer;
+    padding: 1em;
+    font-size: 20px;
+    border: solid lightgrey 3px;
+}

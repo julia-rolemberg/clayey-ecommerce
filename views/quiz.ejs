@@ -60,7 +60,7 @@
         </div>
         <div class="p-3">
             <button id="restart-btn" type="button" class="btn btn-light btn-lg">RECOMEÇAR</button>
-            <button type="button" class="btn btn-success btn-lg">VER NA LOJA</button>
+            <a class="btn btn-success btn-lg" href="/produto">VER NA LOJA</a>
         </div>
     </div>
 </div>
@@ -120,7 +120,6 @@
     }
 
     function mostrarPergunta(question) {
-        let alternar = 2;
         questionElement.innerText = question.question
         question.answers.forEach(answer => {
             const button = document.createElement("button")
@@ -132,15 +131,15 @@
             button.classList.add("flutuar")
 
             //posicionamento aleatório
-            let x = Math.random() * 6 + 2;
-            let y = Math.random() * 6 + 2; //+ tamanho do botão pra n ter perigo de sobrescrever.
-            if(alternar % 2 === 0) {y *= -1}
+            let x = Math.random() * 25;
+            if(currentQuestionIndex == 0){let x = Math.random() * 32};
+            let y = Math.random() * 92; //vai até a altura máxima do container (-8 pra não bugar no tablet)
+            //if(alternar % 2 === 0) {y *= -1}
 
-            let estilo = "top:"+ y.toFixed(2) +"cm;left:"+ x.toFixed(2) +"cm;";
+            let estilo = "top:"+ y.toFixed(1) +"%;left:"+ x.toFixed(2) +"cm;";
             button.setAttribute("style", estilo); 
             button.addEventListener('click', clicouBotao)
             answerButtonsElement.appendChild(button)
-            alternar++;
         })
     }
 
