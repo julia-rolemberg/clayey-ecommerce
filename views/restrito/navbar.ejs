@@ -1,0 +1,72 @@
+<!-- Sidebar -->
+<nav id="sidebar">
+    <div class="sidebar-header">
+        <h3>Bem-vinda!</h3>
+    </div>
+
+    <ul class="list-unstyled components">
+        <li class="active">
+            <a href="#produtoSubmenu" data-toggle="collapse" aria-expanded="false" class="navbtn dropdown-toggle">Produtos</a>
+            <ul class="collapse list-unstyled" id="produtoSubmenu">
+                <li>
+                    <a class="navbtn" href="#"><i class="ires fa fa-align-left"></i>Listar</a>
+                </li>
+                <li>
+                    <a class="navbtn" href="#"><i class="ires fa fa-plus"></i> Criar</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a class="navbtn" href="#">Pedidos</a>
+        </li>
+        <li>
+            <a class="navbtn" href="#">Clientes</a>
+        </li>
+    </ul>
+
+</nav>
+
+<!-- Page Content -->
+   <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+
+            <button type="button" id="sidebarCollapse" class="btn btn-info">
+                <i class="fas fa-align-left"></i>
+                <span>Toggle Sidebar</span>
+            </button>
+        </div>
+    </nav> -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#sidebar").mCustomScrollbar({
+            theme: "minimal"
+        });
+
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+
+    });
+
+    $(document).ready(function () {
+
+        $("#sidebar").mCustomScrollbar({
+            theme: "minimal"
+        });
+
+        $('#sidebarCollapse').on('click', function () {
+            // open or close navbar
+            $('#sidebar').toggleClass('active');
+            // close dropdowns
+            $('.collapse.in').toggleClass('in');
+            // and also adjust aria-expanded attributes we use for the open/closed arrows
+            // in our CSS
+            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        });
+
+    });
+
+
+</script>

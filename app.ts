@@ -53,6 +53,7 @@ app.use("/api/pedido", require("./routes/api/pedido"));
 app.use("/api/cliente", require("./routes/api/cliente"));
 app.use("/cliente", require("./routes/cliente"));
 app.use("/api/item", require("./routes/api/item"));
+app.use("/restrito", require("./routes/restrito"));
 
 
 app.get("/quiz", (req: express.Request, res: express.Response) => {
@@ -62,6 +63,7 @@ app.get("/quiz", (req: express.Request, res: express.Response) => {
 app.get("/login", (req: express.Request, res: express.Response) => {
 	res.render("login");
 });
+
 app.get("/cadastro", (req: express.Request, res: express.Response) => {
 	res.render("cadastro");
 });
