@@ -11,16 +11,15 @@ CREATE TABLE IF NOT EXISTS `clayey`.`Cliente` (
   nome_cliente VARCHAR(45) NOT NULL,
   email VARCHAR(100) NOT NULL,
   senha VARCHAR(45) NOT NULL,
-  cpf_cliente int ,
-  cep_cliente INT ,
+  cep_cliente int ,
   num_casa VARCHAR(45) ,
   complemento VARCHAR(45) ,
-  bairro VARCHAR(45) ,
+  bairro_cliente VARCHAR(45) ,
   cidade_cliente varchar(45) , 
   estado_cliente varchar(45) , 
   PRIMARY KEY (id_cliente));
 
-
+select * from cliente;
     
     
  DROP TABLE IF EXISTS `clayey`.`Produto` ;
@@ -48,15 +47,6 @@ CREATE TABLE IF NOT EXISTS `clayey`.`Pedido` (
   valor_total DECIMAL(10,2) NOT NULL
   );
 
-insert into pedido (id_pedido, data_pedido, id_cliente, valor_total) values (1, '2020-10-28', 1, 36);
-insert into item (id_produto, id_pedido, qtde, valor_item) values
-(1, 1, 1, 18);
-
-select pedido.id_pedido, data_pedido, pedido.id_cliente, valor_total from pedido inner join item on pedido.id_pedido = item.id_pedido inner join cliente on cliente.id_cliente = pedido.id_cliente where cliente.email = 'cliente1@mail.com' ;
-
-delete from item where id_pedido = 1;
-delete from pedido where id_pedido = 1;
-
 
 DROP TABLE IF EXISTS `clayey`.`Item` ;
 
@@ -77,7 +67,6 @@ insert into Cliente (nome_cliente, email, senha, cep_cliente, num_casa, bairro_c
     ('cliente 4', 'cliente4@mail.com', '1234', 09808070, '33','bairro w' , 'Santo André');
 
 
-select * from Cliente;
 
 DROP TABLE IF EXISTS `clayey`.`Produto` ;
 
@@ -150,3 +139,15 @@ insert into Produto (id_produto, nome_produto, desc_produto, utilidade,composica
     Cacau, Óleo Resina de Alecrim, Vitamina E, Dióxido de Titânio, Óleo Essencial de Lavanda Francesa. Por cold 
     process.', 18.00, 50, 100, 'agosto de 2020') ;
 
+
+insert into pedido (id_pedido, data_pedido, id_cliente, valor_total) values (1, '2020-10-28', 1, 36);
+insert into item (id_produto, id_pedido, qtde, valor_item) values
+(1, 1, 1, 18);
+
+select pedido.id_pedido, data_pedido, pedido.id_cliente, valor_total from pedido inner join item on pedido.id_pedido = item.id_pedido inner join cliente on cliente.id_cliente = pedido.id_cliente where cliente.email = 'cliente1@mail.com' ;
+
+delete from item where id_pedido = 1;
+delete from pedido where id_pedido = 1;
+
+
+select * from pedido;
