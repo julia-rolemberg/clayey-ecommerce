@@ -6,15 +6,20 @@ body, html{
 	margin:0;
 	padding:0;
     box-sizing: border-box;	
+    color: #333333;
     font-family: 'Montserrat', sans-serif;
 }
 .principal{
     width: 100%;
     min-height: 100%;
     padding: 8%;
+    background-image: url(/imagens/banners/fundo4.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }
 .principalP{
-    background-image: url(/imagens/banners/fundoArgila.jpg);
+    background-image: url(/imagens/banners/fundo3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center top;
@@ -43,7 +48,7 @@ body, html{
     width: 68%
 }
 .botao{
-    background-color: brown;
+    background-color: rgb(230 100 0);
     padding: 12px;
     font-size: 18px;
     font-weight: 500;
@@ -54,7 +59,8 @@ body, html{
 
 .botao:hover{
    opacity: 0.7;
-    color:white;
+   color:white;
+
 }
 #botao1{
     width: 120px;
@@ -79,7 +85,7 @@ body, html{
     position: fixed;
     z-index: 8;
     text-align: center;
-    background-color: white;
+    /* background-color: white; */
 }
 
 
@@ -122,7 +128,11 @@ body, html{
   display: inline-block;
    
 }
-
+.menu:hover{
+    transition: all 0.3s ease-in-out;
+    background-color: rgba(255, 255, 255, 1);
+   
+}
 .smart-scroll{
     position: fixed;
     top: 0;
@@ -135,6 +145,7 @@ body, html{
   }
   .scrolled-up{
      transform:translateY(0); transition: all 0.3s ease-in-out;
+     background-color: rgba(255, 255, 255, 0.3);
   }
 
  
@@ -224,10 +235,12 @@ footer {
 #textoBanner{
     text-align: center;
     padding: 50px;
-    margin-top: 150px;
+    margin-top: 200px;
     width: 100%;
     color: white;
-    background-color:rgba(255, 255, 255, 0.3)   ;
+    -webkit-backdrop-filter: blur(5px); /* Safari 9+ */
+    backdrop-filter: blur(5px); /* Chrome and Opera */
+    background-color:rgba(255, 255, 255, 0.15)   ;
 
 }
 #produtos{

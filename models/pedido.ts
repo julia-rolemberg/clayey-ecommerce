@@ -22,7 +22,8 @@ export = class Pedido{
     public static async listar(): Promise<Pedido[]>{
         let lista: Pedido[] = null;
         await Sql.conectar(async (sql) =>{
-            lista = await sql.query("select pedido.id_pedido, data_pedido, id_cliente, valor_total from pedido inner join item on pedido.id_pedido = item.id_pedido");
+            lista = await sql.query("select pedido.id_pedido, data_pedido, cliente.nome_cliente, produto.nome_produto, item.qtde, valor_total from pedido inner join item on pedido.id_pedido = item.id_pedido inner join cliente on cliente.id_cliente = pedido.id_cliente inner join produto on produto.id_produto = item.id_produto");
+            // ele lista separadamente de acordo com os itens que estão no pedido
         });
         return lista;
     }

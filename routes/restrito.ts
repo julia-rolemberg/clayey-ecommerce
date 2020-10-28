@@ -2,6 +2,7 @@ import express = require("express");
 import wrap = require("express-async-error-wrapper");
 import Produto = require("../models/produto");
 import Cliente = require("../models/cliente");
+import Pedido = require("../models/Pedido");
 
 const router = express.Router();
 
@@ -20,5 +21,11 @@ router.get("/clientes", wrap(async (req: express.Request, res: express.Response)
 
 	res.render("restrito/listar-clientes", {layout:"restrito/layout-ar", lista:lista});
 }));	
+router.get("/pedidos", wrap(async (req: express.Request, res: express.Response) => {
+	let lista = await Pedido.listar();
+
+	res.render("restrito/listar-pedidos", {layout:"restrito/layout-ar", lista:lista});
+}));	
+
 
 export = router;

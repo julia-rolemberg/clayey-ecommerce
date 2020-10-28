@@ -8,7 +8,7 @@ const router = express.Router();
 router.get("/criar", wrap(async (req: express.Request, res: express.Response) => {
 
 	let opcoes = {
-		cliente: null
+		pedido: null
 	};
 
 	res.render("pedido/criar", opcoes);

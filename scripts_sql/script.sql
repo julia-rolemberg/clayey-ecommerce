@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `clayey`.`Produto` (
 
 CREATE TABLE IF NOT EXISTS `clayey`.`Pedido` (
   id_pedido INT primary key AUTO_INCREMENT,
-  data_pedido DATE NOT NULL,
+  data_pedido varchar(10) NOT NULL,
   id_cliente INT not null,
   foreign key (id_cliente) references Cliente(id_cliente),
   valor_total DECIMAL(10,2) NOT NULL
@@ -143,11 +143,14 @@ insert into Produto (id_produto, nome_produto, desc_produto, utilidade,composica
 insert into pedido (id_pedido, data_pedido, id_cliente, valor_total) values (1, '2020-10-28', 1, 36);
 insert into item (id_produto, id_pedido, qtde, valor_item) values
 (1, 1, 1, 18);
+insert into item (id_produto, id_pedido, qtde, valor_item) values
+(2, 1, 1, 18);
+select pedido.id_pedido, data_pedido, cliente.nome_cliente, produto.nome_produto, item.qtde, valor_total from pedido inner join item on pedido.id_pedido = item.id_pedido inner join cliente on cliente.id_cliente = pedido.id_cliente inner join produto on produto.id_produto = item.id_produto ;
+select produto.nome_produto, item.qtde, produto.valor_produto from pedido inner join item on pedido.id_pedido = item.id_pedido inner join cliente on cliente.id_cliente = pedido.id_cliente inner join produto on produto.id_produto = item.id_produto ;
 
-select pedido.id_pedido, data_pedido, pedido.id_cliente, valor_total from pedido inner join item on pedido.id_pedido = item.id_pedido inner join cliente on cliente.id_cliente = pedido.id_cliente where cliente.email = 'cliente1@mail.com' ;
 
 delete from item where id_pedido = 1;
 delete from pedido where id_pedido = 1;
 
 
-select * from pedido;
+select * from cliente;

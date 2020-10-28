@@ -17,6 +17,11 @@ router.post("/criar", wrap(async(req: express.Request, res: express.Response)=>{
 		res.json(true);
 	}
 }));
+router.get("/", wrap(async (req: express.Request, res: express.Response) => {
+	let lista = await Pedido.listar();
+
+	res.json(lista);
+}));
 
 export = router;
 

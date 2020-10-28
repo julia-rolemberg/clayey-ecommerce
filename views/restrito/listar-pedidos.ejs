@@ -1,0 +1,36 @@
+<h1 class="tituloR">Pedidos</h1>
+
+<div class="tabela">
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Data do Pedido</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Produto</th>
+                <th scope="col">Quantidade</th>
+                <th scope="col">Valor total</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <!-- Construção dos itens da tabela -->
+            <% for (let i = 0; i < lista.length; i++) { %>
+                <tr>
+                    <th scope="row"><%=lista[i].id_pedido%></th>
+                    <td><%=lista[i].data_pedido%></td>
+                    <td><%=lista[i].nome_cliente%></td>
+                    <td><%=lista[i].nome_produto%></td>
+                    <td><%=lista[i].qtde%></td>
+                    <td>R$ <%=lista[i].valor_total%></td>
+                    <td>
+                        <a href="" class="btn btn-primary"><i class="ires fa fa-cog"></i></a>
+                        <a class="btn btn-danger" href=""><i class="ires fa fa-times"></i></a>
+                    </td>
+                </tr>
+            <% } console.log(lista)%>
+            
+        </tbody>
+    </table>
+</div>

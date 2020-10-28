@@ -71,7 +71,8 @@
 				data: $("form").serialize(),
 				
                 success: function(dadosDeRetorno){
-                    alert("Cadastro realizado com sucesso! "+ dadosDeRetorno);
+					alert("Cadastro realizado com sucesso! ");
+					window.location.href = "/";
                 },
                 error: function(){
 					alert("Cliente já cadastrado, faça login!");
