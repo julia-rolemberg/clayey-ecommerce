@@ -1,0 +1,42 @@
+<h1 class="tituloR">Produtos</h1>
+
+<div class="tabela">
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Composição</th>
+                <th scope="col">Modo de uso</th>
+                <th scope="col">Peso</th>
+                <th scope="col">Fabricação</th>
+                <th scope="col">Estoque</th>
+                <th scope="col">Valor</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <!-- Construção dos itens da tabela -->
+            <% for (let i = 0; i < lista.length; i++) { %>
+                <tr>
+                    <th scope="row"><%=lista[i].id_produto%></th>
+                    <td><%=lista[i].nome_produto%></td>
+                    <td><%=lista[i].desc_produto%></td>
+                    <td><%=lista[i].composicao%></td>
+                    <td><%=lista[i].utilidade%></td>
+                    <td><%=lista[i].peso%></td>
+                    <td><%=lista[i].fabricacao%></td>
+                    <td><%=lista[i].qtdeDisponivel%></td>
+                    <td><%=lista[i].valor_produto%></td>
+                    <td>
+                        <a href="" class="btn btn-primary"><i class="ires fa fa-cog"></i></a>
+                        <a class="btn btn-danger" href=""><i class="ires fa fa-times"></i></a>
+                    </td>
+                </tr>
+            <% } %>
+            
+        </tbody>
+    </table>
+</div>

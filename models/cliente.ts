@@ -37,7 +37,7 @@ export = class Cliente{
     public static async listar(): Promise<Cliente[]>{
         let lista: Cliente[] = null;
         await Sql.conectar(async (sql) =>{
-            lista = await sql.query("select id_cliente, nome_cliente, email from cliente");
+            lista = await sql.query("select id_cliente, nome_cliente, email, cep_cliente, num_casa, cidade_cliente from cliente");
         });
         return lista;
     }
