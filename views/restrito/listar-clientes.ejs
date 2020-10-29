@@ -9,7 +9,10 @@
                 <th scope="col">E-mail</th>
                 <th scope="col">CEP</th>
                 <th scope="col">Número da casa</th>
+                <th scope="col">Complemento</th>
+                <th scope="col">Bairro</th>
                 <th scope="col">Cidade</th>
+                <th scope="col">Estado</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -23,10 +26,13 @@
                     <td><%=lista[i].email%></td>
                     <td><%=lista[i].cep_cliente%></td>
                     <td><%=lista[i].num_casa%></td>
+                    <td><%=lista[i].complemento%></td>
+                    <td><%=lista[i].bairro_cliente%></td>
                     <td><%=lista[i].cidade_cliente%></td>
+                    <td><%=lista[i].estado_cliente%></td>
                     <td>
-                        <a href="" class="btn btn-primary"><i class="ires fa fa-cog"></i></a>
-                        <a class="btn btn-danger" href=""><i class="ires fa fa-times"></i></a>
+                        <a href="/cliente/alterar/<%=lista[i].id_cliente%>" class="btn btn-primary"><i class="ires fa fa-cog"></i></a>
+                        <button type="button" class="btn btn-danger" onclick="excluir('<%=lista[i].id_cliente%>')"><i class="ires fa fa-times"></i></a>
                     </td>
                 </tr>
             <% } %>
@@ -34,3 +40,31 @@
         </tbody>
     </table>
 </div>
+
+<script type="text/javascript">
+    function excluir(id) {
+        if ($.active) {
+            return
+        }
+
+        if(!confirm(`Excluir cliente ${id}?`)) {
+            return
+        }
+
+        let opcoes = {
+            url: "/api/cliente/excluir/" + id,
+            method: 'GET',
+
+            success: function(dadosDeRetorno){
+                alert('Sucesso!')
+                location.reload();
+            },
+
+            error: function() {
+                alert('Algo deu errado...')
+            }
+        };
+
+        $.ajax(opcoes);
+    }
+</script>

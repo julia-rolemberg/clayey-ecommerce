@@ -35,7 +35,7 @@ router.post("/alterar", wrap(async (req: express.Request, res: express.Response)
 router.get("/excluir/:id", wrap(async (req: express.Request, res: express.Response) => {
 	let erro: string = null;
 
-	let id = parseInt(req.params["id_cliente"]);
+	let id = parseInt(req.params["id"]);
 
 	if (isNaN(id)) {
 		erro = "Id inválido!";

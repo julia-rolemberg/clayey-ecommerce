@@ -4,7 +4,15 @@ import Produto = require("../models/produto");
 
 const router = express.Router();
 
+router.get("/listar", wrap(async (req: express.Request, res: express.Response) => {
 
+	let lista = await Produto.listar();
+
+	let opcoes = {
+		lista: lista
+	};
+	res.render("restrito/listar-produtos", {layout:"restrito/layout-ar", lista:lista});
+}));
 
 router.get("/:id", wrap(async (req: express.Request, res: express.Response) => {
 	let id = parseInt(req.params["id"]);
@@ -36,5 +44,6 @@ router.get("/", wrap(async (req: express.Request, res: express.Response) => {
 	};
 	res.render("produtos", opcoes);
 }));
+
 
 export = router;

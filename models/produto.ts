@@ -93,7 +93,7 @@ export = class Produto {
         return erro;
     }
 
-    public static async excluir(id_produto:String): Promise<string>{
+    public static async excluir(id_produto:Number): Promise<string>{
         let erro: string = null;
 
         await Sql.conectar(async(sql)=>{

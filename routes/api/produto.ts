@@ -10,4 +10,22 @@ router.get("/", wrap(async (req: express.Request, res: express.Response) => {
 	res.json(lista);
 }));
 
+router.get("/excluir/:id", wrap(async (req: express.Request, res: express.Response) => {
+	let erro: string = null;
+
+	let id = parseInt(req.params["id"]);
+
+	if (isNaN(id)) {
+		erro = "Id inválido!";
+	} else {
+		erro = await Produto.excluir(id);
+	}
+
+	if (erro) {
+		res.status(400).json(erro);
+	} else {
+		res.json(true);
+	}
+}));
+
 export = router;

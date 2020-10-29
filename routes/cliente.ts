@@ -39,8 +39,7 @@ router.get("/listar", wrap(async (req: express.Request, res: express.Response) =
 	let opcoes = {
 		lista: lista
 	};
-    console.log("página listando clientes")
-	//res.render("cliente/listar", opcoes);
+    res.render("restrito/listar-clientes", {layout:"restrito/layout-ar", lista:lista});
 }));
 
 export = router;
