@@ -17,7 +17,7 @@ router.get("/criar", wrap(async (req: express.Request, res: express.Response) =>
 router.get("/listar", wrap(async (req: express.Request, res: express.Response) => {
 	let lista = await Pedido.listar();
 
-	res.render("restrito/listar-pedidos", {layout:"restrito/layout-ar", lista:lista});
+	res.render("pedido/listar", {layout:"restrito/layout", lista:lista});
 }));
 
 export = router;

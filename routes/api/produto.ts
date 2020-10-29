@@ -28,4 +28,18 @@ router.get("/excluir/:id", wrap(async (req: express.Request, res: express.Respon
 	}
 }));
 
+router.post("/alterar", wrap(async (req: express.Request, res: express.Response) => {
+	let erro: string = null;
+
+	let produto = req.body as Produto;
+
+	erro = await Produto.alterar(produto);
+
+	if (erro) {
+		res.status(400).json(erro);
+	} else {
+		res.json(true);
+	}
+}));
+
 export = router;

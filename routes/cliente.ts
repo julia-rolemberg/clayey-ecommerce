@@ -13,7 +13,7 @@ router.get("/criar", wrap(async (req: express.Request, res: express.Response) =>
 }));
 
 router.get("/alterar/:id", wrap(async (req: express.Request, res: express.Response) => {
-	let id_cliente = parseInt(req.params["id_cliente"]);
+	let id_cliente = parseInt(req.params["id"]);
 
 	if (isNaN(id_cliente)) {
 		res.render("cliente/nao-encontrado");
@@ -39,7 +39,7 @@ router.get("/listar", wrap(async (req: express.Request, res: express.Response) =
 	let opcoes = {
 		lista: lista
 	};
-    res.render("restrito/listar-clientes", {layout:"restrito/layout-ar", lista:lista});
+    res.render("cliente/listar", {layout:"restrito/layout", lista:lista});
 }));
 
 export = router;

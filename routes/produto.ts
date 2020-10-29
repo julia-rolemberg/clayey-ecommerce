@@ -8,12 +8,24 @@ router.get("/listar", wrap(async (req: express.Request, res: express.Response) =
 
 	let lista = await Produto.listar();
 
-	let opcoes = {
-		lista: lista
-	};
-	res.render("restrito/listar-produtos", {layout:"restrito/layout-ar", lista:lista});
+	res.render("produto/listar", {layout:"restrito/layout", lista:lista});
 }));
 
+router.get("/alterar/:id", wrap(async (req: express.Request, res: express.Response) => {
+	let id_produto = parseInt(req.params["id"]);
+
+	if (isNaN(id_produto)) {
+		res.render("produto/nao-encontrado");
+	} else {
+		let produto = await Produto.obter(id_produto);
+		
+		if (!produto) {
+			res.render("produto/nao-encontrado");
+		} else {
+			res.render("produto/editar", {layout:"restrito/layout", produto: produto});
+		}
+	}
+}));
 router.get("/:id", wrap(async (req: express.Request, res: express.Response) => {
 	let id = parseInt(req.params["id"]);
 

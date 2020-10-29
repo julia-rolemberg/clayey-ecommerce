@@ -1,0 +1,128 @@
+<div>
+    <div>
+        <h1 class="tituloR">Editar Produto</h1>
+    </div>
+    <div>
+        <form id="formEditar" class="form-group">
+            <div>
+                <p>Id: <span><%=produto.id_produto%></span></p>
+            </div>
+
+            <div>
+                <label for="nome">Nome: </label>
+                <input type="text" id="nome" name="nome" value="<%=produto.nome_produto%>"/>
+            </div>
+            <div>
+                <label for="preco">Preço: </label>
+                <input type="text" id="preco" name="preco" value="<%=produto.valor_produto%>"/>
+            </div>
+            <div>
+                <label for="qtd">Quantidade disponível: </label>
+                <input type="number" id="qtd" name="qtd" value="<%=produto.qtdeDisponivel%>"/>
+            </div>
+            <div>
+                <label for="fabricacao">Fabricação: </label>
+                <input type="month" id="fabricacao" name="fabricacao" value="2020-10"/>
+            </div>
+            <div>
+                <label for="peso">Peso: </label>
+                <input type="text" id="peso" name="peso" value="<%=produto.peso%>"/> (em gramas)
+            </div>
+            <div>
+                <label for="descricao">Descrição: </label>
+                <textarea id="descricao" name="descricao" rows="5" cols="100"><%=produto.desc_produto%></textarea>
+            </div>
+            <div>
+                <label for="utilidade">Utilidade: </label>
+                <textarea id="utilidade" name="utilidade" rows="5" cols="100"><%=produto.utilidade%></textarea>
+            </div>
+            <div>
+                <label for="composicao">Composição: </label>
+                <textarea id="composicao" name="composicao" rows="5" cols="100"><%=produto.composicao%></textarea>
+            </div>
+
+            <div>
+                <button type="submit" class="btn">Salvar</button>
+
+                <a class="btn btn-light" href="/produto/listar">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<	<script type="text/javascript">
+		
+    $("#formEditar").validate({
+        
+        rules: {
+            
+            nome: {
+                required: true,
+                minlength: 3,
+                maxlength: 45
+            },
+
+            preco: {
+                required: true,
+                min: 0
+            },
+
+            qtd: {
+                number: true,
+                min: 0
+            },
+            
+        /*    fabricacao: {
+                
+            },
+        */  
+            peso: {
+                number: true,
+                minlength: 1,
+                maxlength: 4
+            },
+
+            descricao: {
+                maxlength: 1000
+            },
+
+            utilidade: {
+                maxlength: 1000
+            },
+
+            composicao: {
+                maxlength: 1000
+            }
+        },
+        
+        submitHandler: function () {
+            
+            if ($.active) {
+                return;
+            }
+            
+            let opcoes = {
+                
+                url: "/api/produtos/alterar",
+                
+                // Não precisa do cache para POST e PUT!
+                method: "POST",
+                
+                data: $("#formEditar").serialize(),
+                
+                success: function (dadosDeRetorno) {
+                    alert("Sucesso! " + dadosDeRetorno);
+                },
+                
+                error: function () {
+                    alert("Deu ruim! :(");
+                }
+                
+            };
+            
+            $.ajax(opcoes);
+            
+        }
+        
+    });
+</script>
