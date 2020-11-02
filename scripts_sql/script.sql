@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS `clayey`.`Cliente` (
   email VARCHAR(100) NOT NULL,
   senha VARCHAR(45) NOT NULL,
   cep_cliente int ,
+  rua_cliente varchar(50),
   num_casa VARCHAR(45) ,
   complemento VARCHAR(45) ,
   bairro_cliente VARCHAR(45) ,
@@ -60,11 +61,11 @@ CREATE TABLE IF NOT EXISTS `clayey`.`Item` (
  );
 
 
-insert into Cliente (nome_cliente, email, senha, cep_cliente, num_casa, bairro_cliente, cidade_cliente) values
-	('cliente 1', 'cliente1@mail.com', '1234', 08998020,'342','bairro x' ,'São Paulo'),
-    ('cliente 2', 'cliente2@mail.com', '1234', 12343223, '887A','bairro y' , 'Santo André'),
-    ('cliente 3', 'cliente3@mail.com', '1234', 87876020, '65','bairro z' , 'São Bernando do Campo'),
-    ('cliente 4', 'cliente4@mail.com', '1234', 09808070, '33','bairro w' , 'Santo André');
+insert into Cliente (nome_cliente, email, senha, cep_cliente, rua_cliente, num_casa, complemento, bairro_cliente, cidade_cliente, estado_cliente) values
+	('cliente 1', 'cliente1@mail.com', '1234', 08998020, 'Rua X','342','','bairro x' ,'São Paulo', 'SP'),
+    ('cliente 2', 'cliente2@mail.com', '1234', 12343223, 'Rua Y', '887A','','bairro y' , 'Santo André', 'SP'),
+    ('cliente 3', 'cliente3@mail.com', '1234', 87876020, 'Rua Z','65','','bairro z' , 'São Bernando do Campo', 'SP'),
+    ('cliente 4', 'cliente4@mail.com', '1234', 09808070, 'Rua W','33','','bairro w' , 'Santo André', 'SP');
 
 
 
@@ -140,6 +141,8 @@ insert into Produto (id_produto, nome_produto, desc_produto, utilidade,composica
     process.', 18.00, 50, 100, 'agosto de 2020') ;
 
 
+select * from produto;
+
 insert into pedido (id_pedido, data_pedido, id_cliente, valor_total) values (1, '2020-10-28', 1, 36);
 insert into item (id_produto, id_pedido, qtde, valor_item) values
 (1, 1, 1, 18);
@@ -149,8 +152,5 @@ select pedido.id_pedido, data_pedido, cliente.nome_cliente, produto.nome_produto
 select produto.nome_produto, item.qtde, produto.valor_produto from pedido inner join item on pedido.id_pedido = item.id_pedido inner join cliente on cliente.id_cliente = pedido.id_cliente inner join produto on produto.id_produto = item.id_produto ;
 
 
-delete from item where id_pedido = 1;
-delete from pedido where id_pedido = 1;
-
-
-select * from cliente;
+-- delete from item where id_pedido = 1;
+-- delete from pedido where id_pedido = 1;

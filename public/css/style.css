@@ -7,7 +7,7 @@ body, html{
 	padding:0;
     box-sizing: border-box;	
     color: #333333;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Noto Serif JP', sans-serif;
 }
 .principal{
     width: 100%;
@@ -35,12 +35,16 @@ body, html{
 }
 #tituloPrincipal{
     font-weight: 900;
-    margin-top: 120px;
+    margin-top: 150px;
     margin-bottom:28px;
+    font-family: 'Noto Serif JP'
+}
+#descPrincipal{
+    font-family: 'Noto Serif JP'
 }
 #principal .row .colEsq{
     padding: 2%;
-    padding-top: 5%
+   
 }
 #principal .row .colEsq #descPrincipal{
     width: 68%
@@ -52,7 +56,7 @@ body, html{
     font-weight: 500;
     text-align: center;
     color:white;
-
+    
 }
 
 
@@ -61,7 +65,8 @@ body, html{
 }
 #botao1{
     width: 120px;
-    margin-top: 40px;
+    margin-top: 60px;
+
 }
 #botao2{
     width: 150px;
@@ -261,6 +266,7 @@ footer {
     text-align: center;
     padding: 100px;
     margin: 0 auto;
+    margin-top: 150px;
     width: 50%;
     background-color:rgba(255, 255, 255, 0.8)   ;
 
@@ -279,17 +285,23 @@ footer {
     width: 22rem; 
     display: inline-block;
     margin:20px;
-    border: none;
+    border-radius: unset;
+    border-style: none;
+    -webkit-transition: opacity 0.5s;
 }
+/* .card-img-top:hover {
+    opacity: 1;
+    border-radius: 30px;
+} */
 .card-produto:hover{
-    box-shadow: 0 0 4em #e4e4e4;
+    /* box-shadow: 0 0 4em #e4e4e4; */
+    opacity: 0.8;
+    /* border-radius: 30px; */
     transition-duration: 1s;
-    border: none;
+
 }
 #subMenu{
-    
     position: -webkit-sticky;
-    position: sticky;
     top: 720px;
 }
 .produtoA:hover{

@@ -7,8 +7,12 @@ export = class Cliente{
     public email: String;
     public senha: String;
     public cep_cliente: number;
+    public complemento: String;
     public num_casa: String;
+    public rua_cliente: String
+    public bairro_cliente: String;
     public cidade_cliente: String;
+    public estado_cliente: String;
 
 
     public static validar(cliente: Cliente): string{
@@ -37,7 +41,7 @@ export = class Cliente{
     public static async listar(): Promise<Cliente[]>{
         let lista: Cliente[] = null;
         await Sql.conectar(async (sql) =>{
-            lista = await sql.query("select id_cliente, nome_cliente, email, cep_cliente, num_casa, cidade_cliente from cliente");
+            lista = await sql.query("select id_cliente, nome_cliente, email, cep_cliente, num_casa, complemento, bairro_cliente, cidade_cliente, estado_cliente from cliente");
         });
         return lista;
     }
@@ -106,7 +110,7 @@ export = class Cliente{
         }
 
         await Sql.conectar(async(sql)=>{
-            let lista = await sql.query("update cliente set nome = ?, email = ?, senha=? where nome = ?",[cliente.nome_cliente, cliente.email, cliente.senha, cliente.nome_cliente]);
+            let lista = await sql.query("update cliente set nome = ?, email = ?, senha=? where id_cliente = ?",[cliente.nome_cliente, cliente.email, cliente.senha, cliente.id_cliente]);
         });
 
         return erro;
@@ -120,7 +124,7 @@ export = class Cliente{
         }
 
         await Sql.conectar(async(sql)=>{
-            let lista = await sql.query("update cliente set cep_cliente = ? , num_casa = ?, cidade_cliente = ? where nome_cliente = ?",[cliente.cep_cliente, cliente.num_casa, cliente.cidade_cliente, cliente.nome_cliente]);
+            let lista = await sql.query("update cliente set cep_cliente = ? , num_casa = ?, rua_cliente=?, complemento=?, cidade_cliente = ?, bairro_cliente=?, estado_cliente=? where email = ?",[cliente.cep_cliente, cliente.num_casa,cliente.rua_cliente, cliente.complemento, cliente.cidade_cliente,cliente.bairro_cliente, cliente.estado_cliente, cliente.email]);
         });
 
         return erro;

@@ -18,6 +18,20 @@ router.post("/criar", wrap(async(req: express.Request, res: express.Response)=>{
 	}
 }));
 
+router.post("/adicionarEndereco", wrap(async(req: express.Request, res: express.Response)=>{
+    let erro: string = null;
+
+	let cliente = req.body as Cliente;
+
+	erro = await Cliente.adicionarEndereco(cliente);
+
+	if (erro) {
+		res.status(400).json(erro);
+	} else {
+		res.json(true);
+	}
+}));
+
 router.post("/alterar", wrap(async (req: express.Request, res: express.Response) => {
 	let erro: string = null;
 

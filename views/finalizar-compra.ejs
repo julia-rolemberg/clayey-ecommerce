@@ -7,21 +7,16 @@
                     <div class="row mt-4">
                         <div class="col-sm-12">
                             <div class="input-group flex-nowrap">
-                                <input type="text" id="nome_cliente"  class="form-control" placeholder="nome completo" aria-label="nome completo"
+                                <input type="text" id="nome_cliente" name="nome_cliente"  class="form-control" placeholder="nome completo" aria-label="nome completo"
                                     aria-describedby="addon-wrapping">
                             </div>
                         </div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-sm-5">
+                        
+                        <div class="col-sm-12">
                             <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control" placeholder="CPF" aria-label="CPF"
-                                    aria-describedby="addon-wrapping">
-                            </div>
-                        </div>
-                        <div class="col-sm-7">
-                            <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control" placeholder="email" aria-label="email"
+                                <input type="text" id="email" name="email" class="form-control" placeholder="email" aria-label="email"
                                     aria-describedby="addon-wrapping">
                             </div>
                         </div>
@@ -30,44 +25,46 @@
                     <div class="row mt-3">
                         <div class="col-sm-4">
                             <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control" placeholder="CEP" aria-label="CEP"
+                                <input type="text" id="cep_cliente" name="cep_cliente" class="form-control" placeholder="CEP" aria-label="CEP"
                                     aria-describedby="addon-wrapping">
                             </div>
                         </div>
                         <div class="col-sm-8">
                             <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control" placeholder="bairro" aria-label="bairro"
+                                <input type="text" id="rua_cliente" name="rua_cliente" class="form-control" placeholder="rua" aria-label="rua"
                                     aria-describedby="addon-wrapping">
                             </div>
                         </div>
+                       
                     </div>
                    
                     <div class="row mt-3">
-                        <div class="col-sm-9">
-                            <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control" placeholder="rua" aria-label="rua"
-                                    aria-describedby="addon-wrapping">
-                            </div>
-                        </div>
                         <div class="col-sm-3">
                             <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control" placeholder="n°" aria-label="número Casa"
+                                <input type="text" id="num_casa" name="num_casa" class="form-control" placeholder="n°" aria-label="número Casa"
                                     aria-describedby="addon-wrapping">
                             </div>
                         </div>
+                        <div class="col-sm-9">
+                            <div class="input-group flex-nowrap">
+                                <input type="text" id="bairro_cliente" name="bairro_cliente" class="form-control" placeholder="bairro" aria-label="bairro"
+                                    aria-describedby="addon-wrapping">
+                            </div>
+                        </div>
+                        
                        
                     </div>
                     <div class="row mt-3">
                        
-                        <div class="col-sm-5">
+                        <div class="col-sm-6">
                             <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control" placeholder="complemento" aria-label="complemento"
+                                <input type="text" id="complemento" name="complemento" class="form-control" placeholder="complemento" aria-label="complemento"
                                     aria-describedby="addon-wrapping">
                             </div>
                         </div>
-                        <div class="col-sm-7">
+                        <div class="col-sm-6">
                             <div class="input-group flex-nowrap">
-                                <input type="text" class="form-control" placeholder="cidade" aria-label="cidade"
+                                <input type="text" id="cidade_cliente" name="cidade_cliente" class="form-control" placeholder="cidade" aria-label="cidade"
                                     aria-describedby="addon-wrapping">
                             </div>
                         </div>
@@ -76,16 +73,16 @@
                         
                         <div class="col-sm-5">
                             <div class="input-group flex-nowrap">
-                                <select id="inputState" class="form-control">
+                                <select id="estado_cliente" name="estado_cliente" class="form-control">
                                     <option selected>Estado</option>
-                                    <option>São Paulo</option>
+                                    <option>SP</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class=" d-flex justify-content-end ">
                         <button type="button" onclick="window.location.href='/produto'" class="btn btn-light px-5 mt-4">cancelar</button>
-                        <button type="button" class="btn btn-success px-5 mt-4">finalizar</button>
+                        <button type="submit" class="btn btn-success px-5 mt-4" >finalizar</button>
                     </div>
                 </form>
                
@@ -106,4 +103,80 @@
 <%- contentFor("scripts") %>
 <script type="text/javascript">
     listarPedido();
+
+    $("#form").validate({
+		rules: {
+			nome_cliente: {
+				required: true,
+				minlength: 3,
+				maxlength: 40
+            },
+            
+			email: {
+				required: true,
+				minlength: 10,
+				email: true
+			},
+			cep_cliente:{
+                required:true,
+                minlength:8,
+                maxlength:8
+            },
+            bairro_cliente:{
+                required:true,
+                minlength:3,
+                maxlength:45
+            },
+            rua_cliente:{
+                required:true,
+                minlength:3,
+                maxlength:45
+            },
+            num_casa:{
+                required:true,
+                minlength:1,
+                maxlength:30
+            },
+            complemento:{
+                required:false,
+                maxlength:45
+            },
+            cidade_cliente:{
+                required:true,
+                minlength:2,
+                maxlength:45
+            },
+            estado_cliente:{
+                required:true
+            }
+
+		},
+//$("#date").mask("99/99/9999");
+		submitHandler: function () {
+			
+			
+			let opcoes = {
+                url:("/api/cliente/adicionarEndereco"),
+               
+                method:"POST",
+				data: $("form").serialize(),
+				
+                success: function(dadosDeRetorno){
+					alert("Endereço adicionado com sucesso! ");
+				
+                },
+                error: function(){
+					alert("deu ruim");
+					
+                }
+
+            };
+            $.ajax(opcoes);
+            }
+
+
+
+		}
+	);
+   
 </script>

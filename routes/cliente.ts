@@ -8,10 +8,14 @@ router.get("/criar", wrap(async (req: express.Request, res: express.Response) =>
 	let opcoes = {
 		cliente: null
 	};
-
 	res.render("cliente/criar", opcoes);
 }));
-
+router.get("/adicionarEndereco", wrap(async (req: express.Request, res: express.Response) => {
+	let opcoes = {
+		cliente: null
+	};
+	res.render("cliente/adicionarEndereco", opcoes);
+}));
 router.get("/alterar/:id", wrap(async (req: express.Request, res: express.Response) => {
 	let id_cliente = parseInt(req.params["id"]);
 
@@ -28,7 +32,7 @@ router.get("/alterar/:id", wrap(async (req: express.Request, res: express.Respon
 			};
 
             console.log("página de editar clientes!")
-			//res.render("cliente/editar", opcoes);
+			// res.render("cliente/alterar", opcoes);
 		}
 	}
 }));
