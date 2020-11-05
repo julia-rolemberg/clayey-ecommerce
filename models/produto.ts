@@ -18,9 +18,6 @@ export = class Produto {
         if(!produto){
             return "Dados inválidos";
         }
-        if(!produto.id_produto){
-            return "ID inválido";
-        }
 
         if(produto.nome_produto.length>45){
             return "Nome muito longo";
