@@ -16,6 +16,7 @@ router.get("/adicionarEndereco", wrap(async (req: express.Request, res: express.
 	};
 	res.render("cliente/adicionarEndereco", opcoes);
 }));
+
 router.get("/alterar/:id", wrap(async (req: express.Request, res: express.Response) => {
 	let id_cliente = parseInt(req.params["id"]);
 

@@ -36,8 +36,6 @@ router.post("/alterar", wrap(async (req: express.Request, res: express.Response)
 	erro = await Produto.alterar(produto);
 
 	if (erro) {
-		console.log(produto);
-		
 		res.status(400).json(erro);
 	} else {
 		res.json(true);

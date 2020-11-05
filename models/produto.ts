@@ -85,7 +85,7 @@ export = class Produto {
         if(erro){
             return erro;
         }
-
+        
         await Sql.conectar(async(sql)=>{
             let lista = await sql.query("update produto set nome_produto = ?, desc_produto = ?, utilidade=?, composicao= ?, valor_produto=?, qtdeDisponivel=?, peso=?, fabricacao=?  where id_produto = ?",[produto.nome_produto, produto.desc_produto, produto.utilidade, produto.composicao, produto.valor_produto, produto.qtdeDisponivel, produto.peso, produto.fabricacao, produto.id_produto]);
         });

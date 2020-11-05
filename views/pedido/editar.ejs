@@ -13,12 +13,12 @@
                 <input type="text" id="nome"  class="  form-control" name="nome" value="<%=produto.nome_produto%>"/>
             </div>
             <div class="form-group flex-nowrap">
-                <label  class="font-weight-bold" for="valor_produto">Preço: </label>
-                <input type="text" id="valor_produto"  class=" form-control" name="valor_produto" value="<%=produto.valor_produto%>"/>
+                <label  class="font-weight-bold" for="preco">Preço: </label>
+                <input type="text" id="preco"  class=" form-control" name="preco" value="<%=produto.valor_produto%>"/>
             </div>
             <div class="form-group flex-nowrap">
-                <label  class="font-weight-bold" for="qtdeDisponivel">Quantidade disponível: </label>
-                <input type="number" id="qtdeDisponivel"  class="  form-control" name="qtdeDisponivel" value="<%=produto.qtdeDisponivel%>"/>
+                <label  class="font-weight-bold" for="qtd">Quantidade disponível: </label>
+                <input type="number" id="qtd"  class="  form-control" name="qtd" value="<%=produto.qtdeDisponivel%>"/>
             </div>
             <div class="form-group flex-nowrap">
                 <label  class="font-weight-bold" for="fabricacao">Fabricação: </label>
@@ -29,8 +29,8 @@
                 <input type="text" id="peso"  class="  form-control" name="peso" value="<%=produto.peso%>"/>
             </div>
             <div class="form-group flex-nowrap">
-                <label class="font-weight-bold"  for="desc_produto">Descrição: </label class="font-weight-bold">
-                <textarea id="desc_produto" name="desc_produto"  class=" form-control" rows="5" cols="100"><%=produto.desc_produto%></textarea>
+                <label class="font-weight-bold"  for="descricao">Descrição: </label class="font-weight-bold">
+                <textarea id="descricao" name="descricao"  class=" form-control" rows="5" cols="100"><%=produto.desc_produto%></textarea>
             </div>
             <div class="form-group flex-nowrap">
                 <label  class="font-weight-bold" for="utilidade">Utilidade: </label>
@@ -63,12 +63,12 @@
                 maxlength: 45
             },
 
-            valor_produto: {
+            preco: {
                 required: true,
                 min: 0
             },
 
-            qtdeDisponivel: {
+            qtd: {
                 number: true,
                 min: 0
             },
@@ -83,7 +83,7 @@
                 maxlength: 4
             },
 
-            desc_produto: {
+            descricao: {
                 maxlength: 1000
             },
 
@@ -104,7 +104,7 @@
             
             let opcoes = {
                 
-                url: ("/api/produto/alterar"),
+                url: "/api/produto/alterar",
                 
                 // Não precisa do cache para POST e PUT!
                 method: "POST",
