@@ -46,47 +46,20 @@
 
 </nav>
 
-<!-- Page Content -->
-   <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-
-            <button type="button" id="sidebarCollapse" class="btn btn-info">
-                <i class="fas fa-align-left"></i>
-                <span>Toggle Sidebar</span>
-            </button>
-        </div>
-    </nav> -->
-
 <script type="text/javascript">
-    $(document).ready(function () {
-
+    $(window).on("load", function(){
         $("#sidebar").mCustomScrollbar({
-            theme: "minimal"
-        });
-
+            theme: "minimal"});
+        
         $('#sidebarCollapse').on('click', function () {
             $('#sidebar').toggleClass('active');
+
+            if($('#paginaR').css("padding") == "50px 50px 0px 300px"){
+                $('#paginaR').css('padding',"50px 50px 0 50px");
+            } else {
+                $('#paginaR').css("padding", "");
+            }
         });
 
     });
-
-    $(document).ready(function () {
-
-        $("#sidebar").mCustomScrollbar({
-            theme: "minimal"
-        });
-
-        $('#sidebarCollapse').on('click', function () {
-            // open or close navbar
-            $('#sidebar').toggleClass('active');
-            // close dropdowns
-            $('.collapse.in').toggleClass('in');
-            // and also adjust aria-expanded attributes we use for the open/closed arrows
-            // in our CSS
-            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-        });
-
-    });
-
-
 </script>

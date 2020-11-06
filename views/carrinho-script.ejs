@@ -54,10 +54,8 @@
                     return;
                 }
             }
-            //debugger;
             var item = new Item(id, nome, preco, qtd, imagem);
             cart.push(item);
-            //debugger;
             saveCart();
         }
 
@@ -117,7 +115,6 @@
             for (let i = 0; i < cart.length; i++) {
                 totalCart += cart[i].preco * cart[i].qtd;
             }
-            //return totalCart.toFixed(2).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
             return "R$" + totalCart.toFixed(2).replace('.', ',');
         }
 
@@ -278,5 +275,13 @@
     } else {
         $('#itensNoCarrinho').addClass('invisible');
     }
+
+    // FINALIZAR PEDIDO \\
+    $(document).ready(function () {
+        if(window.location.pathname == "/finalizar"){
+            var carrinho = shoppingCart.listCart();
+            console.log(carrinho);
+        }
+    });
 
 </script>

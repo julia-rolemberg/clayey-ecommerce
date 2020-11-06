@@ -369,8 +369,6 @@ footer {
 #esqCheckout{
     background-color: white;
 }
-#dirCheckout{
-}
 /* fim finalizar compra */
 
 
@@ -577,6 +575,10 @@ footer {
     margin-left: -250px;
 }
 
+#sidebarCollapse{
+    margin: -50px 0 0 -66px;
+}
+
 ul ul a {
     font-size: 1.1em !important;
     padding-left: 30px !important;
@@ -598,10 +600,6 @@ a[data-toggle="collapse"] {
 .ires{
     font-size: 15px;
     padding: 0 5px;
-}
-
-.padding-normal{
-    padding: 50px 50px 0 50px;
 }
 
 #paginaR{
