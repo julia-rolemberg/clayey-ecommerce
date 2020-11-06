@@ -1,15 +1,17 @@
 <div class="telaQuiz">
 <!-- Início -->
-    <div id="home-container" class="text-center mx-auto">
-        <div class="limitador-raio">
-            <img id="raios" class="rodar" src="/imagens/raios.svg"/>
-        </div>
-        <div id="home-conteudo">
-            <div class="t-quiz h1"> Qual é o sabonete perfeito para mim? </div>
-            <div class="p-5 mt-5">
-                <img class="flutuar-girando-suave" src="/imagens/sabaoMisterio.png"/>
+    <div id="home-container" class="bg-raio text-center mx-auto">
+        <div id="home-conteudo" class="q-container">
+            <div class="limitador">
+                <div class="t-quiz"> 
+                    <h1>Sabonete Perfeito</h1>
+                    <h3>Faça o quiz e descubra qual o sabonete perfeito para sua pele!</h3>
+                </div>
+                <div class="p-5 mt-5 img-box">
+                    <img class="flutuar-girando-suave img-quiz" src="/imagens/sabaoMisterio.png"/>
+                </div>
+                <div><button id="start-btn" type="button" class="btn-quiz px-5">Começar</button></div>
             </div>
-            <div><button id="start-btn" type="button" class="btn-quiz px-5">Começar</button></div>
         </div>
     </div>
 
@@ -26,7 +28,7 @@
     </div>
 
     <!-- Questões -->
-    <div id="question-container" class="d-none">
+    <div id="question-container" class="d-none q-container">
         <div id="question" class="text-center h2">Question</div>
         <div id="answer-buttons" style="height:70vh">
             <button class="btn btn-light btn-lg">Resposta 1</button>
@@ -38,7 +40,7 @@
     </div>
 
     <!-- Lista -->
-    <div id="option-container" class="p-2 d-none">
+    <div id="option-container" class="p-2 d-none q-container">
         <div class="h2 p-2 mb-1 text-center">Escolhas</div>
             <div id="option-buttons" class="text-white text-center">
                 <div class="p-2 bg-danger">Escolha1</div>
@@ -52,7 +54,7 @@
     </div>
         
 <!-- Resultado -->
-    <div id="result-container" class="revelacao text-center d-none">
+    <div id="result-container" class="revelacao text-center d-none q-container">
         <div class="t-quiz h1">RESULTADO</div>
         <div>
             <img width=25% alt="nome sabonete" src="/imagens/produtos/s1.jpg"/>
@@ -120,24 +122,23 @@
     }
 
     function mostrarPergunta(question) {
+        let contador = 0
         questionElement.innerText = question.question
         question.answers.forEach(answer => {
             const button = document.createElement("button")
             button.innerText = answer.text
             button.classList.add("btn")
-            button.classList.add("btn-light")
+            button.classList.add("btn-dark")
             button.classList.add("btn-lg")
-            button.classList.add("position-relative")
+            button.classList.add("position-absolute")
             button.classList.add("flutuar")
 
             //posicionamento aleatório
-            let x = Math.random() * 25;
-            if(currentQuestionIndex == 0){let x = Math.random() * 32};
-            let y = Math.random() * 92; //vai até a altura máxima do container (-8 pra não bugar no tablet)
-            //if(alternar % 2 === 0) {y *= -1}
+            let x = Math.random() * 85;
+            let y = Math.random() * 62 + 20; //para não surgir fora do pai
 
-            let estilo = "top:"+ y.toFixed(1) +"%;left:"+ x.toFixed(2) +"cm;";
-            button.setAttribute("style", estilo); 
+            let estilo = "top:"+ y.toFixed(1) +"%; left: "+ x.toFixed(1) +"%;";
+            button.setAttribute("style", estilo);
             button.addEventListener('click', clicouBotao)
             answerButtonsElement.appendChild(button)
         })

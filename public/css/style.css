@@ -413,8 +413,6 @@ footer {
 /* INÍCIO QUIZ  */
 .telaQuiz{
     width: 100%;
-    min-height: 90%;
-    padding: 8% 8% 2% 8%;
     overflow-x: hidden;
 }
 
@@ -426,38 +424,26 @@ footer {
 
 .limitador{
     max-width: 80%;
+    margin: 0 auto;
 }
 
-.limitador-raio{
-    max-width: 80%;
-}
-
-#raios {
-    margin:0;
-    text-align: center;
-    display: block;
-    position: absolute;
-    top:0;
-    left:0;
-    right:0;
-    margin-left:auto;
-    margin-right:auto;
-    padding: 0;
-    width: 800px;
-    z-index: -1;
-    overflow: hidden;
-    
+.bg-raio{
+    background-image: url('/imagens/raiosgif.gif');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 85%;
 }
 
 .t-quiz{
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-#home-conteudo{
+.q-container{
     display: block;
     line-height: 1.5;
     position: relative;
     margin: auto;
+    padding: 8% 0 2% 0;
 }
 
 #option-container{
@@ -476,7 +462,7 @@ footer {
 }
 
 .btn-quiz{
-    width: 300px;
+    max-width: 300px;
     height: 60px;
     text-align: center;
     cursor: pointer;
@@ -512,6 +498,22 @@ footer {
     text-align: center;
     background-color: #FFA319;
     color:white;
+}
+
+.img-box{
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.img-quiz{
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .telaQuiz {
+        padding: 200px 0 0 0;
+    }
 }
 
 /* FIM QUIZ */
@@ -570,10 +572,27 @@ footer {
     color: #fff;
     background-color: rgb(230 100 0);
 }
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
 ul ul a {
     font-size: 1.1em !important;
     padding-left: 30px !important;
     background: rgb(230 100 0);
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
 }
 
 .ires{
@@ -581,25 +600,28 @@ ul ul a {
     padding: 0 5px;
 }
 
-
-
-
-
-/* esconde a navbar em telas pequenas */
-@media (max-width: 768px) {
-    #sidebar {
-        margin-left: -250px;
-    }
-    #sidebar.active {
-        margin-left: 0;
-    }
+.padding-normal{
+    padding: 50px 50px 0 50px;
 }
 
-.paginaR{
+#paginaR{
     padding: 50px 50px 0 300px;
     transition: all 0.3s;
 }
 
 .tituloR{
     padding: 0 0 1em 0;
+}
+
+/* esconde a navbar em telas pequenas */
+@media (max-width: 768px) {
+    #paginaR {
+        padding: 50px 50px 0 50px;
+    }
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
 }

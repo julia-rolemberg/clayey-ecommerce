@@ -90,25 +90,6 @@
   }
 }
 
-.rodar{
-  animation: spin 10s 
-  cubic-bezier(0.785, 0.785, 0.860, 0.860) infinite both;
-  position: relative;
-  overflow: hidden;
-}
-
-@keyframes spin {
-  0% {
-    transform: scale(1) rotateZ(0);
-  }
-  50% {
-    transform: scale(1.05) rotateZ(90deg);
-  }
-  100% {
-    transform: scale(1) rotateZ(180deg);
-  }
-}
-
 .flutuar-girando-suave{
   animation: rotate-smooth 10s 
   cubic-bezier(0.900, 0.800, 0.800, 0.900) infinite both;
