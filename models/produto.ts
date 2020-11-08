@@ -54,7 +54,7 @@ export = class Produto {
         }
 
         await Sql.conectar(async(sql)=>{
-            let lista = await sql.query("insert into Produto ( nome_produto, desc_produto, utilidade, composicao, valor_produto, qtdeDisponivel, peso, fabricacao) values (?, ?, ?, ?, ?,?,?,?) ", [produto.nome_produto, produto.desc_produto, produto.utilidade, produto.composicao, produto.valor_produto, produto.qtdeDisponivel, produto.peso, produto.fabricacao]);
+            let lista = await sql.query("insert into Produto ( nome_produto, desc_produto, utilidade, composicao, valor_produto) values (?, ?, ?, ?, ?) ", [produto.nome_produto, produto.desc_produto, produto.utilidade, produto.composicao, produto.valor_produto]);
         });
 
         return erro;

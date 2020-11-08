@@ -10,6 +10,20 @@ router.get("/", wrap(async (req: express.Request, res: express.Response) => {
 	res.json(lista);
 }));
 
+router.post("/criar", wrap(async(req: express.Request, res: express.Response)=>{
+    let erro: string = null;
+
+	let produto = req.body as Produto;
+
+	erro = await Produto.criar(produto);
+
+	if (erro) {
+		res.status(400).json(erro);
+	} else {
+		res.json(true);
+	}
+}));
+
 router.get("/excluir/:id", wrap(async (req: express.Request, res: express.Response) => {
 	let erro: string = null;
 

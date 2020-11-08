@@ -1,0 +1,103 @@
+<div>
+    <div>
+        <h1 class="tituloR">Criar Produto</h1>
+    </div>
+    <div>
+        <form id="formCriar" class="form-group">
+            <!--<div>
+                <p class="font-weight-bold">Id: <span></span></p>
+                <input type="hidden" id="id_produto"  class="  form-control" name="id_produto" value=""/>
+            </div>-->
+
+            <div class="form-group flex-nowrap " >
+                <label  class="font-weight-bold" for="nome_produto">Nome: </label>
+                <input type="text" id="nome_produto"  class="  form-control" name="nome_produto" value=""/>
+            </div>
+            <div class="form-group flex-nowrap">
+                <label  class="font-weight-bold" for="valor_produto">Preço: </label>
+                <input type="text" id="valor_produto"  class=" form-control" name="valor_produto" value=""/>
+            </div>
+            <div class="form-group flex-nowrap">
+                <label class="font-weight-bold"  for="desc_produto">Descrição: </label class="font-weight-bold">
+                <textarea id="desc_produto" name="desc_produto"  class=" form-control" rows="5" cols="100"></textarea>
+            </div>
+            <div class="form-group flex-nowrap">
+                <label  class="font-weight-bold" for="utilidade">Utilidade: </label>
+                <textarea id="utilidade" name="utilidade"  class=" form-control" rows="5" cols="100"></textarea>
+            </div>
+            <div class="form-group flex-nowrap">
+                <label  class="font-weight-bold" for="composicao">Composição: </label>
+                <textarea id="composicao" name="composicao"  class=" form-control" rows="5" cols="100"></textarea>
+            </div>
+
+            <div>
+                
+                <a class="btn btn-light" href="/produto/listar">Voltar</a>
+                <button type="submit" class="btn btn-success"><span class="fa fa-plus mr-2 text-white"></span>Criar</button>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<	<script type="text/javascript">
+		
+    $("#formCriar").validate({
+        
+        rules: {
+            
+            nome_produto: {
+                required: true,
+                minlength: 3,
+                maxlength: 45
+            },
+
+            valor_produto: {
+                required: true,
+                min: 0
+            },
+
+            desc_produto: {
+                maxlength: 1000
+            },
+
+            utilidade: {
+                maxlength: 1000
+            },
+
+            composicao: {
+                maxlength: 1000
+            }
+        },
+        
+        submitHandler: function () {
+            
+            if ($.active) {
+                return;
+            }
+            
+            let opcoes = {
+                
+                url: ("/api/produto/criar"),
+                
+                // Não precisa do cache para POST e PUT!
+                method: "POST",
+                
+                data: $("#formCriar").serialize(),
+                
+                success: function (dadosDeRetorno) {
+                    alert("Sucesso! " + dadosDeRetorno);
+                },
+                
+                error: function () {
+                    alert("Deu ruim! :(");
+                }
+                
+            };
+            
+            $.ajax(opcoes);
+            
+        }
+        
+    });
+</script>

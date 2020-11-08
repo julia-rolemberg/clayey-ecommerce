@@ -41,6 +41,10 @@
                 <label  class="font-weight-bold" for="composicao">Composição: </label>
                 <textarea id="composicao" name="composicao"  class=" form-control" rows="5" cols="100"><%=produto.composicao%></textarea>
             </div>
+            <div class="form-group flex-nowrap">
+                <label class="font-weight-bold" for="imagem">Alterar imagem do produto: </label>
+                <input id="imagem" name="imagem" type="file" class="" value="/imagens/produtos/s<%=produto.id_produto%>" accept=".jpg"/>
+            </div>
 
             <div>
                 
@@ -94,7 +98,11 @@
 
             composicao: {
                 maxlength: 1000
-            }
+            },
+
+            /*imagem: {
+
+            } */
         },
         
         submitHandler: function () {
