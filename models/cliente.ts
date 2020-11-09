@@ -55,16 +55,16 @@ export = class Cliente{
         }
 
         await Sql.conectar(async(sql)=>{
-        
-            let existe = await sql.query("select nome_cliente, email, senha from cliente where email = ?",[cliente.email]);
-            if(existe && existe.length){
-                // existe registro
-                existente = 'Esse cadastro já existe, faça login!';
-            }else{
-                let lista = await sql.query("insert into cliente(nome_cliente, email, senha) values (?, ?, ?) ",[cliente.nome_cliente, cliente.email, cliente.senha]);
 
+            try {
+                await sql.query("insert into cliente(nome_cliente, email, senha) values (?, ?, ?) ",[cliente.nome_cliente, cliente.email, cliente.senha]);
+            } catch (e) {
+                if (e.code && e.code === "ER_DUP_ENTRY")
+					erro = 'Esse cadastro já existe, faça login!';
+				else
+                    throw e;
             }
-            
+
         });
 
         return existente;

@@ -18,7 +18,9 @@ CREATE TABLE IF NOT EXISTS `clayey`.`Cliente` (
   bairro_cliente VARCHAR(45) ,
   cidade_cliente varchar(45) , 
   estado_cliente varchar(45) , 
-  PRIMARY KEY (id_cliente));
+  PRIMARY KEY (id_cliente),
+  UNIQUE KEY cliente_email_UN (email)
+);
 
 select * from cliente;
     
