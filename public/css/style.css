@@ -436,12 +436,16 @@ footer {
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-.q-container{
+.q-container, .lista{
     display: block;
     line-height: 1.5;
     position: relative;
     margin: auto;
     padding: 8% 0 2% 0;
+}
+
+.lista{
+    margin-top: 90px
 }
 
 #option-container{
@@ -511,6 +515,10 @@ footer {
 @media (max-width: 768px) {
     .telaQuiz {
         padding: 200px 0 0 0;
+    }
+    .lista{
+        margin-top: 0;
+        margin-bottom: 50px;
     }
 }
 

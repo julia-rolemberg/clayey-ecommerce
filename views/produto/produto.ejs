@@ -11,7 +11,6 @@
                 <div>
                     <div id="title" class="text-left h1 text-secondary"><%=produto.nome_produto%></div>
                     <div id="price" class="text-left h2 text-secondary">R$ <%=(produto.valor_produto).toFixed(2).replace('.', ',')%></div>
-                    <!-- <div id="stars" class="text-left"></div>     -->
                 </div>
 
                 <form class="form-inline">
@@ -113,11 +112,6 @@
             iten.classList.add("d-none")
         }
     }
-
-    /*$('.add-to-cart').click(function(event) {
-    shoppingCart.addItemToCart(produto.id_produto, produto.nome_produto, produto.valor_produto, parseInt($('#quant-text').value), $('#image').src);
-    exibirCarrinho();
-    });*/
 
     function add(id_produto, nome_produto, valor_produto) {
     shoppingCart.addItemToCart(id_produto, nome_produto, valor_produto, parseInt(quantity.value), image.src);
