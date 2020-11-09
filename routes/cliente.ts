@@ -10,6 +10,7 @@ router.get("/criar", wrap(async (req: express.Request, res: express.Response) =>
 	};
 	res.render("cliente/criar", opcoes);
 }));
+
 router.get("/adicionarEndereco", wrap(async (req: express.Request, res: express.Response) => {
 	let opcoes = {
 		cliente: null

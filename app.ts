@@ -1,7 +1,10 @@
 ﻿import express = require("express");
+import wrap = require("express-async-error-wrapper");
+import cookieParser = require("cookie-parser");
 import path = require("path");
 import ejs = require("ejs");
 import lru = require("lru-cache");
+import Cliente = require("./models/cliente");
 
 const app = express();
 
@@ -14,6 +17,8 @@ app.use(express.static(path.join(__dirname, "/public"), {
 	etag: false,
 	maxAge: "30d"
 }));
+
+app.use(cookieParser());
 
 // Configura o Express para reconhecer dados provenientes do corpo das requisições
 // http://expressjs.com/en/api.html#express.json
@@ -40,10 +45,11 @@ app.use((req: express.Request, res: express.Response, next: express.NextFunction
 // @@@ Preencher aqui!!!
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-app.get("/", (req: express.Request, res: express.Response) => {
-	res.render("index");
-});
+app.get("/", wrap(async (req: express.Request, res: express.Response) => {
+	const cliente = await Cliente.cookie(req.cookies);
 
+	res.render("index", { cliente: cliente });
+}));
 
 app.use("/api/produto", require("./routes/api/produto"));
 app.use("/produto", require("./routes/produto"));
@@ -59,9 +65,31 @@ app.get("/quiz", (req: express.Request, res: express.Response) => {
 	res.render("quiz");
 });
 
-app.get("/login", (req: express.Request, res: express.Response) => {
-	res.render("login");
-});
+app.all("/login", wrap(async (req: express.Request, res: express.Response) => {
+	if (req.body && req.body.email && req.body.senha) {
+		
+		const cookie = await Cliente.login(req.body.email, req.body.senha);
+		if (cookie) {
+			res.cookie(Cliente.NomeCookie, cookie, { maxAge: (365 * 24 * 60 * 60 * 1000) });
+			res.redirect("/");
+		} else {
+			res.render("login", { mensagem: "Usuário ou senha inválidos!" });
+		}
+
+	} else {
+		res.render("login", { mensagem: null });
+	}
+}));
+
+app.get("/logout", wrap(async (req: express.Request, res: express.Response) => {
+	const cliente = await Cliente.cookie(req.cookies);
+
+	if (cliente) {
+		await Cliente.logout(cliente.id_cliente);
+		res.cookie(Cliente.NomeCookie, "", { expires: new Date(0) });
+		res.redirect("/");
+	}
+}));
 
 app.get("/cadastro", (req: express.Request, res: express.Response) => {
 	res.render("cadastro");

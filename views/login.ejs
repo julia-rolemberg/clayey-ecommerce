@@ -4,45 +4,32 @@
             <h4 id="tituloAcesso">Acessar minha conta</h4>
 
 
-            <form class="form-group">
+            <form class="form-group" method="POST">
                 <div class="input-group flex-nowrap">
                     <!-- <div class="input-group-prepend">
                         <span class="input-group-text" id="addon-wrapping">perfil</span>
                     </div> -->
-                    <input type="text" id="email" value="" class="form-control" placeholder="e-mail"
+                    <input type="text" id="email" name="email" value="" class="form-control" placeholder="e-mail"
                         aria-label="email" aria-describedby="addon-wrapping" required="required">           
                 </div>
 
                 <div class="input-group flex-nowrap mt-3">
-                    <input type="password" id="senha" class="form-control" placeholder="senha"
+                    <input type="password" id="senha" name="senha" class="form-control" placeholder="senha"
                     aria-label="senha" aria-describedby="addon-wrapping" required="required">           
                 </div>
                 
-                <div class=" d-flex justify-content-between ">
-                    <input type="submit" onclick="login()" class="btn btn-success px-5 mt-4" 
-                        value="entrar"/>
+                <% if (mensagem) { %>
+                <div><%= mensagem %></div>
+                <% } %>
 
-                    <button type="button" class="btn btn-outline-secondary px-4 mt-4"
-                        onclick="window.location.href='cadastro'">cadastre-se</button>       
+                <div class=" d-flex justify-content-between ">
+                    <input type="submit" class="btn btn-success px-5 mt-4" value="entrar"/>
+
+                    <a type="button" href="/cadastro">cadastre-se</a>       
                 </div>
                 
-                <span class="font-weight-light font-italic" style="font-size: 12px;" onclick="window.location.href='/recuperarsenha'"><a >esqueci minha senha?</a></span>
+                <a class="font-weight-light font-italic" style="font-size: 12px;" href="/recuperarsenha">esqueci minha senha?</a>
                 
             </form>
          </div>
     </div>
-
-    
-<script type="text/javascript"> 
-    function login(){
-        let valorEmail = document.getElementById("email");
-        let valorSenha = document.getElementById("senha");
-
-        let email = valorEmail.value;
-        let senha = valorEmail.value;
-
-        // passar pra model de cliente e verificar login;
-        
-
-    }
-</script>

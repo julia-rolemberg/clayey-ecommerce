@@ -1,18 +1,22 @@
+import { randomBytes } from "crypto";
 import Sql = require("../infra/sql");
 
 export = class Cliente{
 
+    public static readonly NomeCookie = "usuarioClayey";
+
     public id_cliente: number;
-    public nome_cliente: String;
-    public email: String;
-    public senha: String;
+    public nome_cliente: string;
+    public email: string;
+    public senha: string;
+    public token: string;
     public cep_cliente: number;
-    public complemento: String;
-    public num_casa: String;
-    public rua_cliente: String
-    public bairro_cliente: String;
-    public cidade_cliente: String;
-    public estado_cliente: String;
+    public complemento: string;
+    public num_casa: string;
+    public rua_cliente: string
+    public bairro_cliente: string;
+    public cidade_cliente: string;
+    public estado_cliente: string;
 
 
     public static validar(cliente: Cliente): string{
@@ -85,22 +89,55 @@ export = class Cliente{
 
     }
 
-    public static async login(email:String): Promise<Cliente>{
+    public static async cookie(cookies: any): Promise<Cliente> {
         let cliente: Cliente = null;
 
+        const cookie = cookies[Cliente.NomeCookie] as string;
+        if (!cookie || cookie.length < 64) {
+            return null;
+        }
+
         await Sql.conectar(async(sql)=>{
-            let lista = await sql.query("select id_cliente, nome_cliente, email, senha from cliente where email = ?",[cliente.email]);
-         
+            const token = cookie.substr(0, 64);
+            const id_cliente = cookie.substr(64);
+
+            let lista = await sql.query("select id_cliente, nome_cliente, email from cliente where token = ? and id_cliente = ?",[token, id_cliente]);
+
             if(lista && lista.length){
                 cliente = lista[0];
             }
         });
 
         return cliente;
+    }
+
+    public static async login(email:string, senha: string): Promise<string>{
+        let cookie: string = null;
+
+        await Sql.conectar(async(sql)=>{
+            let lista = await sql.query("select id_cliente, nome_cliente, email from cliente where email = ? and senha = ?",[email, senha]);
+
+            if(lista && lista.length){
+                let cliente: Cliente = lista[0];
+
+                // Gerar o token para confirmar o login
+                const token = randomBytes(32).toString("hex");
+                cookie = token + cliente.id_cliente;
+
+                await sql.query("update cliente set token = ? where id_cliente = ?", [token, cliente.id_cliente]);
+            }
+        });
+
+        return cookie;
 
     }
 
-    
+    public static async logout(id_cliente: number): Promise<void>{
+        await Sql.conectar(async(sql)=>{
+            await sql.query("update cliente set token = null where id_cliente = ?",[id_cliente]);
+        });
+    }
+
     public static async alterar(cliente: Cliente): Promise<string>{
         let erro: string = Cliente.validar(cliente);
 

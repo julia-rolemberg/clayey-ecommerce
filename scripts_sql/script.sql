@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS `clayey`.`Cliente` (
   nome_cliente VARCHAR(45) NOT NULL,
   email VARCHAR(100) NOT NULL,
   senha VARCHAR(45) NOT NULL,
+  token CHAR(64) NULL,
   cep_cliente int ,
   rua_cliente varchar(50),
   num_casa VARCHAR(45) ,
