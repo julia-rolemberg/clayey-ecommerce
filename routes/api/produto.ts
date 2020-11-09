@@ -1,4 +1,5 @@
 import express = require("express");
+import multer = require("multer");
 import wrap = require("express-async-error-wrapper");
 import Produto = require("../../models/produto");
 
@@ -10,12 +11,12 @@ router.get("/", wrap(async (req: express.Request, res: express.Response) => {
 	res.json(lista);
 }));
 
-router.post("/criar", wrap(async(req: express.Request, res: express.Response)=>{
+router.post("/criar", multer().single("imagem"), wrap(async(req: express.Request, res: express.Response)=>{
     let erro: string = null;
 
 	let produto = req.body as Produto;
 
-	erro = await Produto.criar(produto);
+	erro = await Produto.criar(produto, req["file"]);
 
 	if (erro) {
 		res.status(400).json(erro);
@@ -42,12 +43,12 @@ router.get("/excluir/:id", wrap(async (req: express.Request, res: express.Respon
 	}
 }));
 
-router.post("/alterar", wrap(async (req: express.Request, res: express.Response) => {
+router.post("/alterar", multer().single("imagem"), wrap(async (req: express.Request, res: express.Response) => {
 	let erro: string = null;
 
 	let produto = req.body as Produto;
 
-	erro = await Produto.alterar(produto);
+	erro = await Produto.alterar(produto, req["file"]);
 
 	if (erro) {
 		res.status(400).json(erro);

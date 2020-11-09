@@ -1,55 +1,60 @@
 <div>
     <div>
-        <h1 class="tituloR">Editar Produto</h1>
+        <h1 class="tituloR"><%= (produto ? "Editar" : "Criar")%> Produto</h1>
     </div>
     <div>
-        <form id="formEditar" class="form-group">
+        <form id="form" class="form-group">
             <div>
-                <p class="font-weight-bold">Id: <span><%=produto.id_produto%></span></p>
-                <input type="hidden" id="id_produto"  class="  form-control" name="id_produto" value="<%=produto.id_produto%>"/>
+                <% if(produto) { %>
+                    <p class="font-weight-bold">Id: <span> <%= produto.id_produto %> </span></p>
+                <% } %>
+                
+                <input type="hidden" id="id_produto"  class="  form-control" name="id_produto" value="<%= (produto ? produto.id_produto : '')%>"/>
             </div>
 
             <div class="form-group flex-nowrap " >
                 <label  class="font-weight-bold" for="nome_produto">Nome: </label>
-                <input type="text" id="nome_produto"  class="  form-control" name="nome_produto" value="<%=produto.nome_produto%>"/>
+                <input type="text" id="nome_produto"  class="  form-control" name="nome_produto" value="<%= (produto ? produto.nome_produto : '')%>"/>
             </div>
             <div class="form-group flex-nowrap">
                 <label  class="font-weight-bold" for="valor_produto">Preço: </label>
-                <input type="text" id="valor_produto"  class=" form-control" name="valor_produto" value="<%=produto.valor_produto%>"/>
+                <input type="text" id="valor_produto"  class=" form-control" name="valor_produto" value="<%= (produto ? produto.valor_produto : '')%>"/>
             </div>
             <div class="form-group flex-nowrap">
                 <label  class="font-weight-bold" for="qtdeDisponivel">Quantidade disponível: </label>
-                <input type="number" id="qtdeDisponivel"  class="  form-control" name="qtdeDisponivel" value="<%=produto.qtdeDisponivel%>"/>
+                <input type="number" id="qtdeDisponivel"  class="  form-control" name="qtdeDisponivel" value="<%= (produto ? produto.qtdeDisponivel : '')%>"/>
             </div>
             <div class="form-group flex-nowrap">
                 <label  class="font-weight-bold" for="fabricacao">Fabricação: </label>
-                <input type="month" id="fabricacao"  class=" form-control" name="fabricacao" value="2020-10"/>
+                <input type="month" id="fabricacao"  class=" form-control" name="fabricacao" value="<%= produto ? produto.fabricacao:'' %>"/>
             </div>
             <div class="form-group flex-nowrap">
                 <label  class="font-weight-bold" for="peso">Peso:  (em gramas)</label>
-                <input type="text" id="peso"  class="  form-control" name="peso" value="<%=produto.peso%>"/>
+                <input type="text" id="peso"  class="  form-control" name="peso" value="<%= (produto ? produto.peso : '')%>"/>
             </div>
             <div class="form-group flex-nowrap">
                 <label class="font-weight-bold"  for="desc_produto">Descrição: </label class="font-weight-bold">
-                <textarea id="desc_produto" name="desc_produto"  class=" form-control" rows="5" cols="100"><%=produto.desc_produto%></textarea>
+                <textarea id="desc_produto" name="desc_produto"  class=" form-control" rows="5" cols="100"><%= (produto ? produto.desc_produto : "")%></textarea>
             </div>
             <div class="form-group flex-nowrap">
                 <label  class="font-weight-bold" for="utilidade">Utilidade: </label>
-                <textarea id="utilidade" name="utilidade"  class=" form-control" rows="5" cols="100"><%=produto.utilidade%></textarea>
+                <textarea id="utilidade" name="utilidade"  class=" form-control" rows="5" cols="100"><%= (produto ? produto.utilidade : "")%></textarea>
             </div>
             <div class="form-group flex-nowrap">
                 <label  class="font-weight-bold" for="composicao">Composição: </label>
-                <textarea id="composicao" name="composicao"  class=" form-control" rows="5" cols="100"><%=produto.composicao%></textarea>
+                <textarea id="composicao" name="composicao"  class=" form-control" rows="5" cols="100"><%= (produto ? produto.composicao : "")%></textarea>
             </div>
             <div class="form-group flex-nowrap">
                 <label class="font-weight-bold" for="imagem">Alterar imagem do produto: </label>
-                <input id="imagem" name="imagem" type="file" class="" value="/imagens/produtos/s<%=produto.id_produto%>" accept=".jpg"/>
+                <input id="imagem" name="imagem" type="file" class="" accept="image/jpeg"/>
             </div>
 
             <div>
                 
                 <a class="btn btn-light" href="/produto/listar">Voltar</a>
-                <button type="submit" class="btn btn-success">Salvar</button>
+                <button type="submit" class="btn btn-success">
+                    <%= (produto ? "Salvar" : "Criar") %>
+                </button>
 
             </div>
         </form>
@@ -57,8 +62,20 @@
 </div>
 
 <	<script type="text/javascript">
-		
-    $("#formEditar").validate({
+    // Quando existir um id no campo hidden quer dizer que estamos salvando, não criando
+	let valorDoId = $("#id_produto").val(); // .val() sempre retorna string!
+	let valorDoIdInt = parseInt(valorDoId);
+
+	let criando;
+
+	if (valorDoIdInt) {
+		criando = false;
+	} else {
+		criando = true;
+	}
+    
+
+    $("#form").validate({
         
         rules: {
             
@@ -77,12 +94,9 @@
                 number: true,
                 min: 0
             },
-            
-        /*    fabricacao: {
-                
-            },
-        */  
+          
             peso: {
+                required: false,
                 number: true,
                 minlength: 1,
                 maxlength: 4
@@ -100,9 +114,9 @@
                 maxlength: 1000
             },
 
-            /*imagem: {
-
-            } */
+            imagem: {
+                required: criando
+            }
         },
         
         submitHandler: function () {
@@ -113,14 +127,26 @@
             
             let opcoes = {
                 
-                url: ("/api/produto/alterar"),
+                url: (criando ? "/api/produto/criar" : "/api/produto/alterar"),
                 
                 // Não precisa do cache para POST e PUT!
                 method: "POST",
                 
-                data: $("#formEditar").serialize(),
+                data: new FormData(form),
+				processData: false,
+				contentType: false,
+
+                //data: $("#formEditar").serialize(),
                 
                 success: function (dadosDeRetorno) {
+                    if (criando) {
+						// Primeiro limpa todos os campos
+						$("#form").trigger("reset");
+
+						// Depois reseta a validação dos campos
+						$("#form").validate().resetForm();
+					}
+
                     alert("Sucesso! " + dadosDeRetorno);
                 },
                 

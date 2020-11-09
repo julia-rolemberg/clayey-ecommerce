@@ -1,4 +1,6 @@
 import Sql = require("../infra/sql");
+import FS = require("../infra/fs");
+import Upload = require("../infra/upload");
 
 export = class Produto {
     public id_produto: number;
@@ -38,6 +40,25 @@ export = class Produto {
         return null;
     }
 
+    private static validarImagem(imagem: any): string {
+		// Vamos retornar uma string sempre que houver algum erro
+		// de validação, ou null se tudo estiver OK!
+
+		if (!imagem) {
+			return "Imagem do produto faltando";
+		}
+
+		if (!imagem.buffer || !imagem.size) {
+			return "Imagem do produto inválida";
+		}
+
+		if (imagem.size > (1024 * 1024)) {
+			return "Imagem do produto muito grande";
+		}
+
+		return null;
+	}
+
     public static async listar(): Promise<Produto[]>{
         let lista: Produto[] = null;
         await Sql.conectar(async (sql) =>{
@@ -46,15 +67,28 @@ export = class Produto {
         return lista;
     }
 
-    public static async criar(produto: Produto): Promise<string>{
+    public static async criar(produto: Produto, imagem: any): Promise<string>{
         let erro: string = Produto.validar(produto);
 
         if(erro){
             return erro;
         }
 
+        erro = Produto.validarImagem(imagem);
+		if (erro) {
+			return erro;
+		}
+
         await Sql.conectar(async(sql)=>{
+            await sql.beginTransaction();
+
             let lista = await sql.query("insert into Produto ( nome_produto, desc_produto, utilidade, composicao, valor_produto) values (?, ?, ?, ?, ?) ", [produto.nome_produto, produto.desc_produto, produto.utilidade, produto.composicao, produto.valor_produto]);
+
+            produto.id_produto = await sql.scalar("select last_insert_id()");
+
+            await Upload.gravarArquivo(imagem, "imagens/produtos", "s" + produto.id_produto + ".jpg");
+
+            await sql.commit();
         });
 
         return erro;
@@ -75,16 +109,34 @@ export = class Produto {
 
     }
 
-    public static async alterar(produto: Produto): Promise<string>{
+    public static async alterar(produto: Produto, imagem: any): Promise<string>{
         let erro: string = Produto.validar(produto);
 
 
         if(erro){
             return erro;
         }
+
+        if (imagem) {
+			erro = Produto.validarImagem(imagem);
+			if (erro) {
+				return erro;
+			}
+        }
         
         await Sql.conectar(async(sql)=>{
+            await sql.beginTransaction();
+
             let lista = await sql.query("update produto set nome_produto = ?, desc_produto = ?, utilidade=?, composicao= ?, valor_produto=?, qtdeDisponivel=?, peso=?, fabricacao=?  where id_produto = ?",[produto.nome_produto, produto.desc_produto, produto.utilidade, produto.composicao, produto.valor_produto, produto.qtdeDisponivel, produto.peso, produto.fabricacao, produto.id_produto]);
+        
+            if (!sql.linhasAfetadas) {
+				erro = "Produto não encontrado";
+			} else if (imagem) {
+				// Como a foto é opcional na edição, precisamos primeiro verificar se ela existe.
+				await Upload.gravarArquivo(imagem, "imagens/produtos", "s" + produto.id_produto + ".jpg");
+            }
+            
+            await sql.commit();
         });
 
         return erro;
@@ -94,11 +146,17 @@ export = class Produto {
         let erro: string = null;
 
         await Sql.conectar(async(sql)=>{
+            await sql.beginTransaction();
+
             let lista = await sql.query("delete from produto where id_produto = ?",[id_produto]);
          
             if(!sql.linhasAfetadas){
                 erro = 'Produto não encontrado';
-            }
+            } else {
+				await FS.excluirArquivo("imagens/produtos/s" + id_produto + ".jpg");
+			}
+
+			await sql.commit();
         });
 
         return erro;
