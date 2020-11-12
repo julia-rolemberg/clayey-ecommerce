@@ -6,7 +6,8 @@
                 <form id="form">
                     <div class="row mt-4">
                         <div class="col-sm-12">
-                            <div class="input-group flex-nowrap">
+                            <div class="form-group">
+                                <label for="nome_cliente">Nome Completo</label>
                                 <input type="text" id="nome_cliente" name="nome_cliente"  class="form-control" placeholder="nome completo" value="<%= cliente ? cliente.nome_cliente:0 %>"  aria-label="nome completo"
                                     aria-describedby="addon-wrapping">
                             </div>
@@ -15,7 +16,8 @@
                     <div class="row mt-3">
                         
                         <div class="col-sm-12">
-                            <div class="input-group flex-nowrap">
+                            <div class="form-group">
+                                <label for="email">Email</label>
                                 <input type="text" id="email" name="email" class="form-control" placeholder="email" aria-label="email" value="<%= cliente ? cliente.email:0 %>"
                                     aria-describedby="addon-wrapping">
                             </div>
@@ -24,13 +26,15 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-sm-4">
-                            <div class="input-group flex-nowrap">
+                            <div class="form-group">
+                                <label for="cep_cliente">CEP</label>
                                 <input type="text" id="cep_cliente" name="cep_cliente" class="form-control" placeholder="CEP" aria-label="CEP" value="<%= cliente ? cliente.cep_cliente:0 %>"
                                     aria-describedby="addon-wrapping">
                             </div>
                         </div>
                         <div class="col-sm-8">
-                            <div class="input-group flex-nowrap">
+                            <div class="form-group">
+                                <label for="rua_cliente">Rua</label>
                                 <input type="text" id="rua_cliente" name="rua_cliente" class="form-control" placeholder="rua" aria-label="rua" value="<%= cliente ? cliente.rua_cliente:0 %>"
                                     aria-describedby="addon-wrapping">
                             </div>
@@ -40,13 +44,15 @@
                    
                     <div class="row mt-3">
                         <div class="col-sm-3">
-                            <div class="input-group flex-nowrap">
+                            <div class="form-group">
+                                <label for="num_casa">N°</label>
                                 <input type="text" id="num_casa" name="num_casa" class="form-control" placeholder="n°" aria-label="número Casa" value="<%= cliente ? cliente.num_casa:0 %>"
                                     aria-describedby="addon-wrapping">
                             </div>
                         </div>
                         <div class="col-sm-9">
-                            <div class="input-group flex-nowrap">
+                            <div class="form-group">
+                                <label for="bairro_cliente">Bairro</label>
                                 <input type="text" id="bairro_cliente" name="bairro_cliente" class="form-control" placeholder="bairro" aria-label="bairro" value="<%= cliente ? cliente.bairro_cliente:0 %>"
                                     aria-describedby="addon-wrapping">
                             </div>
@@ -57,13 +63,15 @@
                     <div class="row mt-3">
                        
                         <div class="col-sm-6">
-                            <div class="input-group flex-nowrap">
+                            <div class="form-group">
+                                <label for="complemento">Complemento</label>
                                 <input type="text" id="complemento" name="complemento" class="form-control" placeholder="complemento" aria-label="complemento" value="<%= cliente ? cliente.complemento:0 %>"
                                     aria-describedby="addon-wrapping">
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="input-group flex-nowrap">
+                            <div class="form-group">
+                                <label for="cidade_cliente">Cidade</label>
                                 <input type="text" id="cidade_cliente" name="cidade_cliente" class="form-control" placeholder="cidade" aria-label="cidade" value="<%= cliente ? cliente.cidade_cliente:0 %>"
                                     aria-describedby="addon-wrapping">
                             </div>
@@ -72,7 +80,8 @@
                     <div class="row mt-3">
                         
                         <div class="col-sm-5">
-                            <div class="input-group flex-nowrap">
+                            <div class="form-group">
+                                <label for="estado_cliente">Estado</label>
                                 <select id="estado_cliente" name="estado_cliente" class="form-control">
                                     <option selected>Estado</option>
                                     <option>SP</option>
