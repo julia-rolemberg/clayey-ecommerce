@@ -160,31 +160,49 @@
             }
 
 		},
-//$("#date").mask("99/99/9999");
 		submitHandler: function () {
-			
-			
-			let opcoes = {
-                url:("/api/cliente/adicionarEndereco"),
-               
-                method:"POST",
-				data: $("form").serialize(),
-				
-                success: function(dadosDeRetorno){
-					alert("Endereço adicionado com sucesso! ");
-				
-                },
-                error: function(){
-					alert("deu ruim");
-                }
-
-            };
-            $.ajax(opcoes);
+            let carrinho = shoppingCart.listCart();
+            let produtos = [];
+            for (let i in carrinho) {
+                produtos.push({
+                    id_produto: (carrinho[i].id),
+                    qtde: (carrinho[i].qtd)
+                });
             }
 
+            let pedido = {
+                cliente: {
+                    nome_cliente: $("#nome_cliente").val(),
+                    email: $("#email").val(),
+                    cep_cliente: $("#cep_cliente").val(),
+                    bairro_cliente: $("#bairro_cliente").val(),
+                    rua_cliente: $("#rua_cliente").val(),
+                    num_casa: $("#num_casa").val(),
+                    complemento: $("#complemento").val(),
+                    cidade_cliente: $("#cidade_cliente").val(),
+                    estado_cliente: $("#estado_cliente").val()
+                },
+                produtos: produtos
+            };
 
+            let opcoes = {
+				url: "/api/pedido/criar",
 
+				method: "POST",
+
+                data: JSON.stringify(pedido),
+                processData: false,
+                contentType: "application/json",
+
+				success: function (dadosDeRetorno) {
+					alert("Pedido criado com sucesso! ");
+				},
+				error: function () {
+					alert("deu ruim");
+				}
+			};
+			$.ajax(opcoes);
 		}
-	);
+    });
    
 </script>

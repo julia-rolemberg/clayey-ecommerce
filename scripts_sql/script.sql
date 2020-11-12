@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `clayey`.`Produto` (
 
 CREATE TABLE IF NOT EXISTS `clayey`.`Pedido` (
   id_pedido INT primary key AUTO_INCREMENT,
-  data_pedido varchar(10) NOT NULL,
+  data_pedido DATETIME NOT NULL,
   id_cliente INT not null,
   foreign key (id_cliente) references Cliente(id_cliente),
   valor_total DECIMAL(10,2) NOT NULL

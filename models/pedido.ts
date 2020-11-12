@@ -1,6 +1,12 @@
 import Sql = require("../infra/sql");
 
-export = class Pedido{
+class ProdutoPedido {
+    public id_produto: number;
+    public qtde: number;
+    public valor_item: number;
+}
+
+export = class Pedido {
     
     public id_pedido : number;
     public data_pedido: String; //YYYY-MM-DD
@@ -11,14 +17,10 @@ export = class Pedido{
     public qtde: number;
     public email: string;
 
-
-    public static validar(pedido: Pedido): string{
-
-        if(!pedido){
-            return "Dados inválidos";
-        }
+    public static validar(pedido: Pedido): string {
         return null;
     }
+
     public static async listar(): Promise<Pedido[]>{
         let lista: Pedido[] = null;
         await Sql.conectar(async (sql) =>{
@@ -27,17 +29,45 @@ export = class Pedido{
         });
         return lista;
     }
-    public static async criar(pedido: Pedido): Promise<string>{
-        let erro: string = Pedido.validar(pedido);
-      
-        if(erro){
-            return erro;
+
+    public static async criar(id_cliente: number, produtos: ProdutoPedido[]): Promise<string>{
+        if (!produtos || !produtos.length) {
+            return "Dados inválidos";
         }
 
-        await Sql.conectar(async(sql)=>{     
-            let listaPedido = await sql.query("insert into pedido ( data_pedido, id_cliente, valor_total) values ('2020-12-03', 1, ?, ?) ",[pedido.valor_total]);
-            pedido.id_pedido = await sql.scalar("select last_insert_id()");
-            let listaItem = await sql.query("insert into item (id_produto, id_pedido, qtde, valor_item) values (?, ?, ?, ?); ",[pedido.id_produto, pedido.id_pedido, pedido.qtde, pedido.valor_item]);
+        let erro: string = null;
+
+        await Sql.conectar(async(sql)=>{
+            await sql.beginTransaction();
+
+            let valorTotal = 0;
+            for (let i = 0; i < produtos.length; i++) {
+                produtos[i].qtde = parseInt(produtos[i].qtde as any);
+                if (isNaN(produtos[i].qtde) || produtos[i].qtde <= 0) {
+                    erro = "Quantidade inválida";
+                    return;
+                }
+                const lista = await sql.query("select id_produto, valor_produto, qtdeDisponivel from produto where id_produto = ?", [produtos[i].id_produto]);
+                if (!lista || !lista.length) {
+                    erro = "Produto não encontrado";
+                    return;
+                }
+                //if (produtos[i].qtde > lista[0].qtdeDisponivel) {
+                //    erro = "Quantidade não disponível";
+                //    return;
+                //}
+                produtos[i].valor_item = lista[0].valor_produto;
+                valorTotal += produtos[i].qtde * produtos[i].valor_item;
+            }
+            
+            await sql.query("insert into pedido (data_pedido, id_cliente, valor_total) values (now(), ?, ?) ",[id_cliente, valorTotal]);
+            const id_pedido = await sql.scalar("select last_insert_id()") as number;
+
+            for (let i = 0; i < produtos.length; i++) {
+                await sql.query("insert into item (id_produto, id_pedido, qtde, valor_item) values (?, ?, ?, ?); ",[produtos[i].id_produto, id_pedido, produtos[i].qtde, produtos[i].valor_item]);
+            }
+
+            await sql.commit();
         });
 
         return erro;

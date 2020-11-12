@@ -147,13 +147,13 @@ export = class Cliente{
         }
 
         await Sql.conectar(async(sql)=>{
-            let lista = await sql.query("update cliente set nome = ?, email = ?, senha=? where id_cliente = ?",[cliente.nome_cliente, cliente.email, cliente.senha, cliente.id_cliente]);
+            await sql.query("update cliente set nome = ?, email = ?, senha=? where id_cliente = ?",[cliente.nome_cliente, cliente.email, cliente.senha, cliente.id_cliente]);
         });
 
         return erro;
     }
 
-    public static async adicionarEndereco(cliente: Cliente): Promise<string>{
+    public static async atualizarEndereco(cliente: Cliente): Promise<string>{
         let erro: string = Cliente.validar(cliente);
 
         if(erro){
@@ -161,7 +161,7 @@ export = class Cliente{
         }
 
         await Sql.conectar(async(sql)=>{
-            let lista = await sql.query("update cliente set cep_cliente = ? , num_casa = ?, rua_cliente=?, complemento=?, cidade_cliente = ?, bairro_cliente=?, estado_cliente=? where email = ?",[cliente.cep_cliente, cliente.num_casa,cliente.rua_cliente, cliente.complemento, cliente.cidade_cliente,cliente.bairro_cliente, cliente.estado_cliente, cliente.email]);
+            await sql.query("update cliente set cep_cliente = ? , num_casa = ?, rua_cliente=?, complemento=?, cidade_cliente = ?, bairro_cliente=?, estado_cliente=? where email = ?",[cliente.cep_cliente, cliente.num_casa,cliente.rua_cliente, cliente.complemento, cliente.cidade_cliente,cliente.bairro_cliente, cliente.estado_cliente, cliente.email]);
         });
 
         return erro;
