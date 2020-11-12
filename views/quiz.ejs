@@ -57,26 +57,43 @@
     <div id="result-container" class="revelacao text-center d-none q-container">
         <div class="t-quiz h1">RESULTADO</div>
         <div>
-            <img width=25% alt="nome sabonete" src="/imagens/produtos/s1.jpg"/>
-            <div class="h2">NOME DO SABONETE</div>
+            <img id="img-res" width=25% alt="imagem do sabonete" src=""/>
+            <div id="txt-res" class="h2"></div>
         </div>
         <div class="p-3">
             <button id="restart-btn" type="button" class="btn btn-light btn-lg">RECOMEÇAR</button>
-            <a class="btn btn-success btn-lg" href="/produto">VER NA LOJA</a>
+            <a id="btn-loja" class="btn btn-success btn-lg" href="">VER NA LOJA</a>
+        </div>
+    </div>
+
+<!-- Erro -->
+    <div id="error-container" class="text-center d-none q-container">
+        <div class="t-quiz h1">OPS...</div>
+        <div>
+            <img width=25% alt="nome sabonete" src="https://weakwifisolutions.com/wp-content/uploads/2019/08/error-red-cross-1.png?ezimgfmt=rs:372x372/rscb2/ng:webp/ngcb2"/>
+            <div class="h2">Desculpa, o seu resultado não foi encontrado. Por favor, tente novamente.</div>
+        </div>
+        <div class="p-3">
+            <button id="reset-btn" type="button" class="btn btn-light btn-lg">RECOMEÇAR</button>
         </div>
     </div>
 </div>
 
+<input type="hidden" id="produtos" value='[<% for(let i in lista){ %>{"id":<%= lista[i].id_produto %>, "nome":"<%= lista[i].nome_produto%>"}<% if(i < lista.length - 1){%>,<% } %><% } %>]'/>
+
+<%- include("quiz-questoes") %>
 <script type="text/javascript">
     const startButton = document.getElementById("start-btn")
     const nextButton = document.getElementById("next-btn")
     const finalizeButton = document.getElementById("final-btn")
     const resultButton = document.getElementById("result-btn")
     const restartButton = document.getElementById("restart-btn")
+    const resetButton = document.getElementById("reset-btn")
     const homeContainerElement = document.getElementById('home-container')
     const questionContainerElement = document.getElementById('question-container')
     const listContainerElement = document.getElementById("option-container")
     const resultContainerElement = document.getElementById('result-container')
+    const errorContainerElement = document.getElementById('error-container')
     const questionElement = document.getElementById("question")
     const answerButtonsElement = document.getElementById("answer-buttons")
 
@@ -84,7 +101,7 @@
     const layoutQuestion = document.getElementById("insert-question-container")
     const layoutList = document.getElementById("insert-option-container")
 
-    let shuffledQuestions, currentQuestionIndex
+    let currentQuestionIndex
     var escolhaAtual = ""
     var escolhas = []
 
@@ -99,18 +116,17 @@
     finalizeButton.addEventListener('click', () => {
         escolherResposta();
         currentQuestionIndex++
-        telaLista()//mudar o layout pra lista ocupar a tela inteira e sair o container de questões
+        telaLista()
         mostrarLista()
     })
-    resultButton.addEventListener('click', mostrarResultado)
+    resultButton.addEventListener('click', obterResultado)
     restartButton.addEventListener('click', () => {location.reload()})
+    resetButton.addEventListener('click', () => {location.reload()})
 
 
     function comecarJogo() {
-        console.log("Começou!")
         startButton.classList.add("d-none")
         homeContainerElement.classList.add("d-none")
-        shuffledQuestions = questions.sort(() => Math.random() - .5)
         currentQuestionIndex = 0
         questionContainerElement.classList.remove("d-none")
         proximaPergunta()
@@ -118,15 +134,15 @@
 
     function proximaPergunta() {
         resetarInstancia()
-        mostrarPergunta(shuffledQuestions[currentQuestionIndex])
+        mostrarPergunta(questoes[currentQuestionIndex])
     }
 
-    function mostrarPergunta(question) {
+    function mostrarPergunta(questao) {
         let contador = 0
-        questionElement.innerText = question.question
-        question.answers.forEach(answer => {
+        questionElement.innerText = questao.titulo
+        questao.alternativas.forEach(alternativa => {
             const button = document.createElement("button")
-            button.innerText = answer.text
+            button.innerText = alternativa.texto
             button.classList.add("btn")
             button.classList.add("btn-dark")
             button.classList.add("btn-lg")
@@ -154,7 +170,7 @@
     function clicouBotao(e) {
         var selectedButton = e.target
         escolhaAtual = selectedButton.textContent
-        if(shuffledQuestions.length > currentQuestionIndex + 1) {
+        if(questoes.length > currentQuestionIndex + 1) {
             nextButton.classList.remove("d-none")
         } else {
             finalizeButton.classList.remove('d-none')
@@ -181,7 +197,7 @@
         $('#option-buttons').html(lista);
 
         var barra = ""
-        let perc = (currentQuestionIndex / questions.length).toFixed(2)
+        let perc = (currentQuestionIndex / questoes.length).toFixed(2)
         perc *= 100
         barra += "<div class='progress'>" +
 				"<div class='progress-bar progress-bar-striped bg-dark progress-bar-animated active' role='progressbar'"+
@@ -204,83 +220,17 @@
         setTimeout(() => {barraCarregamento.remove(); resultButton.classList.remove('d-none');},5000)
     }
 
-    function mostrarResultado() {
+    function mostrarResultado(produto) {
         layoutList.remove()
-        resultContainerElement.classList.remove('d-none')
-    }
 
-
-    const questions = [
-        {
-            id: 1,
-            question: "Uma pergunta",
-            answers: [
-                {
-                    "text": "a - 1 ponto",
-                    "score": 1,
-                    "next": 2
-                },
-                {
-                    "text": "b - 3 pontos",
-                    "score": 3,
-                    "next": 2
-                },
-                {
-                    "text": "c - 5 pontos",
-                    "score": 5,
-                    "next": 3
-                },
-                {
-                    "text": "d - 5 pontos",
-                    "score": 5,
-                    "next": 3
-                },
-                {
-                    "text": "e - 5 pontos",
-                    "score": 5,
-                    "next": 3
-                },
-                {
-                    "text": "f - 5 pontos",
-                    "score": 5,
-                    "next": 3
-                }
-            ]
-        },
-        {
-            question: "Outra pergunta",
-            answers: [
-                {
-                    "text": "a - 1 ponto",
-                    "score": 1
-                },
-                {
-                    "text": "b - 3 pontos",
-                    "score": 3
-                },
-                {
-                    "text": "c - 5 pontos",
-                    "score": 5
-                }
-            ]
-        },
-        {
-            question: "Outrissima pergunta",
-            answers: [
-                {
-                    "text": "a - 1 ponto",
-                    "score": 1
-                },
-                {
-                    "text": "b - 3 pontos",
-                    "score": 3
-                },
-                {
-                    "text": "c - 5 pontos",
-                    "score": 5
-                }
-            ]
+        if(produto == false){
+            errorContainerElement.classList.remove('d-none')
+        } else {
+            $('#img-res').attr("src", "/imagens/produtos/s" + produto.id + ".jpg")
+            $('#txt-res').text(produto.nome)
+            $('#btn-loja').attr("href", "/produto/"+ produto.id)
+            resultContainerElement.classList.remove('d-none')
         }
-    ]
+    }
 
 </script>

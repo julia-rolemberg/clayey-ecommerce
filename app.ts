@@ -5,6 +5,7 @@ import path = require("path");
 import ejs = require("ejs");
 import lru = require("lru-cache");
 import Cliente = require("./models/cliente");
+import Produto = require("./models/produto");
 
 const app = express();
 
@@ -61,9 +62,11 @@ app.use("/cliente", require("./routes/cliente"));
 app.use("/api/item", require("./routes/api/item"));
 
 
-app.get("/quiz", (req: express.Request, res: express.Response) => {
-	res.render("quiz");
-});
+app.get("/quiz", wrap(async(req: express.Request, res: express.Response) => {
+	let lista = await Produto.listar();
+
+	res.render("quiz", {lista: lista});
+}));
 
 app.all("/login", wrap(async (req: express.Request, res: express.Response) => {
 	if (req.body && req.body.email && req.body.senha) {

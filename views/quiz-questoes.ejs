@@ -1,0 +1,157 @@
+<script type="text/javascript">
+let temp = document.getElementById("produtos").value;
+const lista = JSON.parse(temp);
+
+const questoes = [
+    {
+        id: 1,
+        titulo: "Qual seu tipo de pele?",
+        alternativas: [
+            {
+                "texto": "Normal",
+                "next": 2
+            },
+            {
+                "texto": "Seca",
+                "next": 2
+            },
+            {
+                "texto": "Oleosa",
+                "next": 3
+            },
+            {
+                "texto": "Mista",
+                "next": 3
+            },
+            {
+                "texto": "Acneica",
+                "next": 3
+            }
+        ]
+    },
+    {
+        id: 2,
+        titulo: "O seu sabonete ideal deve ter função de:",
+        alternativas: [
+            {
+                "texto": "Hidratação profunda",
+                "next": 2
+            },
+            {
+                "texto": "Limpeza profunda",
+                "next": 2
+            },
+            {
+                "texto": "Esfoliação leve",
+                "next": 3
+            },
+            {
+                "texto": "Esfoliação média",
+                "next": 3
+            }
+        ]
+    },
+    {
+        id: 3,
+        titulo: "Os óleos essenciais além da fragrância têm efeitos terapêuticos coadjuvantes, o que você valoriza?",
+        alternativas: [
+            {
+                "texto": "Equilíbrio emocional",
+                "next": 2
+            },
+            {
+                "texto": "Relaxamento",
+                "next": 2
+            },
+            {
+                "texto": "Estimulante",
+                "next": 3
+            }
+        ]
+    },
+    {
+        id: 4,
+        titulo: "Na hora do banho, você gosta de:",
+        alternativas: [
+            {
+                "texto": "Muita espumação ",
+                "next": 2
+            },
+            {
+                "texto": "Espumação leve",
+                "next": 2
+            }
+        ]
+    },
+    {
+        id: 5,
+        titulo: "O seu sabonete ideal é:",
+        alternativas: [
+            {
+                "texto": "100% natural",
+                "next": 2
+            },
+            {
+                "texto": "100% natural e vegano",
+                "next": 2
+            }
+        ]
+    }
+]
+
+    const normal = questoes[0].alternativas[0].texto;
+    const seca = questoes[0].alternativas[1].texto;
+    const oleosa = questoes[0].alternativas[2].texto;
+    const mista = questoes[0].alternativas[3].texto;
+    const acneica = questoes[0].alternativas[3].texto;
+
+    const hidratacao = questoes[1].alternativas[0].texto;
+    const limpeza = questoes[1].alternativas[1].texto;
+    const esfoleve = questoes[1].alternativas[2].texto;
+    const esfomedia = questoes[1].alternativas[3].texto;
+
+    const equilibrio = questoes[2].alternativas[0].texto;
+    const relaxamento = questoes[2].alternativas[1].texto;
+    const estimulante = questoes[2].alternativas[2].texto;
+
+    const espualta = questoes[3].alternativas[0].texto;
+    const espuleve = questoes[3].alternativas[1].texto;
+
+    const natural = questoes[4].alternativas[0].texto;
+    const vegano = questoes[4].alternativas[1].texto;
+
+
+    //RESULTADOS
+    const resultados = [
+    //id_produto  -  [alternativa1, alternativa2, alternativa3...]  
+        {id: "1", path: [normal, hidratacao, estimulante, espuleve, vegano]},
+        {id: "1", path: [normal, hidratacao, estimulante, espuleve, natural]}
+    ]
+
+function comparaResultado() {
+    for(let i in resultados){
+        if(JSON.stringify(escolhas) == JSON.stringify(resultados[i].path)){
+            return resultados[i].id
+        }
+    }
+    return false;
+}   
+function obterResultado(){
+    //comparar o array do usuário com os resultados possíveis
+    const id = comparaResultado();
+    let produto
+
+    if(id !== false){
+        for(let i in lista){
+            if(lista[i].id == id){
+                produto = lista[i]
+                break;
+            }
+        }
+    } else {
+        produto = false;
+    }
+    
+    mostrarResultado(produto);
+}
+</script>
