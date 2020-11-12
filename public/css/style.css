@@ -218,11 +218,12 @@ a, a:hover{
     padding-top: 4%;
     padding-bottom: 4%;
   }
-  #biografia{
-      margin:10%;
-      margin-top:14%;
-      font-size: 20px;
-      font-weight: 600;
+  .biografia{
+      margin:4%;
+      margin-top: 10%;
+      font-size: 18px;
+    text-align: justify;
+      font-weight: 400;
       position: absolute;
   }
  #opcoesFooter ul{
@@ -254,11 +255,11 @@ footer {
     padding-top: 8%;
 }
 .principalP2{
-    background-image: url(/imagens/banners/fundo7.jpg);
+    /* background-image: url(/imagens/banners/fundo7.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center top;
-    background-attachment: fixed;
+    background-attachment: fixed; */
     width: 100%;
     min-height: 100%;
 
@@ -287,17 +288,17 @@ footer {
     margin:20px;
     border-radius: unset;
     border-style: none;
-    -webkit-transition: opacity 0.5s;
+    -webkit-transition: box-shadow 0.2s;
 }
 /* .card-img-top:hover {
     opacity: 1;
     border-radius: 30px;
 } */
 .card-produto:hover{
-    /* box-shadow: 0 0 4em #e4e4e4; */
-    opacity: 0.8;
+    box-shadow: 0 0 4em #e4e4e4;
+    /* opacity: 0.8; */
     /* border-radius: 30px; */
-    transition-duration: 1s;
+    transition-duration: 0.5s;
 
 }
 #subMenu{
@@ -533,6 +534,7 @@ footer {
 #sidebar {
     width: 250px;
     position: fixed;
+    z-index: 999;
     top: 0;
     left: 0;
     height: 100vh;

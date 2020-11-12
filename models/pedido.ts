@@ -9,7 +9,7 @@ export = class Pedido{
     public id_produto: number;
     public valor_item: number;
     public qtde: number;
-    public email: String;
+    public email: string;
 
 
     public static validar(pedido: Pedido): string{
@@ -35,7 +35,21 @@ export = class Pedido{
         }
 
         await Sql.conectar(async(sql)=>{     
-            let listaPedido = await sql.query("insert into pedido (id_pedido, data_pedido, id_cliente, valor_total) values (?, ?, ?, ?) ",[pedido.id_pedido, pedido.data_pedido, pedido.id_cliente, pedido.valor_total]);
+            let listaPedido = await sql.query("insert into pedido ( data_pedido, id_cliente, valor_total) values ('2020-12-03', 1, ?, ?) ",[pedido.valor_total]);
+            pedido.id_pedido = await sql.scalar("select last_insert_id()");
+            let listaItem = await sql.query("insert into item (id_produto, id_pedido, qtde, valor_item) values (?, ?, ?, ?); ",[pedido.id_produto, pedido.id_pedido, pedido.qtde, pedido.valor_item]);
+        });
+
+        return erro;
+    }
+    public static async adicionarItem(pedido: Pedido): Promise<string>{
+        let erro: string = Pedido.validar(pedido);
+      
+        if(erro){
+            return erro;
+        }
+
+        await Sql.conectar(async(sql)=>{     
             let listaItem = await sql.query("insert into item (id_produto, id_pedido, qtde, valor_item) values (?, ?, ?, ?); ",[pedido.id_produto, pedido.id_pedido, pedido.qtde, pedido.valor_item]);
         });
 

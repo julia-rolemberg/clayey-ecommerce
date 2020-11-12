@@ -115,7 +115,8 @@
             for (let i = 0; i < cart.length; i++) {
                 totalCart += cart[i].preco * cart[i].qtd;
             }
-            return "R$" + totalCart.toFixed(2).replace('.', ',');
+            return totalCart.toFixed(2);
+            // return "R$" + totalCart.toFixed(2).replace('.', ',');
         }
 
         // List cart
@@ -280,8 +281,50 @@
     $(document).ready(function () {
         if(window.location.pathname == "/finalizar"){
             var carrinho = shoppingCart.listCart();
-            console.log(carrinho);
+            for(i in carrinho){
+                let nome_produto = (carrinho[i].nome);
+                let id_produto = (carrinho[i].id);
+                let valor_item = (carrinho[i].preco);
+                let qtde = (carrinho[i].qtd);
+
+                enviar(id_produto, nome_produto, valor_item, qtde);
+
+            }
+            let valot_total = shoppingCart.totalCart();
+  
+            
+
+
+
         }
     });
 
+    function enviar(id_produto, nome_produto, valor_item, qtde){
+
+        let opcoes = {
+                url:("/api/pedido/criar"),
+               
+                method:"POST",
+				data: {
+                    id_cliente,
+                    id_produto,
+                    nome_produto,
+                    valor_item,
+                    qtde
+                },
+				
+                success: function(dadosDeRetorno){
+					alert("foi "+ dadosDeRetorno);
+				
+                },
+                error: function(){
+					alert("deu ruim");
+                }
+
+            };
+            $.ajax(opcoes);
+            }
+
+
+    }
 </script>
