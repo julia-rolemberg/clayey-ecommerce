@@ -48,7 +48,6 @@ app.use((req: express.Request, res: express.Response, next: express.NextFunction
 
 app.get("/", wrap(async (req: express.Request, res: express.Response) => {
 	const cliente = await Cliente.cookie(req.cookies);
-
 	res.render("index", { cliente: cliente });
 }));
 
@@ -63,6 +62,7 @@ app.use("/api/item", require("./routes/api/item"));
 
 
 app.get("/quiz", wrap(async(req: express.Request, res: express.Response) => {
+	
 	let lista = await Produto.listar();
 
 	res.render("quiz", {lista: lista});
@@ -97,9 +97,10 @@ app.get("/logout", wrap(async (req: express.Request, res: express.Response) => {
 app.get("/cadastro", (req: express.Request, res: express.Response) => {
 	res.render("cadastro");
 });
-app.get("/finalizar", (req: express.Request, res: express.Response) => {
-	res.render("finalizar-compra", {layout:"layout-finalizar"});
-});
+app.get("/finalizar", wrap(async(req: express.Request, res: express.Response) => {
+	const cliente = await Cliente.cookie(req.cookies);
+	res.render("finalizar-compra", {cliente: cliente, layout:"layout-finalizar"});
+}));
 
 
 app.listen(1337, () => {

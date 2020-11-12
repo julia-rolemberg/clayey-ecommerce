@@ -101,7 +101,7 @@ export = class Cliente{
             const token = cookie.substr(0, 64);
             const id_cliente = cookie.substr(64);
 
-            let lista = await sql.query("select id_cliente, nome_cliente, email from cliente where token = ? and id_cliente = ?",[token, id_cliente]);
+            let lista = await sql.query("select id_cliente, nome_cliente, email, cep_cliente, rua_cliente, num_casa, complemento, bairro_cliente, cidade_cliente, estado_cliente from cliente where token = ? and id_cliente = ?",[token, id_cliente]);
 
             if(lista && lista.length){
                 cliente = lista[0];
