@@ -95,11 +95,17 @@
     const quantity = document.getElementById("quant-text");
     const image = document.getElementById("image")
 
+    $("#quant-text").change(function(){
+        if($('#quant-text').val() <= 0){
+            $('#quant-text').val(1);
+        }
+    });
+
 
     function process(quant){
         var value = parseInt(document.getElementById("quant-text").value);
         value+=quant;
-        if(value < 1 || !(parseInt(value)) ){
+        if(!(parseInt(value)) ){
             document.getElementById("quant-text").value = 1;
         }else{
             document.getElementById("quant-text").value = value;

@@ -621,6 +621,10 @@ a[data-toggle="collapse"] {
     padding: 0 0 1em 0;
 }
 
+#toggle{
+    transition: all 0.3s;
+}
+
 /* esconde a navbar em telas pequenas */
 @media (max-width: 768px) {
     #paginaR {
@@ -631,5 +635,8 @@ a[data-toggle="collapse"] {
     }
     #sidebar.active {
         margin-left: 0;
+    }
+    #toggle.active{
+        margin-left: 250px
     }
 }

@@ -52,8 +52,9 @@
         
         $('#sidebarCollapse').on('click', function () {
             $('#sidebar').toggleClass('active');
+            $('#toggle').toggleClass('active');
 
-            if($('#paginaR').css("padding") == "50px 50px 0px 300px"){
+            if($('#sidebar').hasClass('active')){
                 $('#paginaR').css('padding',"50px 50px 0 50px");
             } else {
                 $('#paginaR').css("padding", "");
