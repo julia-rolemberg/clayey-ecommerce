@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `clayey`.`Produto` (
     composicao VARCHAR(1000) NOT NULL,
     valor_produto DECIMAL(10,2) NOT NULL,
     peso INT NOT NULL,
-    fabricacao VARCHAR(45) NOT NULL,
+    fabricacao DATETIME NOT NULL,
     qtdeDisponivel INT NOT NULL
   );
 
