@@ -138,7 +138,7 @@
     }
 
     function mostrarPergunta(questao) {
-        let contador = 0
+        let posicoes = [];
         questionElement.innerText = questao.titulo
         questao.alternativas.forEach(alternativa => {
             const button = document.createElement("button")
@@ -150,9 +150,21 @@
             button.classList.add("flutuar")
 
             //posicionamento aleatório
-            let x = Math.random() * 85;
-            let y = Math.random() * 62 + 20; //para não surgir fora do pai
+            let novo = true;
+            do{
+                var x = Math.random() * 85;
+                var y = Math.random() * 62 + 25;
 
+                for(let i = 0; i < posicoes.length; i++){
+                    if(x >= posicoes[i].x - 20 && x <= posicoes[i].x + 20 && y >= posicoes[i].y - 10 && y <= posicoes[i].y + 10) {
+                        novo = false
+                        break;
+                    }
+                    novo = true
+                }
+            } while (!novo);
+
+            posicoes.push({x: x, y: y})
             let estilo = "top:"+ y.toFixed(1) +"%; left: "+ x.toFixed(1) +"%;";
             button.setAttribute("style", estilo);
             button.addEventListener('click', clicouBotao)
