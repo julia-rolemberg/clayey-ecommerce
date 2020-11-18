@@ -252,7 +252,7 @@ a, a:hover{
 
 /* INICIO PÁGINA PRINCIPAL PRODUTOS */
 .principalP{
-    background-image: url(/imagens/banners/fundo3.jpg);
+    background-image: url(/imagens/banners/fundo9.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center top;
@@ -263,15 +263,12 @@ a, a:hover{
     padding-top: 8%;
 }
 .principalP2{
-    /* background-image: url(/imagens/banners/fundo7.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center top;
-    background-attachment: fixed; */
+
     width: 100%;
     min-height: 100%;
-
-}#textoBanner{
+    padding-top: 8%;
+}
+#textoBanner{
     text-align: center;
     padding: 100px;
     margin: 0 auto;
@@ -375,15 +372,33 @@ a, a:hover{
 
 
 /* finalizar compra */
-#esqCheckout, #dirCheckout{
-    
-    padding:100px;
-    padding-top: 150px;
 
+.caminhoPaginas{
+    position: absolute;
+    top:40px;
+    left:80px;
+    font-size: 14px;
+    opacity: 0.9;
+
+
+}
+.breadcrumb{
+    background-color: transparent !important;
+
+}
+
+#esqCheckout, #dirCheckout{
+    padding:100px;
+    
+}
+#esqCheckout h3, #dirCheckout h3{
+    font-weight: 700;
 }
 #esqCheckout{
     background-color: white;
 }
+
+
 /* fim finalizar compra */
 
 

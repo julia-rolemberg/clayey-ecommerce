@@ -1,8 +1,18 @@
-<div class="banner" class="container-fluid" style="background-color: #f2f2f2; overflow-x: hidden;">
+<div class="banner " class="container-fluid" >
+   
     <div class="row">
         <div class="col-lg-6">
+           
             <div id="esqCheckout">
-                <h4>Endereço de Entrega</h4>
+               <!-- <p class="caminhoPaginas"><a href="/">Home</a> > <a href="/produto">Produtos</a> > <b> Finalizar Pedido</b></p> -->
+               <nav class="caminhoPaginas" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/">Home</a></li>
+                  <li class="breadcrumb-item"><a href="/produto">Produtos</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Finalizar Compra</li>
+                </ol>
+              </nav>
+                <h3>Endereço de Entrega</h3>
                 <form id="form">
                     <div class="row mt-4">
                         <div class="col-sm-12">
@@ -100,7 +110,7 @@
 
         <div class="col-lg-6">
             <div id="dirCheckout">
-                <h4>Resumo do pedido</h4>
+                <h3>Resumo do pedido</h3>
                 <div id="listaPedido"></div>
                 <div class="h3 text-center pt-3">Total: <span id="totalp"></span></div>
             </div>
@@ -195,7 +205,12 @@
                 contentType: "application/json",
 
 				success: function (dadosDeRetorno) {
-					alert("Pedido criado com sucesso! ");
+                    alert("Pedido finalizado com sucesso! ");
+                    shoppingCart.clearCart();
+                    displayCart();
+                    attCartIten();
+                    window.location.href='/';
+                    
 				},
 				error: function () {
 					alert("deu ruim");
