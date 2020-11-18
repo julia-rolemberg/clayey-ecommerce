@@ -103,7 +103,9 @@ body, html{
     font-family: 'Noto Serif JP';
     font-weight: 500;
 }
-
+.a1:hover{
+    opacity: 1;
+}
 .menu  .iconesPessoais{
     margin-top: 6px;
     margin-right: 30px;
@@ -233,13 +235,19 @@ a, a:hover{
  #opcoesFooter ul li{
     display: inline-block;
     margin-right: 10px;
+
 }
-footer {
+#opcoesFooter ul li a, #contatoFooter{
+    color: white;
+}
+#footer {
     padding-top:4%;
+    
 }
 .logoFooter{
     font-family: 'Noto Serif JP';
-    opacity: 0.6;
+    color: white;
+    opacity: 0.8;
 }
 
 /* INICIO PÁGINA PRINCIPAL PRODUTOS */
@@ -290,11 +298,17 @@ footer {
     border-style: none;
     -webkit-transition: box-shadow 0.2s;
 }
+.card-mostruario{
+    border-radius: unset;
+    border-style: none;
+    -webkit-transition: box-shadow 0.2s;
+    margin:10px;
+}
 /* .card-img-top:hover {
     opacity: 1;
     border-radius: 30px;
 } */
-.card-produto:hover{
+.card-produto:hover, .card-mostruario:hover{
     box-shadow: 0 0 4em #e4e4e4;
     /* opacity: 0.8; */
     /* border-radius: 30px; */
