@@ -252,7 +252,7 @@ a, a:hover{
 
 /* INICIO PÁGINA PRINCIPAL PRODUTOS */
 .principalP{
-    background-image: url(/imagens/banners/fundo9.jpg);
+    background-image: url(/imagens/banners/fundo3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center top;
@@ -261,6 +261,9 @@ a, a:hover{
     width: 100%;
     min-height: 100%;
     padding-top: 8%;
+}
+#tituloProdutos{
+    font-weight: 700;
 }
 .principalP2{
 
@@ -495,14 +498,13 @@ a, a:hover{
 
 .btn-quiz{
     max-width: 300px;
-    height: 60px;
+    height: 55px;
     text-align: center;
     cursor: pointer;
     background: rgba(255, 255, 255, 0.7);
     transition: .5s;
-    font-size: 24px;
+    font-size: 20px;
     border-radius: 5px;
-    font-family: "Montserrat",sans-serif;
     border: 2px solid #FFA319;
     color: #FFA319;
 }
@@ -510,7 +512,6 @@ a, a:hover{
 .btn-quiz:hover{
     border: none;
     color: white;
-    font-size: 28px;
     transform:scale(1.1);
     background-color: #FFA319;
     transition: all 0.3s ease-in-out;

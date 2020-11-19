@@ -6,12 +6,11 @@
                 <div id="img-container" class="container-md col-md-6">
                     <div><img id="image" class="w-100 h-100 mx-auto" src="/imagens/produtos/s<%=produto.id_produto%>.jpg"/></div>
                 </div>
-    
-    
+
                 <div name="text-container" class="container-md col-md-6">
                     <div>
-                        <div id="title" class="text-left h1 text-secondary"><%=produto.nome_produto%></div>
-                        <div id="price" class="text-left h2 text-secondary">R$ <%=(produto.valor_produto).toFixed(2).replace('.', ',')%></div>
+                        <div id="title" class="text-left  text-secondary"><h1><%=produto.nome_produto%> </h1></div>
+                        <div id="price" class="text-left text-secondary"><h3>R$ <%=(produto.valor_produto).toFixed(2).replace('.', ',')%> </h3></div>
                     </div>
     
                     <form class="form-inline">
