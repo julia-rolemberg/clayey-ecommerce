@@ -125,6 +125,7 @@ body, html{
     padding: 0 5px;
     border-radius: 30%;
     color: white;
+    background-color: rgb(230 100 0);
 }
  .menu ul {
     text-align: center;
@@ -533,11 +534,13 @@ a, a:hover{
     line-height: 1.5;
     position: relative;
     margin: auto;
-    padding: 8% 0 2% 0;
 }
 
 .lista{
-    margin-top: 90px
+    margin-top: 40px;
+    max-width: 500px;
+    padding: 25px 15px;
+    text-align: center;
 }
 
 #option-container{
@@ -547,12 +550,11 @@ a, a:hover{
 }
 
 .div-escolha{
-    background-image: url('/imagens/gradiente_quiz.jpg');
-    background: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    border: none;
-    border-radius: 20px;
+    background-color: #E66400;
+    color:white;
+    font-weight: bold;
+    max-width: 300px;
+    margin: 0 auto;
 }
 
 .btn-quiz{
@@ -564,15 +566,15 @@ a, a:hover{
     transition: .5s;
     font-size: 20px;
     border-radius: 5px;
-    border: 2px solid #FFA319;
-    color: #FFA319;
+    border: 2px solid #E66400;
+    color:  #E66400;
 }
 
 .btn-quiz:hover{
     border: none;
     color: white;
     transform:scale(1.1);
-    background-color: #FFA319;
+    background-color: #E66400;
     transition: all 0.3s ease-in-out;
 }
 
@@ -581,15 +583,31 @@ a, a:hover{
     background-repeat: no-repeat;
     background: cover;
     background-position: center center;
-    
 }
 
 .btn-quiz2{
     padding: 10px 6em;
     margin-bottom: 1em;
     text-align: center;
-    background-color: #FFA319;
+    background-color: #E66400;
     color:white;
+}
+
+.btn-quiz2:hover{
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.redondo{
+    width: 45px;
+    height: 45px;
+    padding: 6px 0px;
+    border-radius: 40px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.42857;
+    position: sticky;
+    top:0;
+    left: 10%
 }
 
 .img-box{
@@ -602,6 +620,12 @@ a, a:hover{
     height: 100%;
 }
 
+@media(max-width: 425px){
+    .lista{
+        max-width: 100%;
+    }
+}
+
 @media (max-width: 768px) {
     .telaQuiz {
         padding: 200px 0 0 0;
@@ -610,6 +634,15 @@ a, a:hover{
         margin-top: 0;
         margin-bottom: 50px;
     }
+}
+
+.alternativa{
+    display: block;
+    margin: 0 auto;
+    width: 250px;
+    padding: 15px 0;
+    font-size: 20px;
+
 }
 
 /* FIM QUIZ */

@@ -4,14 +4,14 @@
     cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite alternate both;
 }
 
- @keyframes slide-top {
-    0% {
-      transform: translateY(0);
-    }
-    100% {
-      transform: translateY(-20px);
-    }
+@keyframes slide-top {
+  0% {
+    transform: translateY(0);
   }
+  100% {
+    transform: translateY(-10px);
+  }
+}
   
 .surgir-fade {
   animation: slide-fwd-center 1s cubic-bezier(0.445, 0.050, 0.550, 0.950) both;
