@@ -1,0 +1,52 @@
+<nav id="navbar" class="menu smart-scroll clearfix ">
+
+    <a class="a1"> <h1 class="mt-2 ml-4">CLA•YEY</h1> </a>
+
+    <ul class="mt-0 mr-0">
+        <li><a href="/">Home</a></li>
+        <li><a href="/produto">Produtos</a></li>
+        <li><a href="/quiz">Sabonete Perfeito</a></li>
+        <li><a href="#">Contato</a></li>
+    </ul>
+
+    <div class="iconesPessoais">
+        <a href="/login" id="iconeUsuario" class="btn">
+            <span class="fa fa-user"></span>
+        </a>
+        <button type="button" id="iconeCarrinho" class="btn">
+            <span class="fa fa-shopping-cart"><span id="itensNoCarrinho" class="bg-primary invisible">0</span></span>
+        </button>
+    </div>
+
+</nav>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#fecharCarrinho, .overlay').on('click', ocultarCarrinho);
+
+        $('#iconeCarrinho').on('click', exibirCarrinho);
+    });
+
+    // add padding top to show content behind navbar
+    $('body').css('padding-top', $('.navbar').outerHeight() + 'px')
+
+
+
+    // detect scroll top or down
+    if ($('.smart-scroll').length > 0) { // check if element exists
+        var last_scroll_top = 0;
+        $(window).on('scroll', function () {
+            scroll_top = $(this).scrollTop();
+            if (scroll_top < last_scroll_top) {
+                $('.smart-scroll').removeClass('scrolled-down').addClass('scrolled-up');
+            }
+            else {
+                $('.smart-scroll').removeClass('scrolled-up').addClass('scrolled-down');
+            }
+            last_scroll_top = scroll_top;
+        });
+    }
+
+
+
+</script>
