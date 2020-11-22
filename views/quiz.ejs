@@ -1,8 +1,8 @@
 <% titulo = "Sabonete Perfeito" %>
 
-<div class="telaQuiz principalP2">
+<div id="tela" class="principalP2">
 <!-- Início -->
-    <div id="home-container" class="bg-raio text-center mx-auto">
+    <div id="home-container" class="text-center mx-auto">
         <div id="home-conteudo" class="q-container">
             <div class="limitador">
                 <div class="t-quiz"> 
@@ -18,7 +18,7 @@
     </div>
 
     <!-- Questões / Lista layout-->
-    <div class="container-fluid">
+    <div id="layout" class="container-fluid d-none">
         <div class="row">
             <div id="insert-question-container" class="col-lg-10">
 
@@ -31,36 +31,38 @@
 
     <!-- Questões -->
     <div id="question-container" class="d-none q-container">
+        <button id="reset-btn" type="button" class="btn btn-light redondo d-none"><span class="fa fa-undo"></span></button>
         <div id="question" class="text-center h3">Question</div>
-        <div id="answer-buttons" style="height:50vh">
-            <button class="btn btn-light btn-lg">Resposta 1</button>
+        <div id="answer-buttons" class="text-center my-5" style="max-height:90%">
+            <button class="btn btn-light">Resposta 1</button>
         </div>
-        <div class="text-center">
-            <button id="next-btn" type="button" class="btn btn-quiz2 d-none">Próximo</button>
-            <button id="final-btn" type="button" class="btn btn-quiz2 d-none">Finalizar</button>
+        <div id="botoes" class="text-center mb-3">
+            <button id="next-btn" type="button" class="btn btn-quiz2 mx-auto d-none">Próximo</button>
+            <button id="final-btn" type="button" class="btn btn-quiz2 mx-auto d-none">Finalizar</button>
+            <!-- btn recomeçar -->
         </div>
     </div>
 
     <!-- Lista -->
-    <div id="option-container" class="p-2 d-none lista">
-        <div class="h2 p-2 mb-1 text-center">Escolhas</div>
-            <div id="option-buttons" class="text-white text-center">
-                <div class="p-2 bg-danger">Escolha1</div>
+    <div id="option-container" class="d-none lista">
+        <div class="h2 mb-1">Escolhas</div>
+            <div id="option-buttons">
+                
             </div>
-        <div id="option-bar" class="mt-3 mb-1">
-            
-        </div>
-        <div class="d-flex justify-content-center">
-            <button id="result-btn" type="button" class="btn btn-secondary d-none">Resultado</button>
+        <div class="mt-4">
+            <div id="option-bar">
+                
+            </div>
+            <button id="result-btn" type="button" class="btn bg-dark text-white d-none" style="padding: 5px 100px">Resultado</button>
         </div>
     </div>
         
 <!-- Resultado -->
     <div id="result-container" class="revelacao text-center d-none q-container">
         <div class="t-quiz h1">RESULTADO</div>
-        <div>
-            <img id="img-res" width=25% alt="imagem do sabonete" src=""/>
-            <div id="txt-res" class="h2"></div>
+        <div class="my-3">
+            <img id="img-res" width=30% alt="imagem do sabonete" src=""/>
+            <div id="txt-res" class="h2 mt-4"></div>
         </div>
         <div class="p-3">
             <button id="restart-btn" type="button" class="btn btn-light btn-lg">RECOMEÇAR</button>
@@ -75,10 +77,8 @@
             <img width=25% alt="nome sabonete" src="https://weakwifisolutions.com/wp-content/uploads/2019/08/error-red-cross-1.png?ezimgfmt=rs:372x372/rscb2/ng:webp/ngcb2"/>
             <div class="h2">Desculpa, o seu resultado não foi encontrado. Por favor, tente novamente.</div>
         </div>
-        <div class="p-3">
-            <button id="reset-btn" type="button" class="btn btn-light btn-lg">RECOMEÇAR</button>
-        </div>
     </div>
+
 </div>
 
 <input type="hidden" id="produtos" value='[<% for(let i in lista){ %>{"id":<%= lista[i].id_produto %>, "nome":"<%= lista[i].nome_produto%>"}<% if(i < lista.length - 1){%>,<% } %><% } %>]'/>
@@ -140,35 +140,19 @@
     }
 
     function mostrarPergunta(questao) {
+        resetButton.classList.remove('d-none')
         let posicoes = [];
+        let qtdquestoes = questao.alternativas.length;
         questionElement.innerText = questao.titulo
         questao.alternativas.forEach(alternativa => {
             const button = document.createElement("button")
             button.innerText = alternativa.texto
             button.classList.add("btn")
             button.classList.add("btn-dark")
-            button.classList.add("btn-lg")
-            button.classList.add("position-absolute")
+            button.classList.add("alternativa")
+            button.classList.add("mt-3")
             button.classList.add("flutuar")
 
-            //posicionamento aleatório
-            let novo = true;
-            do{
-                var x = Math.random() * 85;
-                var y = Math.random() * 62 + 25;
-
-                for(let i = 0; i < posicoes.length; i++){
-                    if(x >= posicoes[i].x - 20 && x <= posicoes[i].x + 20 && y >= posicoes[i].y - 10 && y <= posicoes[i].y + 10) {
-                        novo = false
-                        break;
-                    }
-                    novo = true
-                }
-            } while (!novo);
-
-            posicoes.push({x: x, y: y})
-            let estilo = "top:"+ y.toFixed(1) +"%; left: "+ x.toFixed(1) +"%;";
-            button.setAttribute("style", estilo);
             button.addEventListener('click', clicouBotao)
             answerButtonsElement.appendChild(button)
         })
@@ -197,6 +181,7 @@
 
     function mostrarLista() {
         if(currentQuestionIndex === 1) {
+            $("#layout").removeClass('d-none')
             layoutQuestion.appendChild(questionContainerElement)
             layoutList.appendChild(listContainerElement)
         }
@@ -226,6 +211,16 @@
     var barraCarregamento = document.getElementById('option-bar')
     function telaLista() {
         finalizeButton.classList.add('d-none')
+
+        //deslocar botão de recomeçar e colocar no lugar final
+        $('#botoes').append(resetButton)
+        resetButton.classList.add('d-none')
+        resetButton.classList.add('btn-lg')
+        resetButton.classList.remove('position-absolute')
+        resetButton.classList.remove('redondo')
+        resetButton.textContent = "Recomeçar"
+        $('#tela').append($('#botoes'))
+
         layoutQuestion.remove()
         layoutList.classList.remove('col-lg-2')
         layoutList.classList.add('col-lg-12')
@@ -239,6 +234,7 @@
 
         if(produto == false){
             errorContainerElement.classList.remove('d-none')
+            resetButton.classList.remove('d-none')
         } else {
             $('#img-res').attr("src", "/imagens/produtos/s" + produto.id + ".jpg")
             $('#txt-res').text(produto.nome)
