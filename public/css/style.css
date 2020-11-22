@@ -55,17 +55,16 @@ body, html{
     font-size: 16px;
     font-weight: 500;
     text-align: center;
-    color:white;
-    
+    color:white; 
 }
-
 
 .botao:hover{
     color:white;
 }
 #botao1{
     width: 120px;
-    margin-left: 415px;
+
+    /* margin-left: 415px; */
 
 }
 #botao2{
@@ -74,7 +73,6 @@ body, html{
     position: relative;
     margin-top:3px;
     border-radius: unset;
-
 }
 .btn{
     border-radius: unset;
@@ -156,8 +154,6 @@ a, a:hover{
     cursor: pointer;
   }
 
-
- 
 .gridImage{
     background-repeat: no-repeat;
     background-size: cover;
@@ -185,6 +181,11 @@ a, a:hover{
       color: #333333;
       font-weight: 500;
   }
+
+
+
+
+
   #sectionBiografia{
     height: 450px;
     width: 100%;
@@ -317,6 +318,26 @@ a, a:hover{
         background-color:rgba(255, 255, 255, 0.8);
 
     }
+    #sectionDepoimentos{
+        height: 500px;
+        width: 100%;
+        background-color: #fafafa;
+        padding-top: 150px;  
+    }
+    #depoimento{
+        width: 80%;
+        padding: 4%;
+        margin-left: 10%;
+        background-color: rgba(255, 255, 255, 0.7);
+    }
+    #botao2{
+        width: 150px;
+        float: right;
+        position: relative;
+        margin-top:3px;
+        border-radius: unset;
+    }
+
     /* início navbar */
     .menu h1 {
         margin-right: 0;
@@ -367,6 +388,32 @@ a, a:hover{
     }
     /* fim navbar */
 
+}
+.dir{
+    margin-left: 230px;
+}
+
+@media (max-width: 425px) {
+   
+    #sectionDepoimentos{
+        height: 500px;
+        width: 100%;
+        background-color: #fafafa;
+        padding-top: 150px;  
+    }
+    #depoimento{
+        width: 96%;
+        padding: 4%;
+        margin-left: 2%;
+        background-color: rgba(255, 255, 255, 0.7);
+    }
+    #botao2{
+        width: 130px;
+        margin-top:0px;
+    }
+    .dir{
+        margin-left: 0;
+    }
 }
 /* FIM PÁGINA PRINCIPAL PRODUTOS */
 
