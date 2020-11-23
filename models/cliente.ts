@@ -17,6 +17,7 @@ export = class Cliente{
     public bairro_cliente: string;
     public cidade_cliente: string;
     public estado_cliente: string;
+    public admin_cliente: number;
 
 
     public static validar(cliente: Cliente): string{
@@ -61,7 +62,7 @@ export = class Cliente{
         await Sql.conectar(async(sql)=>{
 
             try {
-                await sql.query("insert into cliente(nome_cliente, email, senha) values (?, ?, ?) ",[cliente.nome_cliente, cliente.email, cliente.senha]);
+                await sql.query("insert into cliente(nome_cliente, email, senha, admin_cliente) values (?, ?, ?, 0) ",[cliente.nome_cliente, cliente.email, cliente.senha]);
             } catch (e) {
                 if (e.code && e.code === "ER_DUP_ENTRY")
 					erro = 'Esse cadastro já existe, faça login!';
@@ -102,6 +103,28 @@ export = class Cliente{
             const id_cliente = cookie.substr(64);
 
             let lista = await sql.query("select id_cliente, nome_cliente, email, cep_cliente, rua_cliente, num_casa, complemento, bairro_cliente, cidade_cliente, estado_cliente from cliente where token = ? and id_cliente = ?",[token, id_cliente]);
+
+            if(lista && lista.length){
+                cliente = lista[0];
+            }
+        });
+
+        return cliente;
+    }
+
+    public static async cookieAdmin(cookies: any): Promise<Cliente> {
+        let cliente: Cliente = null;
+
+        const cookie = cookies[Cliente.NomeCookie] as string;
+        if (!cookie || cookie.length < 64) {
+            return null;
+        }
+
+        await Sql.conectar(async(sql)=>{
+            const token = cookie.substr(0, 64);
+            const id_cliente = cookie.substr(64);
+
+            let lista = await sql.query("select id_cliente, nome_cliente, admin_cliente from cliente where token = ? and id_cliente = ? and admin_cliente = 1",[token, id_cliente]);
 
             if(lista && lista.length){
                 cliente = lista[0];
