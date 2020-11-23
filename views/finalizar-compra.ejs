@@ -154,6 +154,13 @@
 <script type="text/javascript">
     listarPedido();
 
+    var redirAoFechar = false;
+
+    $('#janelaResultado').on('hidden.bs.modal', function (e) {
+        if (redirAoFechar)
+            window.location.href = '/';
+    });
+
     $("#form").validate({
         rules: {
             nome_cliente: {
@@ -240,17 +247,10 @@
                     let campo = document.getElementById("mensagemResultado");
                     campo.textContent = $("#nome_cliente").val() + ", seu pedido foi finalizado com sucesso!";
                     $('#janelaResultado').modal('show');
-
-                    if ($('#janelaResultado').hasClass('in')) {
-                        //
-                    } else {
-                        shoppingCart.clearCart();
-                        displayCart();
-                        attCartIten();
-                        // window.location.href = '/';
-                    }
-
-
+                    redirAoFechar = true;
+                    shoppingCart.clearCart();
+                    displayCart();
+                    attCartIten();
                 },
                 error: function () {
                     
