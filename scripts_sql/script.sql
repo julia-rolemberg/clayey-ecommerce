@@ -4,7 +4,7 @@
 CREATE SCHEMA IF NOT EXISTS `clayey` DEFAULT CHARACTER SET utf8 ;
 USE `clayey` ;
 
- DROP TABLE IF EXISTS `clayey`.`Cliente` ;
+-- DROP TABLE IF EXISTS `clayey`.`Cliente` ;
 
 CREATE TABLE IF NOT EXISTS `clayey`.`Cliente` (
   id_cliente INT NOT NULL AUTO_INCREMENT,
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `clayey`.`Cliente` (
 select * from cliente;
     
     
- DROP TABLE IF EXISTS `clayey`.`Produto` ;
+-- DROP TABLE IF EXISTS `clayey`.`Produto` ;
 
 CREATE TABLE IF NOT EXISTS `clayey`.`Produto` (
     id_produto INT primary key AUTO_INCREMENT,
@@ -37,12 +37,12 @@ CREATE TABLE IF NOT EXISTS `clayey`.`Produto` (
     composicao VARCHAR(1000) NOT NULL,
     valor_produto DECIMAL(10,2) NOT NULL,
     peso INT NOT NULL,
-    fabricacao DATETIME NOT NULL,
+    fabricacao VARCHAR(40) NOT NULL,
     qtdeDisponivel INT NOT NULL
   );
 
 
- DROP TABLE IF EXISTS `clayey`.`Pedido` ;
+-- DROP TABLE IF EXISTS `clayey`.`Pedido` ;
 
 CREATE TABLE IF NOT EXISTS `clayey`.`Pedido` (
   id_pedido INT primary key AUTO_INCREMENT,
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `clayey`.`Pedido` (
   );
 
 
-DROP TABLE IF EXISTS `clayey`.`Item` ;
+-- DROP TABLE IF EXISTS `clayey`.`Item` ;
 
 CREATE TABLE IF NOT EXISTS `clayey`.`Item` (
   id_produto INT NOT NULL,
@@ -74,7 +74,7 @@ insert into Cliente (nome_cliente, email, senha, cep_cliente, rua_cliente, num_c
 
 
 
-DROP TABLE IF EXISTS `clayey`.`Produto` ;
+-- DROP TABLE IF EXISTS `clayey`.`Produto` ;
 
 insert into Produto (id_produto, nome_produto, desc_produto, utilidade,composicao,valor_produto, qtdeDisponivel, peso, fabricacao) values
 	(1, 'Sabonete para Pele Normal', 'A composição do Óleo de Goiaba com o Óleo de Amêndoa e as
@@ -145,7 +145,6 @@ insert into Produto (id_produto, nome_produto, desc_produto, utilidade,composica
     Cacau, Óleo Resina de Alecrim, Vitamina E, Dióxido de Titânio, Óleo Essencial de Lavanda Francesa. Por cold 
     process.', 18.00, 50, 100, 'agosto de 2020') ;
 
-
 select * from produto;
 
 insert into pedido (id_pedido, data_pedido, id_cliente, valor_total) values (1, '2020-10-28', 1, 36);
@@ -155,7 +154,6 @@ insert into item (id_produto, id_pedido, qtde, valor_item) values
 (2, 1, 1, 18);
 select pedido.id_pedido, data_pedido, cliente.nome_cliente, produto.nome_produto, item.qtde, valor_total from pedido inner join item on pedido.id_pedido = item.id_pedido inner join cliente on cliente.id_cliente = pedido.id_cliente inner join produto on produto.id_produto = item.id_produto ;
 select produto.nome_produto, item.qtde, produto.valor_produto from pedido inner join item on pedido.id_pedido = item.id_pedido inner join cliente on cliente.id_cliente = pedido.id_cliente inner join produto on produto.id_produto = item.id_produto ;
-
 
 -- delete from item where id_pedido = 1;
 -- delete from pedido where id_pedido = 1;
