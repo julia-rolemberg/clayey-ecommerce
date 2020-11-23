@@ -8,7 +8,7 @@ const router = express.Router();
 router.post("/criar", wrap(async(req: express.Request, res: express.Response)=>{
 	const cliente = await Cliente.cookie(req.cookies);
 	if (!cliente) {
-		res.status(400).json("Sem login efetuado");
+		res.status(403).json("Sem login efetuado");
 		return;
 	}
 
@@ -39,6 +39,12 @@ router.post("/criar", wrap(async(req: express.Request, res: express.Response)=>{
 	}
 }));
 router.get("/listar", wrap(async (req: express.Request, res: express.Response) => {
+	const cliente = await Cliente.cookieAdmin(req.cookies);
+	if (!cliente) {
+		res.status(403).json("Sem login efetuado");
+		return;
+	}
+
 	let lista = await Pedido.listar();
 
 	res.json(lista);

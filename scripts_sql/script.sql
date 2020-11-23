@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS `clayey`.`Cliente` (
   bairro_cliente VARCHAR(45) ,
   cidade_cliente varchar(45) , 
   estado_cliente varchar(45) , 
+  admin_cliente tinyint NOT NULL,
   PRIMARY KEY (id_cliente),
   UNIQUE KEY cliente_email_UN (email)
 );
@@ -64,11 +65,12 @@ CREATE TABLE IF NOT EXISTS `clayey`.`Item` (
  );
 
 
-insert into Cliente (nome_cliente, email, senha, cep_cliente, rua_cliente, num_casa, complemento, bairro_cliente, cidade_cliente, estado_cliente) values
-	('cliente 1', 'cliente1@mail.com', '1234', 08998020, 'Rua X','342','','bairro x' ,'São Paulo', 'SP'),
-    ('cliente 2', 'cliente2@mail.com', '1234', 12343223, 'Rua Y', '887A','','bairro y' , 'Santo André', 'SP'),
-    ('cliente 3', 'cliente3@mail.com', '1234', 87876020, 'Rua Z','65','','bairro z' , 'São Bernando do Campo', 'SP'),
-    ('cliente 4', 'cliente4@mail.com', '1234', 09808070, 'Rua W','33','','bairro w' , 'Santo André', 'SP');
+insert into Cliente (nome_cliente, email, senha, cep_cliente, rua_cliente, num_casa, complemento, bairro_cliente, cidade_cliente, estado_cliente, admin_cliente) values
+  ('admin', 'admin', '1234', 08998020, 'Rua X','342','','bairro x' ,'São Paulo', 'SP', 1),
+	('cliente 1', 'cliente1@mail.com', '1234', 08998020, 'Rua X','342','','bairro x' ,'São Paulo', 'SP', 0),
+  ('cliente 2', 'cliente2@mail.com', '1234', 12343223, 'Rua Y', '887A','','bairro y' , 'Santo André', 'SP', 0),
+  ('cliente 3', 'cliente3@mail.com', '1234', 87876020, 'Rua Z','65','','bairro z' , 'São Bernando do Campo', 'SP', 0),
+  ('cliente 4', 'cliente4@mail.com', '1234', 09808070, 'Rua W','33','','bairro w' , 'Santo André', 'SP', 0);
 
 
 
