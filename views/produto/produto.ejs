@@ -1,3 +1,8 @@
+<%  const mes = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+    let i_mes = parseInt(produto.fabricacao.substr(5, 2))
+    let data_fab = mes[i_mes - 1] + " de " + parseInt(produto.fabricacao.substr(0, 4));
+%>
+
 <div class="principalP2">
     <div class="produtoPagina">
         <div name="pagina" class="container-md pt-3 container-fluid ">
@@ -44,7 +49,10 @@
     
                             <div id="desc-text" class="p-3 d-none">
                                 <p id="d-text" class="text-justify">
-                                    <%=produto.desc_produto%></p> 
+                                    <%=produto.desc_produto%></p>
+
+                                <% if(produto.peso) { %> <p>Peso: <%=produto.peso%></p> <% } %></p> 
+                                <% if(produto.fabricacao) { %> <p>Fabricação: <%=data_fab%></p> <% } %></p> 
                             </div>
                         </div>
     
@@ -84,7 +92,6 @@
         </div>
     </div>
 </div>
-
 
 
 <script name="produto">

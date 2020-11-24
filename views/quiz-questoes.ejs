@@ -129,12 +129,30 @@ const questoes = [
     ]
 
 function comparaResultado() {
-    for(let i in resultados){
-        if(JSON.stringify(escolhas) == JSON.stringify(resultados[i].path)){
-            return resultados[i].id
-        }
+    let id,
+       maior = 0;
+   resultados.forEach((objeto)=>{
+      let conta = 0;
+      escolhas.forEach(escolha =>{
+         if(objeto.path.includes(escolha)) conta++;
+      });
+
+      if(conta == 6)
+        return id;
+
+      if(conta > maior){
+         id = objeto.id;
+         maior = conta;
+      }
+    });
+
+    if(maior >= 3){
+        return id
     }
-    return false;
+
+    return false
+    }
+
 }   
 function obterResultado(){
     //comparar o array do usuário com os resultados possíveis
