@@ -10,9 +10,23 @@
     </ul>
 
     <div class="iconesPessoais">
-        <a href="/login" id="iconeUsuario" class="btn">
-            <span class="fa fa-user"></span>
-        </a>
+        <% if(cliente) { %>
+            <a id="iconeUsuario" class="btn tooltip-toggle" aria-describedby="tooltip">
+                <span class="fa fa-user"></span>
+            </a>
+            <div id="tooltip" role="tooltip">
+                <div id="arrow" data-popper-arrow></div>
+                <p>Olá, <%= cliente.nome_cliente %>!</p>
+                <hr/>
+                <p>Não é você? Clique no botão abaixo para deslogar.</p>
+                <a href="/logout" class="btn">Deslogar</a>
+            </div>
+        <% } else { %>
+            <a href="/login" id="iconeUsuario" class="btn" aria-describedby="tooltip">
+                <span class="fa fa-user"></span>
+            </a>
+        <% } %>
+
         <button type="button" id="iconeCarrinho" class="btn">
             <span class="fa fa-shopping-cart"><span id="itensNoCarrinho" class="invisible">0</span></span>
         </button>
@@ -46,6 +60,15 @@
         });
     }
 
+    const btnUsu = document.querySelector('.tooltip-toggle');
+    const tooltip = document.querySelector('#tooltip');
 
+    Popper.createPopper(btnUsu, tooltip, {
+        placement: 'bottom-start',
+    });
+
+    btnUsu.addEventListener('click', function(){
+        $('#tooltip').toggleClass('d-none');
+    })
 
 </script>

@@ -1,6 +1,7 @@
 import express = require("express");
 import wrap = require("express-async-error-wrapper");
 import Produto = require("../models/produto");
+import Cliente = require("../models/cliente");
 
 const router = express.Router();
 
@@ -32,6 +33,7 @@ router.get("/alterar/:id", wrap(async (req: express.Request, res: express.Respon
 	}
 }));
 router.get("/:id", wrap(async (req: express.Request, res: express.Response) => {
+	const cliente = await Cliente.cookie(req.cookies);
 	let id = parseInt(req.params["id"]);
 
 	if (isNaN(id)) {
@@ -43,7 +45,8 @@ router.get("/:id", wrap(async (req: express.Request, res: express.Response) => {
 			res.render("produto/nao-encontrado");
 		} else {
 			let opcoes = {
-				produto: produto
+				produto: produto,
+				cliente: cliente
 			};
 			
 			res.render("produto/produto", opcoes);
@@ -53,11 +56,12 @@ router.get("/:id", wrap(async (req: express.Request, res: express.Response) => {
 
 
 router.get("/", wrap(async (req: express.Request, res: express.Response) => {
-
+	const cliente = await Cliente.cookie(req.cookies);
 	let lista = await Produto.listar();
 
 	let opcoes = {
-		lista: lista
+		lista: lista,
+		cliente: cliente
 	};
 	res.render("produtos", opcoes);
 }));
