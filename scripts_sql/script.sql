@@ -85,7 +85,7 @@ insert into Produto (id_produto, nome_produto, desc_produto, utilidade,composica
     Óleo de Dendê, Óleo de Mamona, NaOH, Água Destilada, Óleo de Amêndoa, Azeite de Oliva
     Extra Virgem, Óleo de Goiaba, Manteigas de Cacau e Cupuaçu, Óleo Resina de Alecrim,
     Vitamina E, Dióxido de Titânio, Óleo Essencial Cedro da Virgínia. Por cold process.', 
-    18.00, 50, 100, 'outubro de 2020'),
+    18.00, 50, 100, '2020-10-01'),
     (2, 'Sabonete Antiacne', 'A Argila Verde é indicada para peles acneicas e oleosas devido 
     ao seu efeito adstringente, secativo e bactericida. O Óleo de Semente de Uva ajuda na 
     retenção das propriedades da argila na pele e a manteiga de Cupuaçu nutre fazendo, também, 
@@ -95,7 +95,7 @@ insert into Produto (id_produto, nome_produto, desc_produto, utilidade,composica
     leve esfoliação, não utilizar a barra diretamente no rosto, fazer uma espuma com as mãos e 
     então lavar o rosto.', 'Palma, Palmiste, Óleo de Girassol, Óleo de Canola, Água Destilada, 
     NaOH, Óleo de Semente de Uva, Manteiga de Cupuaçu, Óleo Resina de Alecrim, Vitamina E, Argila 
-    Verde, Óleo Essencial de Tea Tree e Patchouli. Por cold process.', 18.00, 50, 100, 'julho de 2020'),
+    Verde, Óleo Essencial de Tea Tree e Patchouli. Por cold process.', 18.00, 50, 100, '2020-07-01'),
     (3, 'Sabonete Dendê', 'O Óleo de Dendê além de colorir naturalmente o sabonete é rico em 
     Vitamina E. O Óleo de Semente de Uva com o Azeite de Oliva, traz elasticidade natural a pele 
     e as Manteigas de Cacau e Cupuaçu ajudam na hidratação. O Óleo Essencial de Petitgrain é fresco, 
@@ -103,7 +103,7 @@ insert into Produto (id_produto, nome_produto, desc_produto, utilidade,composica
     tensão e estresse.', 'Ideal para todos os tipos de pele, traz hidratação, mas sem ressecar a pele.',
     'Palmiste, Óleo de Dendê, Óleo de Mamona, Óleo de Girassol, NaOH, Água Destilada, Óleo de Semente 
     de Uva, Azeite de Oliva Extra Virgem, Manteigas de Cacau e Cupuaçu, Óleo Resina de Alecrim, Vitamina 
-    E, Dióxido de Titânio, Óleo Essencial de Petitgrain. Por cold process.', 18.00, 50, 100, 'outubro de 2020'),
+    E, Dióxido de Titânio, Óleo Essencial de Petitgrain. Por cold process.', 18.00, 50, 100, '2020-10-01'),
     (4, 'Sabonete para Pele Mista', 'O Óleo de Macadâmia tem eficácia em nutrir e hidratar a pele sem 
     trazer oleosidade, muito utilizado para peles mistas. O Óleo de Amêndoa em conjunto com a Manteiga 
     de Cupuaçu e a Manteiga de Cacau trazem propriedades de hidratação profunda na pele. O Óleo Essencial 
@@ -111,14 +111,14 @@ insert into Produto (id_produto, nome_produto, desc_produto, utilidade,composica
     aroma amadeirado.', 'Ideal para pele mista, traz hidratação, mas sem ressecar a pele. Pode ser utilizado 
     diariamente.', 'Palma, Palmiste, Água destilada, NaOH, Óleo de Amêndoa, Óleo de Macadâmia, Azeite de 
     Oliva extra Virgem, Manteigas de Cacau e Cupuaçu, Vitamina E, Óleo de Resina de Alecrim, Ultramarine 
-    Azul, Óleo Essencial de Patchouli. Por cold process.', 18.00, 50, 100, 'abril de 2020'),
+    Azul, Óleo Essencial de Patchouli. Por cold process.', 18.00, 50, 100, '2020-04-01'),
     (5, 'Sabonete Hidratante', 'O Óleo de Amêndoa em conjunto com a Manteiga de Cupuaçu e a Manteiga de 
     Cacau trazem propriedades de hidratação profunda na pele. O Óleo Essencial de Petitgrain é fresco, 
     floral e levemente herbáceo, traz benefícios calmantes e relaxantes para aliviar sentimentos de tensão 
     e estresse.', 'Ideal para pele seca. Pode ser usado diariamente no corpo e na face.', 'Palma, Palmiste, 
     Água Destilada, NaOH, Óleo de Amêndoa, Óleo de Mamona, Azeite de Oliva Extra Virgem, Óleo de Semente de 
     Uva, Manteigas de Cacau e Cupuaçu, Óleo Resina de Alecrim, Vitamina E, Óleo Essencial de Petitgrain. 
-    Por cold process.', 18.00, 50, 100, 'julho de 2020'),
+    Por cold process.', 18.00, 50, 100, '2020-07-01'),
     (6, 'Sabonete de Argila Vermelha', 'A Argila Vermelha é indicada para peles maduras e sensíveis ajudando 
     a prevenir o envelhecimento da pele, trata as linhas de expressão de forma suave e delicada, é rica em 
     Óxido de Ferro, Cobre e Silício. O Óleo de Goiaba é um antioxidante, nutre e protege a pele. O Óleo 
@@ -128,7 +128,7 @@ insert into Produto (id_produto, nome_produto, desc_produto, utilidade,composica
     com o Sabonete para Pele Madura.', 'Palma, Palmiste, Água destilada, NaOH, Óleo de Amêndoa, Óleo de Mamona, 
     Azeite de Oliva Extra Virgem, Óleo de Goiaba, Manteiga de Cacau, Óleo Resina de Alecrim, Vitamina E, Argila 
     Vermelha, Óxido de Ferro Vermelho, Óleo Essencial de Lavanda Francesa. Por cold process.', 18.00, 50, 100, 
-    'agosto de 2020'),
+    '2020-08-01'),
     (7, 'Sabonete de Carvão Ativado', 'O Carvão Ativado é indicado para pele oleosa, ele absorve impurezas, 
     oleosidades e toxinas da pele a deixando balanceada, traz uma esfoliação média. O Óleo Rosa Mosqueta tem 
     Vitamina A, agindo como regenerador da pele. A sinergia da composição dos Óleos Essenciais de Melaleuca, 
@@ -136,14 +136,14 @@ insert into Produto (id_produto, nome_produto, desc_produto, utilidade,composica
     Recomenda-se usar de 2 a 3 vezes por semana fazendo uma média esfoliação, não utilizar a barra diretamente 
     no rosto, fazer uma espuma com as mãos e então lavar o rosto.', 'Palma, Palmiste, Água destilada, NaOH, 
     Óleo de Semente de Uva, Óleo Rosa Mosqueta, Manteigas de Cupuaçu, Carvão Ativado, Óleo Resina de Alecrim, 
-    Vitamina E, Óleo Essencial de Melaleuca, Cipreste, Tomilho. Por cold process.', 18.00, 50, 100, 'agosto de 2020'),
+    Vitamina E, Óleo Essencial de Melaleuca, Cipreste, Tomilho. Por cold process.', 18.00, 50, 100, '2020-08-01'),
     (8, 'Sabonete para Pele Madura', 'O Óleo de Goiaba é um antioxidante, nutre e protege a pele. O Óleo de Amêndoa 
     em conjunto com a Manteiga de Cacau traz propriedades de hidratação profunda na pele. O Óleo Essencial de Lavanda 
     Francesa acalma e relaxa, trazendo bem-estar e equilíbrio.', 'Ideal para pele madura e sensível. Pode ser usado 
     diariamente no corpo e na face, ou intercalado com o Sabonete de Argila Vermelha.', 'Palma, Palmiste, Água 
     Destilada, NaOH, Óleo de Amêndoa, Óleo de Mamona, Azeite de Oliva Extra Virgem, Óleo de Goiaba, Manteiga de 
     Cacau, Óleo Resina de Alecrim, Vitamina E, Dióxido de Titânio, Óleo Essencial de Lavanda Francesa. Por cold 
-    process.', 18.00, 50, 100, 'agosto de 2020') ;
+    process.', 18.00, 50, 100, '2020-08-01') ;
 
 select * from produto;
 

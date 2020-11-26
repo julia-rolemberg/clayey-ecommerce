@@ -62,13 +62,14 @@ app.use("/api/item", require("./routes/api/item"));
 
 
 app.get("/quiz", wrap(async(req: express.Request, res: express.Response) => {
-	
+	const cliente = await Cliente.cookie(req.cookies);
 	let lista = await Produto.listar();
 
-	res.render("quiz", {lista: lista});
+	res.render("quiz", {lista: lista, cliente: cliente});
 }));
 
 app.all("/login", wrap(async (req: express.Request, res: express.Response) => {
+	const cliente = await Cliente.cookie(req.cookies);
 	if (req.body && req.body.email && req.body.senha) {
 		
 		const cookie = await Cliente.login(req.body.email, req.body.senha);
@@ -76,11 +77,11 @@ app.all("/login", wrap(async (req: express.Request, res: express.Response) => {
 			res.cookie(Cliente.NomeCookie, cookie, { maxAge: (365 * 24 * 60 * 60 * 1000) });
 			res.redirect("/");
 		} else {
-			res.render("login", { mensagem: "Usuário ou senha inválidos!" });
+			res.render("login", { mensagem: "Usuário ou senha inválidos!", cliente: cliente });
 		}
 
 	} else {
-		res.render("login", { mensagem: null });
+		res.render("login", { mensagem: null, cliente: cliente });
 	}
 }));
 
@@ -94,9 +95,11 @@ app.get("/logout", wrap(async (req: express.Request, res: express.Response) => {
 	}
 }));
 
-app.get("/cadastro", (req: express.Request, res: express.Response) => {
-	res.render("cadastro");
-});
+app.get("/cadastro", wrap(async(req: express.Request, res: express.Response) => {
+	const cliente = await Cliente.cookie(req.cookies);
+	res.render("cadastro", {cliente: cliente});
+}));
+
 app.get("/finalizar", wrap(async(req: express.Request, res: express.Response) => {
 	const cliente = await Cliente.cookie(req.cookies);
 	res.render("finalizar-compra", {cliente: cliente, layout:"layout-finalizar"});
