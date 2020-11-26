@@ -256,23 +256,23 @@ a, a:hover{
       font-weight: 500;
   }
 
-
-
-
-
   #sectionBiografia{
-    height: 450px;
+    height: 550px;
     width: 100%;
     padding-right:8%;
     padding-left: 8%;
-    padding-top: 4%;
-    padding-bottom: 4%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    background-image: url('/imagens/banners/biografia3.jpg');
   }
   .biografia{
       margin:4%;
       margin-top: 10%;
       font-size: 18px;
-    text-align: justify;
+
       font-weight: 400;
       position: absolute;
   }
