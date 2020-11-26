@@ -6,11 +6,11 @@
         </div> 
 	</div>
 	 -->
-	<div class="principalP container-fluid ">
-        <div id="textoBanner" >
-            <h1 id="tituloProdutos" class="p-1 ">Produtos 100% naturais</h1>
-            <p>produção artesanal, ingredientes naturais e plastic free</p>
-        </div>
+	<div class="principalP container-fluid aligner">
+		<div id="textoBanner" class=" aligner-item" >
+			<h1 id="tituloProdutos" class="p-1 ">Produtos 100% naturais</h1>
+			<p>produção artesanal, ingredientes naturais e plastic free</p>
+		</div>
 	</div>
 	
     <!-- <nav id="subMenu">
@@ -31,16 +31,17 @@
 
 			<% for (let i = 0; i < lista.length; i++) { %>
 			
-				<a class="produtoA" href="/produto/<%=lista[i].id_produto%>"> 
-					<li class="card card-produto" >
+				
+				<li class="card card-produto" >
+					<a class="produtoA" href="/produto/<%=lista[i].id_produto%>"> 
 						<img src="/imagens/produtos/s<%=lista[i].id_produto%>.jpg" class="card-img-top " alt="<%=lista[i].nome_produto%>" >
 						<div class="card-body"  style="text-align: center;">
 							<p class="card-text"><%=lista[i].nome_produto%><br>
 								R$ <%=lista[i].valor_produto%>
 							</p>   
 						</div>
-					</li>
-				</a>
+					</a>
+				</li>
 
 			<% } %>
 

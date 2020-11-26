@@ -257,16 +257,18 @@ a, a:hover{
   }
 
   #sectionBiografia{
-    height: 550px;
+
     width: 100%;
     padding-right:8%;
     padding-left: 8%;
     padding-top: 3%;
     padding-bottom: 3%;
-    background-repeat: no-repeat;
+    height: 600px;
+    background-color: #f3f4f8;
+    /* background-repeat: no-repeat;
     background-size: cover;
     background-position: center top;
-    background-image: url('/imagens/banners/biografia3.jpg');
+    background-image: url('/imagens/banners/biografia3.jpg'); */
   }
   .biografia{
       margin:4%;
@@ -276,6 +278,9 @@ a, a:hover{
       font-weight: 400;
       position: absolute;
   }
+#footer{
+    background-color: #1d3045;
+}
  #opcoesFooter ul{
      list-style: none;
      text-align: right;
@@ -284,13 +289,13 @@ a, a:hover{
     display: inline-block;
     margin-right: 10px;
 
+
 }
 #opcoesFooter ul li a, #contatoFooter{
     color: white;
 }
 #footer {
     padding-top:4%;
-    
 }
 .logoFooter{
     font-family: 'Noto Serif JP';
@@ -321,13 +326,21 @@ a, a:hover{
 }
 #textoBanner{
     text-align: center;
-    padding: 100px;
-    margin: 0 auto;
-    margin-top: 150px;
-    width: 50%;
+    padding: 50px;
+    max-width: 800px;
     background-color:rgba(255, 255, 255, 0.8);
 
 }
+.aligner{
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.aligner-item{
+    max-width: 50%;
+}
+
 #textoBanner h1, #textoBanner p{
     color: #525252;
 
@@ -352,10 +365,7 @@ a, a:hover{
     -webkit-transition: box-shadow 0.2s;
     margin:10px;
 }
-/* .card-img-top:hover {
-    opacity: 1;
-    border-radius: 30px;
-} */
+
 .card-produto:hover, .card-mostruario:hover{
     box-shadow: 0 0 4em #e4e4e4;
     /* opacity: 0.8; */
@@ -369,6 +379,7 @@ a, a:hover{
 }
 .produtoA:hover{
     opacity: 1;
+    display:block;
 }
 @media (max-width: 1205px) {
     #produtos{
@@ -383,15 +394,7 @@ a, a:hover{
     #banner1{
         display: none;
     }
-    #textoBanner{
-        text-align: center;
-        padding: 50px;
-        margin: 0 auto;
-        margin-top: 30%;
-        width: 60%;
-        background-color:rgba(255, 255, 255, 0.8);
-
-    }
+    
     #sectionDepoimentos{
         height: 500px;
         width: 100%;
@@ -468,7 +471,7 @@ a, a:hover{
 }
 
 @media (max-width: 425px) {
-   
+    
     #sectionDepoimentos{
         height: 500px;
         width: 100%;
