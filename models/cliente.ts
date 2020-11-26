@@ -9,6 +9,7 @@ export = class Cliente{
     public nome_cliente: string;
     public email: string;
     public senha: string;
+    public csenha: string;
     public token: string;
     public cep_cliente: number;
     public complemento: string;
@@ -36,6 +37,7 @@ export = class Cliente{
         if(!cliente.email || !cliente.email.includes("@")){
             return "E-mail inválido";
         }
+       
         if(cliente.email.length >100){
             return "Email muito longo";
         }

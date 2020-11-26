@@ -61,7 +61,7 @@
     </div>
 </div>
 
-<	<script type="text/javascript">
+	<script type="text/javascript">
     // Quando existir um id no campo hidden quer dizer que estamos salvando, não criando
 	let valorDoId = $("#id_produto").val(); // .val() sempre retorna string!
     let valorDoIdInt = parseInt(valorDoId);
@@ -146,11 +146,11 @@
 						$("#form").validate().resetForm();
 					}
 
-                    alert("Sucesso! " + dadosDeRetorno);
+                    alert("Dados salvos com sucesso!");
                 },
                 
                 error: function () {
-                    alert("Deu ruim! :(");
+                    alert("Opss... ocorreu algum erro");
                 }
                 
             };

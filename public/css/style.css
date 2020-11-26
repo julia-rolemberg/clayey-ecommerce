@@ -166,11 +166,11 @@ body, html{
 }
 #itensNoCarrinho{
     position: absolute;
-    font-size: 15px;
-    top: 15px;
+    font-size: 14px;
+    top: 11px;
     right: 8px;
-    padding: 0 5px;
-    border-radius: 30%;
+    padding: 4px 4px 3px 3px;
+    border-radius: 50%;
     color: white;
     background-color: rgb(230 100 0);
 }
@@ -256,28 +256,29 @@ a, a:hover{
       font-weight: 500;
   }
 
-  #sectionBiografia{
-
+#sectionBiografia{
     width: 100%;
     padding-right:8%;
     padding-left: 8%;
     padding-top: 3%;
     padding-bottom: 3%;
-    height: 600px;
     background-color: #f3f4f8;
-    /* background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center top;
-    background-image: url('/imagens/banners/biografia3.jpg'); */
   }
-  .biografia{
-      margin:4%;
-      margin-top: 10%;
-      font-size: 18px;
+.imgTamanho{
+    max-width: 100%;
+  }
+.limitadorBio{
+    max-width: 1440px;
+    margin: 0 auto;
+}
+.biografia{
+    margin:4%;
+    margin-top: 6%;
+    font-size: 18px;
+    max-width: 800px;
+    font-weight: 400;
 
-      font-weight: 400;
-      position: absolute;
-  }
+}
 #footer{
     background-color: #1d3045;
 }
@@ -326,7 +327,7 @@ a, a:hover{
 }
 #textoBanner{
     text-align: center;
-    padding: 50px;
+    padding: 100px;
     max-width: 800px;
     background-color:rgba(255, 255, 255, 0.8);
 
@@ -758,8 +759,15 @@ a, a:hover{
     color: white;
     text-decoration: none;
     transition: all 0.3s;
+    opacity: 1;
 }
-
+#sidebarCollapse{
+    position: absolute;
+    top:0;
+}
+.navbtn:hover{
+    
+}
 #sidebar .sidebar-header {
     padding: 20px;
     background-color: #282624;
@@ -781,8 +789,7 @@ a, a:hover{
     display: block;
 }
 #sidebar ul li a:hover {
-    color:  rgb(230 100 0);
-    background: #fff;
+    background:  rgba(230, 100, 0, 1);
 }
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {

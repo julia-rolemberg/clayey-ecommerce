@@ -30,8 +30,6 @@
 			<!-- colocando cada produto de acordo com o banco de dados -->
 
 			<% for (let i = 0; i < lista.length; i++) { %>
-			
-				
 				<li class="card card-produto" >
 					<a class="produtoA" href="/produto/<%=lista[i].id_produto%>"> 
 						<img src="/imagens/produtos/s<%=lista[i].id_produto%>.jpg" class="card-img-top " alt="<%=lista[i].nome_produto%>" >
@@ -42,7 +40,6 @@
 						</div>
 					</a>
 				</li>
-
 			<% } %>
 
 		</ul>
