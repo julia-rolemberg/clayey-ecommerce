@@ -49,7 +49,8 @@ CREATE TABLE IF NOT EXISTS `clayey`.`Pedido` (
   data_pedido DATETIME NOT NULL,
   id_cliente INT not null,
   foreign key (id_cliente) references Cliente(id_cliente),
-  valor_total DECIMAL(10,2) NOT NULL
+  valor_total DECIMAL(10,2) NOT NULL,
+  ativo BOOLEAN
   );
 
 

@@ -67,8 +67,11 @@
         placement: 'bottom-start',
     });
 
-    btnUsu.addEventListener('click', function(){
+    function alternarPopup(){
         $('#tooltip').toggleClass('d-none');
-    })
+    }
+
+   setTimeout(function(){alternarPopup()}, 5000);
+    btnUsu.addEventListener('click', alternarPopup)
 
 </script>

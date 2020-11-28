@@ -16,6 +16,7 @@ export = class Pedido {
     public valor_item: number;
     public qtde: number;
     public email: string;
+    public ativo: boolean;
 
     public static validar(pedido: Pedido): string {
         return null;
@@ -59,7 +60,7 @@ export = class Pedido {
                 valorTotal += produtos[i].qtde * produtos[i].valor_item;
             }
             
-            await sql.query("insert into pedido (data_pedido, id_cliente, valor_total) values (now(), ?, ?) ",[id_cliente, valorTotal]);
+            await sql.query("insert into pedido (data_pedido, id_cliente, valor_total, ativo) values (now(), ?, ?, true) ",[id_cliente, valorTotal]);
             const id_pedido = await sql.scalar("select last_insert_id()") as number;
 
             for (let i = 0; i < produtos.length; i++) {
