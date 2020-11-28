@@ -81,7 +81,21 @@
 
     <%- defineContent("scripts") %>
 
-    <script type="text/javascript">attCartIten()</script>
+    <script type="text/javascript">
+         attCartIten();
+        function scrollContato(){
+            window.scroll({
+            top: 2500, 
+            left: 0, 
+            behavior: 'smooth'
+        });
+
+            document.querySelector('#footer').scrollIntoView({ 
+            behavior: 'smooth' 
+            });
+        }
+       
+    </script>
 
 </body>
 
