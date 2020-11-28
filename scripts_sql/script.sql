@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `clayey`.`Pedido` (
   id_cliente INT not null,
   foreign key (id_cliente) references Cliente(id_cliente),
   valor_total DECIMAL(10,2) NOT NULL,
-  ativo BOOLEAN
+  ativo BOOLEAN not null
   );
 
 
@@ -148,7 +148,7 @@ insert into Produto (id_produto, nome_produto, desc_produto, utilidade,composica
 
 select * from produto;
 
-insert into pedido (id_pedido, data_pedido, id_cliente, valor_total) values (1, '2020-10-28', 1, 36);
+insert into pedido (id_pedido, data_pedido, id_cliente, valor_total, ativo) values (1, '2020-10-28', 1, 36, true);
 insert into item (id_produto, id_pedido, qtde, valor_item) values
 (1, 1, 1, 18);
 insert into item (id_produto, id_pedido, qtde, valor_item) values
