@@ -12,6 +12,12 @@ router.get("/criar", wrap(async (req: express.Request, res: express.Response) =>
 
 router.get("/listar", wrap(async (req: express.Request, res: express.Response) => {
 
+	const cliente = await Cliente.cookieAdmin(req.cookies);
+	if (!cliente) {
+		res.redirect("/");
+		return;
+	}
+
 	let lista = await Produto.listar();
 
 	res.render("produto/listar", {layout:"restrito/layout", lista:lista});

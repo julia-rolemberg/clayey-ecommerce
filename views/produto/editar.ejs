@@ -26,7 +26,7 @@
             </div>
             <div class="form-group flex-nowrap">
                 <label  class="font-weight-bold" for="fabricacao">Fabricação: </label>
-                <input type="month" id="fabricacao"  class=" form-control" name="fabricacao" value="<%= produto ? produto.fabricacao:'' %>"/>
+                <input type="month" id="fabricacao"  class=" form-control" name="fabricacao" value="<%= produto ? (produto.fabricacao).substring(0,[7]):'' %>"/>
             </div>
             <div class="form-group flex-nowrap">
                 <label  class="font-weight-bold" for="peso">Peso:  (em gramas)</label>
@@ -73,7 +73,6 @@
 	} else {
 		criando = true;
 	}
-    
 
     $("#form").validate({
         
@@ -147,6 +146,7 @@
 					}
 
                     alert("Dados salvos com sucesso!");
+                    window.location.href='/produto/listar'
                 },
                 
                 error: function () {

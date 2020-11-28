@@ -40,6 +40,13 @@ router.get("/alterar/:id", wrap(async (req: express.Request, res: express.Respon
 }));
 
 router.get("/listar", wrap(async (req: express.Request, res: express.Response) => {
+	
+	const cliente = await Cliente.cookieAdmin(req.cookies);
+	if (!cliente) {
+		res.redirect("/");
+		return;
+	}
+
 	let lista = await Cliente.listar();
 
 	let opcoes = {

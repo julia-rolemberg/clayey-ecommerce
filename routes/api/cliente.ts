@@ -77,6 +77,11 @@ router.get("/obter/:id", wrap(async (req: express.Request, res: express.Response
 }));
 
 router.get("/listar", wrap(async (req: express.Request, res: express.Response) => {
+	const cliente = await Cliente.cookieAdmin(req.cookies);
+	if (!cliente) {
+		res.status(403).json("Sem login efetuado");
+		return;
+	}
 	let lista = await Cliente.listar();
 
 	res.json(lista);

@@ -25,8 +25,8 @@
                     <td><%=lista[i].qtdes%></td>
                     <td>R$ <%=lista[i].valor_total%></td>
                     <td>
-                        <a href="" class="btn btn-primary"><i class="ires fa fa-cog"></i></a>
-                        <a class="btn btn-danger" href=""><i class="ires fa fa-times"></i></a>
+                        <a href="" class="btn btn-success btn-sm rounded-0"><i class="fa fa-edit"></i></a>
+                        <button class="btn btn-danger btn-sm rounded-0" onclick="excluir('<%=lista[i].id_pedido%>')" ><i class="fa fa-trash"></i></button>
                     </td>
                 </tr>
             <% } %>
@@ -34,3 +34,31 @@
         </tbody>
     </table>
 </div>
+
+<script type="text/javascript">
+    function excluir(id) {
+        if ($.active) {
+            return
+        }
+
+        if(!confirm(`Excluir pedido ${id}?`)) {
+            return
+        }
+
+        let opcoes = {
+            url: "/api/pedido/excluir/" + id,
+            method: 'GET',
+
+            success: function(dadosDeRetorno){
+                alert('Sucesso!')
+                location.reload();
+            },
+
+            error: function() {
+                alert('Algo deu errado...')
+            }
+        };
+
+        $.ajax(opcoes);
+    }
+</script>

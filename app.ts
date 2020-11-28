@@ -58,7 +58,6 @@ app.use("/api/pedido", require("./routes/api/pedido"));
 app.use("/pedido", require("./routes/pedido"));
 app.use("/api/cliente", require("./routes/api/cliente"));
 app.use("/cliente", require("./routes/cliente"));
-app.use("/api/item", require("./routes/api/item"));
 
 
 app.get("/quiz", wrap(async(req: express.Request, res: express.Response) => {

@@ -1,11 +1,23 @@
 import express = require("express");
 import multer = require("multer");
 import wrap = require("express-async-error-wrapper");
+import Cliente = require("../../models/cliente");
 import Produto = require("../../models/produto");
 
 const router = express.Router();
 //listar
 router.get("/", wrap(async (req: express.Request, res: express.Response) => {
+	let lista = await Produto.listar();
+
+	res.json(lista);
+}));
+router.get("/listar", wrap(async (req: express.Request, res: express.Response) => {
+	
+	const cliente = await Cliente.cookieAdmin(req.cookies);
+	if (!cliente) {
+		res.status(403).json("Sem login efetuado");
+		return;
+	}
 	let lista = await Produto.listar();
 
 	res.json(lista);

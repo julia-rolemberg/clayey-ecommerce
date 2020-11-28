@@ -16,10 +16,10 @@
             </a>
             <div id="tooltip" role="tooltip">
                 <div id="arrow" data-popper-arrow></div>
-                <p>Olá, <%= cliente.nome_cliente %>!</p>
+                <p class="mt-2" style="font-size: 16px; font-weight: 600;">Olá, <%= cliente.nome_cliente %>!</p>
                 <hr/>
-                <p>Não é você? Clique no botão abaixo para deslogar.</p>
-                <a href="/logout" class="btn">Deslogar</a>
+                <p>Não é você? Clique no botão abaixo para fazer logout.</p>
+                <a href="/logout" class="btn"><i>Logout</i></a>
             </div>
         <% } else { %>
             <a href="/login" id="iconeUsuario" class="btn" aria-describedby="tooltip">
