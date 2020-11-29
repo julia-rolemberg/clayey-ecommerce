@@ -64,11 +64,10 @@ CREATE TABLE IF NOT EXISTS `clayey`.`Item` (
   qtde INT NOT NULL,
   valor_item DECIMAL(10,2) NOT NULL
  );
-
-
+insert into Cliente (nome_cliente, email, senha, admin_cliente) values
+  ('admin', 'admin', '1234',  1);
 insert into Cliente (nome_cliente, email, senha, cep_cliente, rua_cliente, num_casa, complemento, bairro_cliente, cidade_cliente, estado_cliente, admin_cliente) values
-  ('admin', 'admin', '1234', 08998020, 'Rua X','342','','bairro x' ,'São Paulo', 'SP', 1),
-	('cliente 1', 'cliente1@mail.com', '1234', 08998020, 'Rua X','342','','bairro x' ,'São Paulo', 'SP', 0),
+  ('cliente 1', 'cliente1@mail.com', '1234', 08998020, 'Rua X','342','','bairro x' ,'São Paulo', 'SP', 0),
   ('cliente 2', 'cliente2@mail.com', '1234', 12343223, 'Rua Y', '887A','','bairro y' , 'Santo André', 'SP', 0),
   ('cliente 3', 'cliente3@mail.com', '1234', 87876020, 'Rua Z','65','','bairro z' , 'São Bernando do Campo', 'SP', 0),
   ('cliente 4', 'cliente4@mail.com', '1234', 09808070, 'Rua W','33','','bairro w' , 'Santo André', 'SP', 0);

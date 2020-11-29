@@ -14,7 +14,7 @@
 
             <div class="form-group flex-nowrap " >
                 <label  class="font-weight-bold" for="nome_produto">Nome: </label>
-                <input type="text" id="nome_produto"  class="  form-control" name="nome_produto" value="<%= (produto ? produto.nome_produto : '')%>"/>
+                <input type="text" id="nome_produto"  class="form-control" name="nome_produto" value="<%= (produto ? produto.nome_produto : '')%>"/>
             </div>
             <div class="form-group flex-nowrap">
                 <label  class="font-weight-bold" for="valor_produto">Preço: </label>
@@ -22,7 +22,7 @@
             </div>
             <div class="form-group flex-nowrap">
                 <label  class="font-weight-bold" for="qtdeDisponivel">Quantidade disponível: </label>
-                <input type="number" id="qtdeDisponivel"  class="  form-control" name="qtdeDisponivel" value="<%= (produto ? produto.qtdeDisponivel : '')%>"/>
+                <input type="number" id="qtdeDisponivel"  class="form-control" name="qtdeDisponivel" value="<%= (produto ? produto.qtdeDisponivel : '')%>"/>
             </div>
             <div class="form-group flex-nowrap">
                 <label  class="font-weight-bold" for="fabricacao">Fabricação: </label>
@@ -91,24 +91,30 @@
 
             qtdeDisponivel: {
                 number: true,
+                required: true,
                 min: 0
             },
           
             peso: {
                 number: true,
+                required: true,
                 minlength: 1,
                 maxlength: 4
             },
 
             desc_produto: {
+                required: true,
                 maxlength: 1000
+
             },
 
             utilidade: {
+                required: true,
                 maxlength: 1000
             },
 
             composicao: {
+                required: true,
                 maxlength: 1000
             },
 
@@ -123,6 +129,7 @@
                 return;
             }
             
+            
             let opcoes = {
                 
                 url: (criando ? "/api/produto/criar" : "/api/produto/alterar"),
@@ -134,7 +141,7 @@
 				processData: false,
 				contentType: false,
 
-                //data: $("#formEditar").serialize(),
+                // data: $("#form").serialize(),
                 
                 success: function (dadosDeRetorno) {
                     if (criando) {
