@@ -103,7 +103,7 @@ export = class Pedido {
         let pedido: Pedido = null;
 
         await Sql.conectar(async(sql)=>{
-            let lista = await sql.query("select pedido.id_pedido, data_pedido, pedido.id_cliente, cliente.nome_cliente, valor_total from pedido inner join item on pedido.id_pedido = item.id_pedido inner join cliente on pedido.id_cliente = cliente.id_cliente where pedido.id_pedido = ? ",[pedido.id_pedido]);
+            let lista = await sql.query("select pedido.id_pedido, data_pedido, pedido.id_cliente, cliente.nome_cliente, valor_total from pedido inner join item on pedido.id_pedido = item.id_pedido inner join cliente on pedido.id_cliente = cliente.id_cliente where pedido.id_pedido = ? ",[id_pedido]);
          
             if(lista && lista.length){
                 pedido = lista[0];
