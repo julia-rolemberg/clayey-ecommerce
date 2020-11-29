@@ -8,24 +8,22 @@ const questoes = [
         titulo: "Qual seu tipo de pele?",
         alternativas: [
             {
-                "texto": "Normal",
-                "next": 2
+                "texto": "Normal"
             },
             {
-                "texto": "Seca",
-                "next": 2
+                "texto": "Seca"
             },
             {
-                "texto": "Oleosa",
-                "next": 3
+                "texto": "Oleosa"
             },
             {
-                "texto": "Mista",
-                "next": 3
+                "texto": "Mista"
             },
             {
-                "texto": "Acneica",
-                "next": 3
+                "texto": "Acneica"
+            },
+            {
+                "texto": "Madura"
             }
         ]
     },
@@ -34,20 +32,16 @@ const questoes = [
         titulo: "O seu sabonete ideal deve ter função de:",
         alternativas: [
             {
-                "texto": "Hidratação profunda",
-                "next": 2
+                "texto": "Hidratação profunda"
             },
             {
-                "texto": "Limpeza profunda",
-                "next": 2
+                "texto": "Limpeza profunda"
             },
             {
-                "texto": "Esfoliação leve",
-                "next": 3
+                "texto": "Esfoliação leve"
             },
             {
-                "texto": "Esfoliação média",
-                "next": 3
+                "texto": "Esfoliação média"
             }
         ]
     },
@@ -56,16 +50,13 @@ const questoes = [
         titulo: "Em óleos essenciais, além da fragrância, qual propriedade você valoriza?",
         alternativas: [
             {
-                "texto": "Equilíbrio emocional",
-                "next": 2
+                "texto": "Equilíbrio emocional"
             },
             {
-                "texto": "Relaxamento",
-                "next": 2
+                "texto": "Relaxamento"
             },
             {
-                "texto": "Estimulante",
-                "next": 3
+                "texto": "Estimulante"
             }
         ]
     },
@@ -74,12 +65,10 @@ const questoes = [
         titulo: "Na hora do banho, você gosta de:",
         alternativas: [
             {
-                "texto": "Muita espumação ",
-                "next": 2
+                "texto": "Muita espumação "
             },
             {
-                "texto": "Espumação leve",
-                "next": 2
+                "texto": "Espumação leve"
             }
         ]
     },
@@ -88,12 +77,10 @@ const questoes = [
         titulo: "O seu sabonete ideal é:",
         alternativas: [
             {
-                "texto": "100% natural",
-                "next": 2
+                "texto": "100% natural"
             },
             {
-                "texto": "100% natural e vegano",
-                "next": 2
+                "texto": "100% natural e vegano"
             }
         ]
     }
@@ -103,7 +90,8 @@ const questoes = [
     const seca = questoes[0].alternativas[1].texto;
     const oleosa = questoes[0].alternativas[2].texto;
     const mista = questoes[0].alternativas[3].texto;
-    const acneica = questoes[0].alternativas[3].texto;
+    const acneica = questoes[0].alternativas[4].texto;
+    const madura = questoes[0].alternativas[5].texto;
 
     const hidratacao = questoes[1].alternativas[0].texto;
     const limpeza = questoes[1].alternativas[1].texto;
@@ -146,7 +134,7 @@ function comparaResultado() {
       }
     });
 
-    if(maior >= 3){
+    if(maior >= 2){
         return id
     }
 
