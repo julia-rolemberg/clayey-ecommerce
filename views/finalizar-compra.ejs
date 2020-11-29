@@ -119,15 +119,15 @@
                             <div class="form-group">
                                 <label for="estado_cliente">Estado</label>
                                 <select id="estado_cliente" name="estado_cliente" class="form-control">
-                                    <option selected>Estado</option>
-                                    <option>SP</option>
+                                    <option <%= cliente ? "":"selected"%> >Estado</option>
+                                    <option <%= cliente ? (cliente.estado_cliente == "SP" ? "selected":""):""%> >SP</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class=" d-flex justify-content-end ">
-                        <button type="button" onclick="window.location.href='/produto'"
-                            class="btn btn-light px-5 mt-4">cancelar</button>
+                        <a type="button" href='/produto'
+                            class="btn btn-light px-5 mt-4">cancelar</a>
                         <button type="submit" class="btn btn-success px-5 mt-4">finalizar</button>
                     </div>
                 </form>

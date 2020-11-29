@@ -1,0 +1,80 @@
+<div>
+    <div>
+        <h1 class="tituloR">Editar Pedido</h1>
+    </div>
+    <div>
+        <h3>Informações</h3>
+
+        <div>
+            Cliente: <%= pedido.nome_cliente%>
+            Data do pedido: <%pedido.data_pedido%>
+
+            Itens:
+            <!-- tabela -->
+
+            Valor total: <%=pedido.valor_total%>
+
+        </div>
+    </div>
+    <div>
+        <form id="formEditar" class="form-group">
+            <div class="form-group flex-nowrap " >
+                <input type="radio" id="ativo1" class="form-check-input" name="ativo" value="true" <%= pedido.ativo ? "checked":"" %>/>
+                <label  class="form-check-label font-weight-bold" for="status1">Pendente</label>
+
+                <input type="radio" id="ativo2" class="form-check-input" name="ativo" value="false" <%= pedido.ativo ? "":"checked" %>/>
+                <label  class="form-check-label font-weight-bold" for="status1">Concluído</label>
+            </div>
+
+            <div>
+                
+                <a class="btn btn-light" href="/pedido/listar">Voltar</a>
+                <button type="submit" class="btn btn-success">Salvar</button>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<	<script type="text/javascript">
+		
+    $("#formEditar").validate({
+        
+        rules: {
+            
+            ativo: {
+                required: true
+            }
+        },
+        
+        submitHandler: function () {
+            
+            if ($.active) {
+                return;
+            }
+            
+            let opcoes = {
+                
+                url: "/api/pedido/alterar",
+                
+                // Não precisa do cache para POST e PUT!
+                method: "POST",
+                
+                data: $("#formEditar").serialize(),
+                
+                success: function (dadosDeRetorno) {
+                    alert("Sucesso! " + dadosDeRetorno);
+                },
+                
+                error: function () {
+                    alert("Deu ruim! :(");
+                }
+                
+            };
+            
+            $.ajax(opcoes);
+            
+        }
+        
+    });
+</script>

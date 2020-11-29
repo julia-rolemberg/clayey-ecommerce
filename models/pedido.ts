@@ -103,7 +103,7 @@ export = class Pedido {
         let pedido: Pedido = null;
 
         await Sql.conectar(async(sql)=>{
-            let lista = await sql.query("select pedido.id_pedido, data_pedido, pedido.id_cliente, valor_total from pedido inner join item on pedido.id_pedido = item.id_pedido  where pedido.id_pedido = ? ",[pedido.id_pedido]);
+            let lista = await sql.query("select pedido.id_pedido, data_pedido, pedido.id_cliente, cliente.nome_cliente, valor_total from pedido inner join item on pedido.id_pedido = item.id_pedido inner join cliente on pedido.id_cliente = cliente.id_cliente where pedido.id_pedido = ? ",[pedido.id_pedido]);
          
             if(lista && lista.length){
                 pedido = lista[0];
@@ -113,6 +113,22 @@ export = class Pedido {
         return pedido;
 
     }
+
+    public static async alterar(pedido: Pedido): Promise<string>{
+        let erro: string = Pedido.validar(pedido);
+
+
+        if(erro){
+            return erro;
+        }
+
+        await Sql.conectar(async(sql)=>{
+            await sql.query("update pedido set ativo = ? where id_pedido = ?",[pedido.ativo, pedido.id_pedido]);
+        });
+
+        return erro;
+    }
+
     public static async excluir(id_pedido:number): Promise<string>{
         let erro: string = null;
        

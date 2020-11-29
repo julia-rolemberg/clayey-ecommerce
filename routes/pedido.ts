@@ -27,4 +27,20 @@ router.get("/listar", wrap(async (req: express.Request, res: express.Response) =
 	res.render("pedido/listar", {layout:"restrito/layout", lista:lista});
 }));
 
+router.get("/alterar/:id", wrap(async (req: express.Request, res: express.Response) => {
+	let id_pedido = parseInt(req.params["id"]);
+
+	if (isNaN(id_pedido)) {
+		res.render("produto/nao-encontrado", {layout:"finalizar-compra"});
+	} else {
+		let pedido = await Pedido.obterPorId(id_pedido);
+		
+		if (!pedido) {
+			//res.render("pedido/nao-encontrado");
+		} else {
+			res.render("pedido/editar", {layout:"restrito/layout", pedido: pedido});
+		}
+	}
+}));
+
 export = router;

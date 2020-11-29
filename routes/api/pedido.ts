@@ -67,5 +67,19 @@ router.get("/excluir/:id", wrap(async (req: express.Request, res: express.Respon
 		res.json(true);
 	}
 }));
+
+router.post("/alterar", wrap(async (req: express.Request, res: express.Response) => {
+	let erro: string = null;
+
+	let pedido = req.body as Pedido;
+
+	erro = await Pedido.alterar(pedido);
+
+	if (erro) {
+		res.status(400).json(erro);
+	} else {
+		res.json(true);
+	}
+}));
 export = router;
 

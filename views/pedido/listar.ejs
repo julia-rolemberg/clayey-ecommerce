@@ -17,7 +17,7 @@
         <tbody>
             <!-- Construção dos itens da tabela -->
             <% for (let i = 0; i < lista.length; i++) { %>
-                <tr>
+                <tr class="<%= (lista[i].ativo ? "pendente":"concluido") %>">
                     <th scope="row"><%=lista[i].id_pedido%></th>
                     <td><%=lista[i].data_pedido%></td>
                     <td><%=lista[i].nome_cliente%></td>
@@ -25,7 +25,7 @@
                     <td><%=lista[i].qtdes%></td>
                     <td>R$ <%=lista[i].valor_total%></td>
                     <td>
-                        <a href="" class="btn btn-success btn-sm rounded-0"><i class="fa fa-edit"></i></a>
+                        <a href="/pedido/alterar/<%=lista[i].id_pedido%>" class="btn btn-success btn-sm rounded-0"><i class="fa fa-edit"></i></a>
                         <button class="btn btn-danger btn-sm rounded-0" onclick="excluir('<%=lista[i].id_pedido%>')" ><i class="fa fa-trash"></i></button>
                     </td>
                 </tr>
@@ -33,6 +33,11 @@
             
         </tbody>
     </table>
+</div>
+
+<div id="plegenda">
+    <span class="mx-2"> <div class="d-inline square pendente"></div> Pedidos pendentes </span>
+    <span class="mx-2"> <div class="d-inline square concluido"></div> Pedidos concluídos </span>
 </div>
 
 <script type="text/javascript">

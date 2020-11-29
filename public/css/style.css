@@ -901,3 +901,13 @@ a[data-toggle="collapse"] {
         margin-left: 250px
     }
 }
+
+/* Estilos área de listar pedidos*/
+.concluido{
+    background-color: lightgreen /*rgba(230,100,0, 0.7)*/;
+}
+.square{
+    border: solid black 1px;
+    padding: 0 2px;
+    margin: auto 3px;
+}

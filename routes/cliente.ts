@@ -22,12 +22,12 @@ router.get("/alterar/:id", wrap(async (req: express.Request, res: express.Respon
 	let id_cliente = parseInt(req.params["id"]);
 
 	if (isNaN(id_cliente)) {
-		res.render("cliente/nao-encontrado");
+		res.render("cliente/nao-encontrado", {layout:"layout-finalizar"});
 	} else {
 		let cliente = await Cliente.obter(id_cliente);
 		
 		if (!cliente) {
-			res.render("cliente/nao-encontrado");
+			res.render("cliente/nao-encontrado", {layout:"layout-finalizar"});
 		} else {
 			let opcoes = {
 				cliente: cliente
