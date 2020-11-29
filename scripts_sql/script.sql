@@ -67,10 +67,9 @@ CREATE TABLE IF NOT EXISTS `clayey`.`Item` (
 insert into Cliente (nome_cliente, email, senha, admin_cliente) values
   ('admin', 'admin', '1234',  1);
 insert into Cliente (nome_cliente, email, senha, cep_cliente, rua_cliente, num_casa, complemento, bairro_cliente, cidade_cliente, estado_cliente, admin_cliente) values
-  ('cliente 1', 'cliente1@mail.com', '1234', 08998020, 'Rua X','342','','bairro x' ,'São Paulo', 'SP', 0),
-  ('cliente 2', 'cliente2@mail.com', '1234', 12343223, 'Rua Y', '887A','','bairro y' , 'Santo André', 'SP', 0),
-  ('cliente 3', 'cliente3@mail.com', '1234', 87876020, 'Rua Z','65','','bairro z' , 'São Bernando do Campo', 'SP', 0),
-  ('cliente 4', 'cliente4@mail.com', '1234', 09808070, 'Rua W','33','','bairro w' , 'Santo André', 'SP', 0);
+  ('Ana Luiza', 'analuiza@mail.com', '1234', 18998020, 'Rua das Flores','342','bloco C - 122','Penha' ,'São Paulo', 'SP', 0),
+  ('Raphael', 'raphael@mail.com', '1234', 12343223, 'Rua Iluminada', '887A','casa','Alvorada' , 'Santo André', 'SP', 0),
+  ('Julia', 'julia@mail.com', '1234', 87876020, 'Av. 16 de Outubro','20','','Pitangueiras' , 'São Paulo', 'SP', 0);
 
 
 
@@ -147,7 +146,7 @@ insert into Produto (id_produto, nome_produto, desc_produto, utilidade,composica
 
 select * from produto;
 
-insert into pedido (id_pedido, data_pedido, id_cliente, valor_total, ativo) values (1, '2020-10-28', 1, 36, true);
+insert into pedido (id_pedido, data_pedido, id_cliente, valor_total, ativo) values (1, '2020-10-28', 2, 36, true);
 insert into item (id_produto, id_pedido, qtde, valor_item) values
 (1, 1, 1, 18);
 insert into item (id_produto, id_pedido, qtde, valor_item) values

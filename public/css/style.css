@@ -140,7 +140,7 @@ html{
 } */
 
 #tooltip {
-    background-color: #efefef;
+    background-color:white;
     color: black;
     padding: 5px 10px;
     border-radius: 3px;
@@ -158,7 +158,7 @@ html{
 #arrow::before {
   content: '';
   transform: rotate(45deg);
-  background: #efefef;
+  background: white;
 }
 
 #tooltip[data-popper-placement^='top'] > #arrow {
@@ -830,7 +830,7 @@ a, a:hover{
 
 #sidebar ul li a {
     padding: 10px;
-    font-size: 1.7em;
+    font-size: 20px;
     display: block;
 }
 #sidebar ul li a:hover {
@@ -851,7 +851,7 @@ a, a:hover{
 }
 
 ul ul a {
-    font-size: 1.1em !important;
+    font-size: 20px !important;
     padding-left: 30px !important;
     background: rgb(230 100 0);
 }
