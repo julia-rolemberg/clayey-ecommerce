@@ -121,6 +121,10 @@ export = class Pedido {
 
         await Sql.conectar(async(sql)=>{
             await sql.query("update pedido set ativo = ? where id_pedido = ?",[pedido.ativo, pedido.id_pedido]);
+         
+            if(!sql.linhasAfetadas){
+                erro = 'Pedido não encontrado';
+            }
         });
 
         return erro;

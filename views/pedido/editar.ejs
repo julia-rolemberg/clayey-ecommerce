@@ -48,6 +48,7 @@
     </div>
     <section>
         <form id="formEditar" class="form-group">
+            <input type="hidden" id="id_pedido" name="id_pedido" value="<%=(pedido ? pedido.id_pedido : 0) %>" />
             <label>
                 <input type="radio" id="ativo1" name="ativo" value="1" <%= pedido.ativo ? "checked":"" %>/>
                 <span class="design"></span>
