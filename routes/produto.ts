@@ -27,12 +27,12 @@ router.get("/alterar/:id", wrap(async (req: express.Request, res: express.Respon
 	let id_produto = parseInt(req.params["id"]);
 
 	if (isNaN(id_produto)) {
-		res.render("produto/nao-encontrado", {layout:"layout-finalizar"});
+		res.render("produto/nao-encontrado", {layout:"layout-vazio"});
 	} else {
 		let produto = await Produto.obter(id_produto);
 		
 		if (!produto) {
-			res.render("produto/nao-encontrado", {layout:"layout-finalizar"});
+			res.render("produto/nao-encontrado", {layout:"layout-vazio"});
 		} else {
 			res.render("produto/editar", {layout:"restrito/layout", produto: produto});
 		}
@@ -43,12 +43,12 @@ router.get("/:id", wrap(async (req: express.Request, res: express.Response) => {
 	let id = parseInt(req.params["id"]);
 
 	if (isNaN(id)) {
-		res.render("produto/nao-encontrado", {layout:"layout-finalizar"});
+		res.render("produto/nao-encontrado", {layout:"layout-vazio"});
 	} else {
 		let produto = await Produto.obter(id);
 
 		if (!produto) {
-			res.render("produto/nao-encontrado", {layout:"layout-finalizar"});
+			res.render("produto/nao-encontrado", {layout:"layout-vazio"});
 		} else {
 			let opcoes = {
 				produto: produto,

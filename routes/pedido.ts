@@ -31,12 +31,12 @@ router.get("/alterar/:id", wrap(async (req: express.Request, res: express.Respon
 	let id_pedido = parseInt(req.params["id"]);
 
 	if (isNaN(id_pedido)) {
-		res.render("produto/nao-encontrado", {layout:"finalizar-compra"});
+		res.render("pedido/nao-encontrado", {layout:"layout-vazio"});
 	} else {
 		let pedido = await Pedido.obterPorId(id_pedido);
 		
 		if (!pedido) {
-			//res.render("pedido/nao-encontrado");
+			res.render("pedido/nao-encontrado", {layout:"layout-vazio"});
 		} else {
 			res.render("pedido/editar", {layout:"restrito/layout", pedido: pedido});
 		}

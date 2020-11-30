@@ -52,10 +52,7 @@ export = class Pedido {
                     erro = "Produto não encontrado";
                     return;
                 }
-                //if (produtos[i].qtde > lista[0].qtdeDisponivel) {
-                //    erro = "Quantidade não disponível";
-                //    return;
-                //}
+    
                 produtos[i].valor_item = lista[0].valor_produto;
                 valorTotal += produtos[i].qtde * produtos[i].valor_item;
             }
@@ -103,7 +100,7 @@ export = class Pedido {
         let pedido: Pedido = null;
 
         await Sql.conectar(async(sql)=>{
-            let lista = await sql.query("select pedido.id_pedido, data_pedido, pedido.id_cliente, cliente.nome_cliente, valor_total from pedido inner join item on pedido.id_pedido = item.id_pedido inner join cliente on pedido.id_cliente = cliente.id_cliente where pedido.id_pedido = ? ",[id_pedido]);
+            let lista = await sql.query("select pedido.id_pedido, date_format(pedido.data_pedido, '%d/%m/%Y %k:%i') data_pedido, pedido.id_cliente, cliente.nome_cliente, valor_total, ativo, (select group_concat(pr.nome_produto separator ', ') from item i inner join produto pr on pr.id_produto = i.id_produto where i.id_pedido = pedido.id_pedido) produtos, (select group_concat(i.qtde separator ', ') from item i inner join produto pr on pr.id_produto = i.id_produto where i.id_pedido = pedido.id_pedido) qtdes from pedido inner join item on pedido.id_pedido = item.id_pedido inner join cliente on pedido.id_cliente = cliente.id_cliente where pedido.id_pedido = ? ",[id_pedido]);
          
             if(lista && lista.length){
                 pedido = lista[0];

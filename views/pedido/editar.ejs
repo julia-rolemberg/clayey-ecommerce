@@ -5,27 +5,59 @@
     <div>
         <h3>Informações</h3>
 
-        <div>
-            Cliente: <%= pedido.nome_cliente%>
-            Data do pedido: <%pedido.data_pedido%>
-
-            Itens:
-            <!-- tabela -->
-
-            Valor total: <%=pedido.valor_total%>
-
+        <div class="my-2">
+            <div class="d-inline mr-5">
+                Cliente: <%= pedido.nome_cliente%>
+            </div>
+        
+            <div class="d-inline">
+                Data do pedido: <%= pedido.data_pedido%>
+            </div>
         </div>
+            
+        <div class="my-4">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr class="d-flex">
+                        <th scope="col" class="col-1">Qtd</th>
+                        <th scope="col" class="col-5">Produto</th>
+                    </tr>
+                </thead>
+        
+                <tbody>
+                    <!-- Construção dos itens da tabela -->
+                    <% const listaprod = pedido.produtos.toString().split(", ") %>
+                    <% const listaqtd = pedido.qtdes.toString().split(", ") %>
+                    <% for (let i = 0; i < listaprod.length; i++) { %>
+                        <tr class="d-flex">
+                            <th class="col-1"><%=listaqtd[i]%></th>
+                            <td class="col-5"><%=listaprod[i]%></td>
+                        </tr>
+                    <% } %>
+                    
+                </tbody>
+                <tfoot>
+                    <tr class="d-flex">
+                        <th scope="col" class="col-2">Valor total:</th>
+                        <td class="col-4 text-right">R$ <%= pedido.valor_total.toString().replace(".",",") %></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        
     </div>
-    <div>
+    <section>
         <form id="formEditar" class="form-group">
-            <div class="form-group flex-nowrap " >
-                <input type="radio" id="ativo1" class="form-check-input" name="ativo" value="true" <%= pedido.ativo ? "checked":"" %>/>
-                <label  class="form-check-label font-weight-bold" for="status1">Pendente</label>
-            </div>
-            <div class="form-group flex-nowrap " >
-                <input type="radio" id="ativo2" class="form-check-input" name="ativo" value="false" <%= pedido.ativo ? "":"checked" %>/>
-                <label  class="form-check-label font-weight-bold" for="status1">Concluído</label>
-            </div>
+            <label>
+                <input type="radio" id="ativo1" name="ativo" value="1" <%= pedido.ativo ? "checked":"" %>/>
+                <span class="design"></span>
+                <span class="text">Pendente</span>
+            </label>
+            <label>
+                <input type="radio" id="ativo2" name="ativo" value="0" <%= pedido.ativo ? "":"checked" %>/>
+                <span class="design"></span>
+                <span class="text">Concluído</span>
+            </label>
 
             <div>
                 
@@ -34,11 +66,16 @@
 
             </div>
         </form>
-    </div>
+    </section>
 </div>
 
-	<script type="text/javascript">
-		
+<div>
+    <input id="lista" type="hidden" value="<%= pedido.produtos %>"/>
+</div>
+
+    <script type="text/javascript">
+    const ped = $('#lista').val()
+
     $("#formEditar").validate({
         
         rules: {
@@ -73,7 +110,6 @@
                 }
                 
             };
-            
             $.ajax(opcoes);
             
         }
