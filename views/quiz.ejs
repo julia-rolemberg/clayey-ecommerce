@@ -125,12 +125,16 @@
     restartButton.addEventListener('click', () => {location.reload()})
     resetButton.addEventListener('click', () => {location.reload()})
 
+    //questões e lista dentro do layout intermediário
+    layoutQuestion.appendChild(questionContainerElement)
+    layoutList.appendChild(listContainerElement)
 
     function comecarJogo() {
         startButton.classList.add("d-none")
         homeContainerElement.classList.add("d-none")
         currentQuestionIndex = 0
         questionContainerElement.classList.remove("d-none")
+        $("#layout").removeClass('d-none')
         proximaPergunta()
     }
 
@@ -172,6 +176,8 @@
             nextButton.classList.remove("d-none")
         } else {
             finalizeButton.classList.remove('d-none')
+            listContainerElement.classList.remove("left-fade")
+            listContainerElement.classList.add("left-out-fade")
         }
     }
     
@@ -181,12 +187,9 @@
 
     function mostrarLista() {
         if(currentQuestionIndex === 1) {
-            $("#layout").removeClass('d-none')
-            layoutQuestion.appendChild(questionContainerElement)
-            layoutList.appendChild(listContainerElement)
+            listContainerElement.classList.remove("d-none")
+            layoutList.classList.add('left-fade')
         }
-
-        listContainerElement.classList.remove("d-none")
 
         var lista = ""
 
@@ -221,17 +224,16 @@
         resetButton.textContent = "Recomeçar"
         $('#tela').append($('#botoes'))
 
-        layoutQuestion.remove()
-        layoutList.classList.remove('col-lg-2')
-        layoutList.classList.add('col-lg-12')
-        layoutList.classList.add('telaCheia')
+        listContainerElement.classList.remove("left-out-fade")
+        $('#layout').replaceWith(listContainerElement)
+        listContainerElement.classList.add("scale-fade-center")
+
         setTimeout(() => {barraCarregamento.classList.add('piscar')},2000)
         setTimeout(() => {barraCarregamento.remove(); resultButton.classList.remove('d-none');},5000)
     }
 
     function mostrarResultado(produto) {
-        layoutList.remove()
-
+        listContainerElement.remove()
         if(produto == false){
             errorContainerElement.classList.remove('d-none')
             resetButton.classList.remove('d-none')

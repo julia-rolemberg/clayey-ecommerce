@@ -29,32 +29,48 @@
 }
 
     /* botoes não escolhidos */
-.sumir-fade {
-  animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+.left-fade {
+  animation: slide-left 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
 
 @keyframes slide-left {
   0% {
     transform: translateX(0);
-    opacity:100%;
+    opacity:0;
   }
   100% {
-    transform: translateX(-25px);
+    transform: translateX(-100px);
+    opacity: 100%;
+  }
+}
+
+.left-out-fade {
+  animation: slide-out-left 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+@keyframes slide-out-left {
+  0% {
+    transform: translateX(-100px);
+    opacity: 100%;
+  }
+  100% {
+    transform: translateX(0);
+    opacity:0;
+  }
+}
+
+.scale-fade-center {
+	animation: scale-up-center 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@keyframes scale-up-center {
+  0% {
+    transform: scale(0.5);
     opacity: 0;
   }
-}
-
-    /* botao escolhido */
-.deslizar-baixo {
-  animation: slide-top-long 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) reverse both;
-}
-
-@keyframes slide-top-long {
-  0% {
-    transform: translateY(0);
-  }
   100% {
-    transform: translateY(-200px);
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
