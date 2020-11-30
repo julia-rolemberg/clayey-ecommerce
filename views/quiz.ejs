@@ -20,10 +20,10 @@
     <!-- Questões / Lista layout-->
     <div id="layout" class="container-fluid d-none">
         <div class="row">
-            <div id="insert-question-container" class="col-lg-10">
+            <div id="insert-question-container" class="mx-auto">
 
             </div>
-            <div id="insert-option-container" class="col-lg-2">
+            <div id="insert-option-container" class="">
 
             </div>
         </div>
@@ -118,8 +118,9 @@
     finalizeButton.addEventListener('click', () => {
         escolherResposta();
         currentQuestionIndex++
-        telaLista()
         mostrarLista()
+        questionContainerElement.classList.add('fade-out')
+        setTimeout(telaLista, 1500)
     })
     resultButton.addEventListener('click', obterResultado)
     restartButton.addEventListener('click', () => {location.reload()})
@@ -187,8 +188,11 @@
 
     function mostrarLista() {
         if(currentQuestionIndex === 1) {
-            listContainerElement.classList.remove("d-none")
-            layoutList.classList.add('left-fade')
+            layoutQuestion.classList.add("slide-questao")
+            layoutQuestion.classList.add("col-lg-10");
+            layoutList.classList.add("col-lg-2");
+            listContainerElement.classList.remove("d-none");
+            layoutList.classList.add('left-fade');
         }
 
         var lista = ""
