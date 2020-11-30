@@ -71,7 +71,17 @@
         $('#tooltip').toggleClass('d-none');
     }
 
-   setTimeout(function(){alternarPopup()}, 5000);
+    function identificarPagina(){
+        let localAtual = window.location
+        return localAtual.pathname
+    }
+
+    let tempo = 0
+    if(identificarPagina() == "/"){
+        tempo = 5000
+    }
+
+   setTimeout(function(){alternarPopup()}, tempo);
     btnUsu.addEventListener('click', alternarPopup)
 
 </script>
