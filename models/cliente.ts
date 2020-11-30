@@ -163,21 +163,6 @@ export = class Cliente{
         });
     }
 
-    public static async alterar(cliente: Cliente): Promise<string>{
-        let erro: string = Cliente.validar(cliente);
-
-
-        if(erro){
-            return erro;
-        }
-
-        await Sql.conectar(async(sql)=>{
-            await sql.query("update cliente set nome = ?, email = ?, senha=? where id_cliente = ?",[cliente.nome_cliente, cliente.email, cliente.senha, cliente.id_cliente]);
-        });
-
-        return erro;
-    }
-
     public static async atualizarEndereco(cliente: Cliente): Promise<string>{
         let erro: string = Cliente.validar(cliente);
 

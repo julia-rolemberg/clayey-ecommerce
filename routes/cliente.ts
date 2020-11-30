@@ -18,27 +18,6 @@ router.get("/adicionarEndereco", wrap(async (req: express.Request, res: express.
 	res.render("cliente/adicionarEndereco", opcoes);
 }));
 
-router.get("/alterar/:id", wrap(async (req: express.Request, res: express.Response) => {
-	let id_cliente = parseInt(req.params["id"]);
-
-	if (isNaN(id_cliente)) {
-		res.render("cliente/nao-encontrado", {layout:"layout-finalizar"});
-	} else {
-		let cliente = await Cliente.obter(id_cliente);
-		
-		if (!cliente) {
-			res.render("cliente/nao-encontrado", {layout:"layout-finalizar"});
-		} else {
-			let opcoes = {
-				cliente: cliente
-			};
-
-            console.log("página de editar clientes!")
-			// res.render("cliente/alterar", opcoes);
-		}
-	}
-}));
-
 router.get("/listar", wrap(async (req: express.Request, res: express.Response) => {
 	
 	const cliente = await Cliente.cookieAdmin(req.cookies);

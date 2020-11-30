@@ -18,20 +18,6 @@ router.post("/criar", wrap(async(req: express.Request, res: express.Response)=>{
 	}
 }));
 
-router.post("/alterar", wrap(async (req: express.Request, res: express.Response) => {
-	let erro: string = null;
-
-	let cliente = req.body as Cliente;
-
-	erro = await Cliente.alterar(cliente);
-
-	if (erro) {
-		res.status(400).json(erro);
-	} else {
-		res.json(true);
-	}
-}));
-
 router.get("/excluir/:id", wrap(async (req: express.Request, res: express.Response) => {
 	const admin = await Cliente.cookieAdmin(req.cookies);
 	
