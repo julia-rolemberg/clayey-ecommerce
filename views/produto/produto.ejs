@@ -4,7 +4,6 @@
 %>
 
 <div class="principalP2">
-    <div class="produtoPagina">
         <div name="pagina" class="container-md pt-3 container-fluid ">
             <div class="row">
     
@@ -51,7 +50,8 @@
                                 <p id="d-text" class="text-justify">
                                     <%=produto.desc_produto%></p>
 
-                                <% if(produto.peso) { %> <p>Peso: <%=produto.peso%> g</p> <% } %></p> 
+
+                                <% if(produto.peso) { %> <p>Peso: <%=produto.peso%>g</p> <% } %></p> 
                                 <% if(produto.fabricacao) { %> <p>Fabricação: <%=data_fab%></p> <% } %></p> 
                             </div>
                         </div>
@@ -90,7 +90,6 @@
             </div>
             
         </div>
-    </div>
 </div>
 
 

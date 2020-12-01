@@ -178,7 +178,7 @@ export = class Produto {
             if(!sql.linhasAfetadas){
                 erro = 'Produto não encontrado';
             } else {
-				await FS.excluirArquivo("imagens/produtos/s" + id_produto + ".jpg");
+				await FS.excluirArquivo("public/imagens/produtos/s" + id_produto + ".jpg");
 			}
 
 			await sql.commit();

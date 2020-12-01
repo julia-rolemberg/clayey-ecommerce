@@ -25,7 +25,7 @@ export = class Pedido {
     public static async listar(): Promise<Pedido[]>{
         let lista: Pedido[] = null;
         await Sql.conectar(async (sql) =>{
-            lista = await sql.query("select p.id_pedido, p.ativo, date_format(p.data_pedido, '%d/%m/%Y') data_pedido, p.id_cliente, p.valor_total,c.nome_cliente, c.email, (select group_concat(pr.nome_produto separator ', ') from item i inner join produto pr on pr.id_produto = i.id_produto where i.id_pedido = p.id_pedido) produtos, (select group_concat(i.qtde separator ', ') from item i inner join produto pr on pr.id_produto = i.id_produto where i.id_pedido = p.id_pedido) qtdes from pedido p inner join cliente c on c.id_cliente = p.id_cliente");
+            lista = await sql.query("select p.id_pedido, p.ativo, date_format(p.data_pedido, '%d/%m/%Y') data_pedido, p.id_cliente, p.valor_total,c.nome_cliente, c.email, (select group_concat(pr.nome_produto separator ', ') from item i inner join produto pr on pr.id_produto = i.id_produto where i.id_pedido = p.id_pedido) produtos, (select group_concat(i.qtde separator ', ') from item i inner join produto pr on pr.id_produto = i.id_produto where i.id_pedido = p.id_pedido) qtdes from pedido p inner join cliente c on c.id_cliente = p.id_cliente order by p.id_pedido");
         });
         return lista;
     }
