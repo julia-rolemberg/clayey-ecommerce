@@ -45,7 +45,7 @@
                 <textarea id="composicao" name="composicao"  class=" form-control" rows="5" cols="100"><%= (produto ? produto.composicao : "")%></textarea>
             </div>
             <div class="form-group flex-nowrap">
-                <label class="font-weight-bold" for="imagem">Alterar imagem do produto: </label>
+                <label class="font-weight-bold" for="imagem"> <%= (produto ? "Alterar" : "Adicionar") %> imagem do produto: </label>
                 <input id="imagem" name="imagem" type="file" class="" accept="image/jpeg"/>
             </div>
 
