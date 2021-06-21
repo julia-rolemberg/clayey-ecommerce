@@ -14,8 +14,21 @@ E-commerce website, Rest API in Node.js/Express, Login with token authentication
 ![HomePageTop](https://github.com/julia-rolemberg/clayey-ecommerce/blob/master/views/prints/Home_topo.png)
 ![HomePageTop](https://github.com/julia-rolemberg/clayey-ecommerce/blob/master/views/prints/Home_meio2.png)
 ![HomePageTop](https://github.com/julia-rolemberg/clayey-ecommerce/blob/master/views/prints/Home_final.png)
+---
+### Product Catalog
+![ProductsTop](https://github.com/julia-rolemberg/clayey-ecommerce/blob/master/views/prints/Produtos_topo.png)
+![ProductsTop](https://github.com/julia-rolemberg/clayey-ecommerce/blob/master/views/prints/Produtos_final.png)
+---
+### Quiz
+![Quiz](https://github.com/julia-rolemberg/clayey-ecommerce/blob/master/views/prints/Quiz_start.png)
+![Quiz](https://github.com/julia-rolemberg/clayey-ecommerce/blob/master/views/prints/Quiz_resultado.png)
 
-### 
+---
+### Administrator area
+![Quiz](https://github.com/julia-rolemberg/clayey-ecommerce/blob/master/views/prints/Restrito_produtos.png)
+
+
+
 <!--
 ## Running Locally
 ### Prerequisites
